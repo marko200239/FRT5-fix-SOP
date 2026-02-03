@@ -3,7 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRT509 機器人維修技術手冊 (SOP)</title>
+    <title>FRT5 系列機器人維修技術手冊 (SOP)</title>
+    <script>
+    // 簡單的門禁檢查系統
+    (function() {
+        const secretKey = "509509"; // 這是你的維修授權碼，你可以自己改
+        
+        // 檢查這一次瀏覽是否已經輸入過密碼
+        if (sessionStorage.getItem('authorized') !== 'true') {
+            let pw = prompt("【內部技術文件】\n請輸入維修授權碼以繼續：");
+            
+            if (pw === secretKey) {
+                sessionStorage.setItem('authorized', 'true');
+                alert("授權成功！歡迎使用維修系統。");
+            } else {
+                alert("授權碼錯誤！將關閉頁面。");
+                window.location.href = "about:blank"; // 跳轉到空白頁
+            }
+        }
+    })();
+</script>
     <style>
         :root {
             /* 深色模式公司識別色 */
@@ -94,7 +113,7 @@
 <body>
 
 <div class="container">
-    <h1>FRT509 維修 SOP 手冊系統</h1>
+    <h1>FRT5系列 維修 SOP 手冊系統</h1>
 
     <div class="search-container">
         <input type="text" id="searchInput" onkeyup="searchSOP()" placeholder="🔍 搜尋維修關鍵字 (例如：影像、馬達、開關)...">
