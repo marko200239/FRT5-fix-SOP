@@ -1,240 +1,241 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRT5 系列機器人維修技術手冊 (SOP)</title>
-    <script>
-    // 簡單的門禁檢查系統
-    (function() {
-        const secretKey = "509509"; // 這是你的維修授權碼，你可以自己改
-        
-        // 檢查這一次瀏覽是否已經輸入過密碼
-        if (sessionStorage.getItem('authorized') !== 'true') {
-            let pw = prompt("【內部技術文件】\n請輸入維修授權碼以繼續：");
-            
-            if (pw === secretKey) {
-                sessionStorage.setItem('authorized', 'true');
-                alert("授權成功！歡迎使用維修系統。");
-            } else {
-                alert("授權碼錯誤！將關閉頁面。");
-                window.location.href = "about:blank"; // 跳轉到空白頁
-            }
-        }
-    })();
-</script>
+    <title>FRT5系列 維修 SOP 手冊系統</title>
     <style>
+        /* === 核心 CSS 特效與背景 === */
         :root {
-            /* 深色模式公司識別色 */
-            --bg-color: #121212;      /* 極深背底色 */
-            --card-bg: #1e1e1e;       /* 卡片背景色 */
-            --container-bg: #181818;  /* 容器背景色 */
-            --primary-text: #ffffff;  /* 主文字白色 */
-            --secondary-text: #b0b0b0;/* 次要文字灰色 */
-            --accent-color: #ff4d4d;  /* 亮紅色(加亮以適應深底) */
-            --primary-blue: #3498db;  /* 亮藍色 */
-            --border-color: #333333;
-        }
-        
-        body { 
-            font-family: "Microsoft JhengHei", sans-serif; 
-            background-color: var(--bg-color); 
-            color: var(--primary-text);
-            margin: 0; 
-            padding: 20px; 
-        }
-        
-        .container { 
-            max-width: 1000px; margin: auto; 
-            background: var(--container-bg); 
-            padding: 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
-            border-top: 8px solid var(--accent-color); 
-        }
-        
-        h1 { 
-            color: var(--primary-text); 
-            text-align: center; 
-            border-bottom: 2px solid var(--accent-color); 
-            padding-bottom: 15px; 
-            margin-bottom: 20px; 
-            letter-spacing: 2px;
+            --bg-color: #121212;      /* 網頁深色底 */
+            --card-bg: #1e1e1e;       /* 卡片深灰底 */
+            --mech-red: #d32f2f;      /* 機械類專用紅 */
+            --elec-blue: #1976d2;     /* 電控類專用藍 */
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
         }
 
-        /* 搜尋欄深色樣式 */
-        .search-container { margin: 20px 0 30px 0; text-align: center; }
-        #searchInput {
-            width: 100%; max-width: 600px; padding: 12px 25px;
-            font-size: 16px; 
-            border: 2px solid #444;
-            background-color: #252525;
-            color: white;
-            border-radius: 25px; outline: none; transition: 0.3s;
-            box-sizing: border-box;
-        }
-        #searchInput:focus { 
-            box-shadow: 0 0 15px rgba(255, 77, 77, 0.3); 
-            border-color: var(--accent-color); 
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            margin: 0; padding: 20px;
         }
 
-        .sop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin-top: 20px; }
-        
-        /* 深色卡片樣式 */
-        .sop-card { 
-            text-decoration: none; 
-            color: var(--primary-text); 
-            background: var(--card-bg); 
-            border: 1px solid var(--border-color); 
-            padding: 20px; 
-            border-radius: 10px; 
-            transition: 0.3s; 
-            display: flex; 
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 30px; letter-spacing: 2px; font-weight: 700; }
+
+        /* 搜尋框特效 */
+        .search-box { text-align: center; margin-bottom: 40px; }
+        .search-box input {
+            width: 80%; max-width: 600px; padding: 15px 25px;
+            background: #252525; border: 1px solid #444; border-radius: 30px;
+            color: white; font-size: 1rem; outline: none; transition: 0.3s;
+        }
+        .search-box input:focus { border-color: var(--mech-red); box-shadow: 0 0 15px rgba(211, 47, 47, 0.3); }
+
+        /* 卡片網格 */
+        .sop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        /* === 卡片基礎與懸停特效 === */
+        .sop-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-left: 6px solid var(--mech-red); /* 預設紅邊 */
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
             flex-direction: column;
-            border-left: 5px solid var(--primary-blue);
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
         }
-        .sop-card:hover { 
-            transform: translateY(-5px); 
+
+        /* 紅色懸停發光 */
+        .sop-card:hover {
             background: #282828;
-            border-color: var(--accent-color); 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            transform: translateY(-5px); /* 上浮感 */
+            border-color: var(--mech-red);
+            box-shadow: 0 10px 30px rgba(211, 47, 47, 0.5); /* 強烈紅光 */
         }
-        
-        .sop-number { font-weight: bold; color: var(--accent-color); margin-bottom: 8px; font-size: 0.9em; }
-        .sop-title { font-size: 1.2em; font-weight: bold; margin-bottom: 5px; }
-        .sop-desc { font-size: 0.95em; color: var(--secondary-text); margin-top: 5px; flex-grow: 1; line-height: 1.5; }
-        
-        /* 標籤樣式 */
-        .tag { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.75em; margin-top: 12px; align-self: flex-start; font-weight: bold; text-transform: uppercase; }
-        .tag-mech { background: #3d1a1a; color: #ff6b6b; border: 1px solid #632626; } 
-        .tag-elec { background: #1a2e3d; color: #5dade2; border: 1px solid #28445a; }
+
+        /* 藍色主題 */
+        .sop-card.blue-theme { border-left-color: var(--elec-blue); }
+
+        /* 藍色懸停發光 */
+        .sop-card.blue-theme:hover {
+            border-color: var(--elec-blue);
+            box-shadow: 0 10px 30px rgba(25, 118, 210, 0.5); /* 強烈藍光 */
+        }
+
+        /* SOP 編號標籤背景 */
+        .sop-number {
+            background: var(--mech-red);
+            color: white;
+            padding: 3px 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            align-self: flex-start;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        .blue-theme .sop-number { background: var(--elec-blue); }
+
+        .sop-title { font-size: 1.3rem; font-weight: bold; margin-bottom: 10px; }
+        .sop-fault { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; line-height: 1.5; }
+
+        /* 下方分類色塊標籤 */
+        .category-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            align-self: flex-start;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 600px) { .sop-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>FRT5系列 維修 SOP 手冊系統</h1>
+<script>
+    (function() {
+        const secretKey = "509509";
+        if (sessionStorage.getItem('authorized') !== 'true') {
+            let pw = prompt("【FRT5 內部技術文件】\n請輸入授權代碼：");
+            if (pw === secretKey) {
+                sessionStorage.setItem('authorized', 'true');
+            } else {
+                alert("驗證失敗，權限不足。");
+                window.location.href = "about:blank";
+            }
+        }
+    })();
+</script>
 
-    <div class="search-container">
-        <input type="text" id="searchInput" onkeyup="searchSOP()" placeholder="🔍 搜尋維修關鍵字 (例如：影像、馬達、開關)...">
+<div class="container">
+    <h1>FRT5系列 維修 SOP 手冊</h1>
+    
+    <div class="search-box">
+        <input type="text" id="searchInput" onkeyup="searchSOP()" placeholder="🔍 搜尋零件、故障代碼或維修項目...">
     </div>
 
-    <div class="sop-grid" id="sopGrid">
+    <div class="sop-grid">
         <a href="sop1.html" class="sop-card">
             <span class="sop-number">SOP-01</span>
             <span class="sop-title">灑水頭更換</span>
-            <span class="sop-desc">故障：外力砸傷、出水異常</span>
-            <span class="tag tag-mech">機械結構</span>
+            <span class="sop-fault">故障：外力砸傷、出水異常</span>
+            <span class="category-tag">機械結構</span>
         </a>
+
         <a href="sop2.html" class="sop-card">
             <span class="sop-number">SOP-02</span>
             <span class="sop-title">熱顯支架管束更換</span>
-            <span class="sop-desc">故障：管束斷裂、支架不穩</span>
-            <span class="tag tag-mech">機械結構</span>
+            <span class="sop-fault">故障：管束斷裂、支架不穩</span>
+            <span class="category-tag">機械結構</span>
         </a>
-        <a href="sop3.html" class="sop-card">
+
+        <a href="sop3.html" class="sop-card blue-theme">
             <span class="sop-number">SOP-03</span>
             <span class="sop-title">影像故障排除</span>
-            <span class="sop-desc">故障：頻道未勾選、訊號不佳</span>
-            <span class="tag tag-elec">軟體/通訊</span>
+            <span class="sop-fault">故障：頻道未勾選、訊號不佳</span>
+            <span class="category-tag">影像/通訊</span>
         </a>
+
         <a href="sop4.html" class="sop-card">
             <span class="sop-number">SOP-04</span>
             <span class="sop-title">履帶調整桿更換</span>
-            <span class="sop-desc">故障：桿件斷裂、履帶鬆脫</span>
-            <span class="tag tag-mech">底盤傳動</span>
+            <span class="sop-fault">故障：桿件斷裂、履帶鬆脫</span>
+            <span class="category-tag">底盤傳動</span>
         </a>
+
         <a href="sop5.html" class="sop-card">
             <span class="sop-number">SOP-05</span>
             <span class="sop-title">遙控器固定座更換</span>
-            <span class="sop-desc">故障：無法與遙控箱結合</span>
-            <span class="tag tag-mech">配件更換</span>
+            <span class="sop-fault">故障：無法與遙控箱結合</span>
+            <span class="category-tag">外觀配件</span>
         </a>
-        <a href="sop6.html" class="sop-card">
+
+        <a href="sop6.html" class="sop-card blue-theme">
             <span class="sop-number">SOP-06</span>
             <span class="sop-title">鉛酸電池更換</span>
-            <span class="sop-desc">故障：蓄電量不足、無法開機</span>
-            <span class="tag tag-elec">電力系統</span>
+            <span class="sop-fault">故障：蓄電不足、無法開機</span>
+            <span class="category-tag">電力系統</span>
         </a>
+
         <a href="sop7.html" class="sop-card">
             <span class="sop-number">SOP-07</span>
             <span class="sop-title">馬達動力傳動組更換</span>
-            <span class="sop-desc">故障：無法切換水柱/水霧</span>
-            <span class="tag tag-mech">砲塔組件</span>
+            <span class="sop-fault">故障：無法切換水柱/水霧</span>
+            <span class="category-tag">機械結構</span>
         </a>
+
         <a href="sop8.html" class="sop-card">
             <span class="sop-number">SOP-08</span>
             <span class="sop-title">砲塔控制盒更換</span>
-            <span class="sop-desc">故障：瞄子無作動、燈光異常</span>
-            <span class="tag tag-elec">電控核心</span>
+            <span class="sop-fault">故障：瞄子無作動</span>
+            <span class="category-tag">機械結構</span>
         </a>
+
         <a href="sop9.html" class="sop-card">
             <span class="sop-number">SOP-09</span>
             <span class="sop-title">砲塔大燈更換</span>
-            <span class="sop-desc">故障：大燈不亮、燈具毀損</span>
-            <span class="tag tag-elec">照明系統</span>
+            <span class="sop-fault">故障：大燈不亮、燈具毀損</span>
+            <span class="category-tag">機械結構</span>
         </a>
-        <a href="sop10.html" class="sop-card">
+
+        <a href="sop10.html" class="sop-card blue-theme">
             <span class="sop-number">SOP-10</span>
             <span class="sop-title">面板開關線組更換</span>
-            <span class="sop-desc">故障：底盤無法正常開關機</span>
-            <span class="tag tag-elec">控制線組</span>
+            <span class="sop-fault">故障：面板按鈕無反應、線路損壞</span>
+            <span class="category-tag">控制系統</span>
         </a>
-        <a href="sop11.html" class="sop-card">
+
+        <a href="sop11.html" class="sop-card blue-theme">
             <span class="sop-number">SOP-11</span>
-            <span class="sop-title">限位開關座更換</span>
-            <span class="sop-desc">故障：砲塔水平轉向過頭</span>
-            <span class="tag tag-mech">感應定位</span>
+            <span class="sop-title">限位開關更換</span>
+            <span class="sop-fault">故障：砲塔旋轉角度限制失效</span>
+            <span class="category-tag">電控系統</span>
         </a>
-        <a href="sop12.html" class="sop-card">
+
+        <a href="sop12.html" class="sop-card blue-theme">
             <span class="sop-number">SOP-12</span>
             <span class="sop-title">近接開關更換</span>
-            <span class="sop-desc">故障：瞄子無法垂直作動</span>
-            <span class="tag tag-elec">感應器</span>
+            <span class="sop-fault">故障：升降偵測異常</span>
+            <span class="category-tag">偵測系統</span>
         </a>
-        <a href="sop13.html" class="sop-card">
+
+        <a href="sop13.html" class="sop-card blue-theme">
             <span class="sop-number">SOP-13</span>
             <span class="sop-title">底盤控制盒更換</span>
-            <span class="sop-desc">故障：機器人開機無動作</span>
-            <span class="tag tag-elec">核心電控</span>
+            <span class="sop-fault">故障：行走控制異常、無動力</span>
+            <span class="category-tag">電控系統</span>
         </a>
-        <a href="sop14.html" class="sop-card">
-            <span class="sop-number">SOP-14</span>
-            <span class="sop-title">IO 控制盒更換</span>
-            <span class="sop-desc">故障：影像消失、無法充電</span>
-            <span class="tag tag-elec">通訊/周邊</span>
-        </a>
-        <a href="sop15.html" class="sop-card">
-            <span class="sop-number">SOP-15</span>
-            <span class="sop-title">3吋觀景窗更換</span>
-            <span class="sop-desc">故障：IR 玻璃破損</span>
-            <span class="tag tag-mech">光學保護</span>
-        </a>
-        <a href="sop16.html" class="sop-card">
-            <span class="sop-number">SOP-16</span>
-            <span class="sop-title">熱顯影像故障排除</span>
-            <span class="sop-desc">故障：訊號不佳、燈號診斷</span>
-            <span class="tag tag-elec">診斷指南</span>
-        </a>
+
+        <a href="sop14.html" class="sop-card blue-theme"><span class="sop-number">SOP-14</span><span class="sop-title">IO控制盒更換</span><span class="sop-fault">故障：通訊訊號錯誤</span><span class="category-tag">電控系統</span></a>
+        <a href="sop15.html" class="sop-card"><span class="sop-number">SOP-15</span><span class="sop-title">3吋觀景窗更換</span><span class="sop-fault">故障：玻璃破損</span><span class="category-tag">機械結構</span></a>
+        <a href="sop16.html" class="sop-card blue-theme"><span class="sop-number">SOP-16</span><span class="sop-title">熱顯影像更換</span><span class="sop-fault">故障：紅外線畫面中斷</span><span class="category-tag">影像系統</span></a>
     </div>
 </div>
 
 <script>
-function searchSOP() {
-    let input = document.getElementById('searchInput');
-    let filter = input.value.toUpperCase();
-    let grid = document.getElementById("sopGrid");
-    let cards = grid.getElementsByClassName('sop-card');
-
-    for (let i = 0; i < cards.length; i++) {
-        let textContent = cards[i].innerText || cards[i].textContent;
-        if (textContent.toUpperCase().indexOf(filter) > -1) {
-            cards[i].style.display = "";
-        } else {
-            cards[i].style.display = "none";
+    /* 關鍵字搜尋邏輯 */
+    function searchSOP() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('sop-card');
+        for (let i = 0; i < cards.length; i++) {
+            let text = cards[i].innerText.toLowerCase();
+            cards[i].style.display = text.includes(input) ? "flex" : "none";
         }
     }
-}
 </script>
 
 </body>
