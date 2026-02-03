@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SOP-06 鉛酸電池更換</title>
+    
+
+
+
+<style>
+    :root {
+        --bg-color: #121212;
+        --container-bg: #181818;
+        --card-bg: #222222;
+        --text-main: #ffffff;
+        --text-sub: #b0b0b0;
+        --accent: #ff4d4d;
+        --blue: #3498db;
+        --border: #333333;
+    }
+    body { 
+        font-family: "Microsoft JhengHei", sans-serif; 
+        background-color: var(--bg-color); 
+        color: var(--text-main); 
+        margin: 0; padding: 20px; 
+        line-height: 1.6;
+    }
+    .container, .sop-container, body > div.container, body > div:first-of-type { 
+        max-width: 850px; margin: auto; 
+        background: var(--container-bg); 
+        padding: 30px; border-radius: 12px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-top: 8px solid var(--accent);
+    }
+    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
+    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
+    .info-card { 
+        background: var(--card-bg); 
+        border: 1px solid var(--border); 
+        padding: 20px; border-radius: 8px; margin-bottom: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
+    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    th { background-color: #252525; color: var(--blue); }
+    td { color: var(--text-sub); }
+    .step { 
+        background: #1e1e1e; 
+        margin-bottom: 12px; padding: 15px;
+        border-radius: 6px; border: 1px solid var(--border); 
+        border-left: 5px solid var(--blue);
+        color: var(--text-sub);
+    }
+    .step strong { color: var(--text-main); }
+    .back-btn { 
+        display: inline-block; margin-top: 30px; color: var(--blue); 
+        text-decoration: none; font-weight: bold; 
+        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
+    }
+    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+</style>
+
+
+
+
+</head>
+<body>
+    <div class="header"><h1>SOP-06：鉛酸電池更換</h1></div>
+
+    <div class="info-card">
+        <strong>故障描述：</strong> 蓄電量不足<br>
+        <strong>原因分析：</strong> 電池老化<br><br>
+        <table>
+            <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
+            <tr><td>特殊工具</td><td>油壓台車</td><td>1 台</td></tr>
+            <tr><td>一般工具</td><td>24號套筒、十字起子、六角板手組</td><td>-</td></tr>
+            <tr><td>零組件</td><td>鉛酸電池 (392060002)</td><td>KPH100-12AN / 4 顆</td></tr>
+            <tr><td>耗材</td><td>藍膠、熱熔膠</td><td>適量</td></tr>
+        </table>
+    </div>
+
+    <h3>🛠️ 維修流程</h3>
+    
+    <div class="step">
+        <strong>步驟 1：分離前準備</strong><br>
+        1. 拆下上座固定螺絲(4顆)並解開快速夾具(4處)。<br>
+        2. 將砲塔控制器電源線、底盤訊號線收至底盤凹槽處。<br>
+        <div class="warning">⚠️ 注意：控制線須完全收至凹槽，否則分離時極易扯斷損壞！</div>
+    </div>
+
+    
+
+    <div class="step">
+        <strong>步驟 2：移除上座</strong><br>
+        1. 使用十字起子拆除底板螺絲(M4x10共12顆)。<br>
+        2. 將砲塔上座平移至油壓台車上存放。
+    </div>
+
+    <div class="step">
+        <strong>步驟 3：更換電池</strong><br>
+        1. 使用 24 號套筒拆除舊電池接頭螺絲。<br>
+        2. 換上 4 顆新電池，並於螺絲處點上<b>藍膠</b>防止鬆脫。<br>
+        3. 重新接回電池連線，並以<b>熱熔膠</b>加強固定接頭。
+    </div>
+
+    
+
+    <div class="step">
+        <strong>步驟 4：復原</strong><br>
+        1. 將砲塔上座移回底盤並鎖固底板與夾具。<br>
+        2. 確認線路接回並開機測試續航力。
+    </div>
+
+    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+</body>
+</html>

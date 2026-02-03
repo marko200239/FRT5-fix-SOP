@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SOP-03 影像故障排除</title>
+    
+
+
+
+<style>
+    :root {
+        --bg-color: #121212;
+        --container-bg: #181818;
+        --card-bg: #222222;
+        --text-main: #ffffff;
+        --text-sub: #b0b0b0;
+        --accent: #ff4d4d;
+        --blue: #3498db;
+        --border: #333333;
+    }
+    body { 
+        font-family: "Microsoft JhengHei", sans-serif; 
+        background-color: var(--bg-color); 
+        color: var(--text-main); 
+        margin: 0; padding: 20px; 
+        line-height: 1.6;
+    }
+    .container, .sop-container, body > div.container, body > div:first-of-type { 
+        max-width: 850px; margin: auto; 
+        background: var(--container-bg); 
+        padding: 30px; border-radius: 12px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-top: 8px solid var(--accent);
+    }
+    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
+    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
+    .info-card { 
+        background: var(--card-bg); 
+        border: 1px solid var(--border); 
+        padding: 20px; border-radius: 8px; margin-bottom: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
+    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    th { background-color: #252525; color: var(--blue); }
+    td { color: var(--text-sub); }
+    .step { 
+        background: #1e1e1e; 
+        margin-bottom: 12px; padding: 15px;
+        border-radius: 6px; border: 1px solid var(--border); 
+        border-left: 5px solid var(--blue);
+        color: var(--text-sub);
+    }
+    .step strong { color: var(--text-main); }
+    .back-btn { 
+        display: inline-block; margin-top: 30px; color: var(--blue); 
+        text-decoration: none; font-weight: bold; 
+        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
+    }
+    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+</style>
+
+
+
+
+</head>
+<body>
+    <div class="header"><h1>SOP-03：影像故障排除</h1></div>
+
+    <div class="info-card">
+        <strong>故障描述：</strong> 平板無法觀看影像<br>
+        <strong>原因分析：</strong> 頻道未勾選、網路訊號不佳、或硬體斷線
+    </div>
+
+    <div class="scenario">
+        <h3>情境 A：頻道未勾選</h3>
+        <p>1. 觀察遙控箱平板畫面 App 是否有 CH1、CH2、CH3 畫面。</p>
+        <p>2. 若無畫面，點選畫面右上角「...」進入頻道。</p>
+        <p>3. 勾選所在分隊及頻道後退出，即可看到畫面。</p>
+    </div>
+
+    <div class="scenario">
+        <h3>情境 B：網路訊號不好</h3>
+        <p>1. 觀察可見光畫面中的網路訊號數值（數值越高訊號越好）。</p>
+        <p>2. 若數值過低，請將機器人移動至訊號良好處即可回復影像。</p>
+        <p>3. 可使用手機或筆電進行交叉確認。</p>
+    </div>
+
+    <div class="scenario">
+        <h3>情境 C：網路斷線 / 硬體檢查</h3>
+        <p>1. 觀察可見光鏡頭：若<strong>亮紅燈</strong>，請移至有訊號位置；若<strong>沒亮燈</strong>，參照電控盒更換步驟。</p>
+        <p>2. 熱顯像儀檢查：觀察後方 LED 燈號狀態：</p>
+        <table>
+            <tr><th>LED 狀態</th><th>說明</th></tr>
+            <tr><td class="led-status">藍燈閃爍</td><td>系統啟動中</td></tr>
+            <tr><td class="led-status">藍燈恆亮</td><td>系統運作正常</td></tr>
+            <tr><td class="led-status">紅燈 / 不亮</td><td>硬體故障，需檢查供電或連線</td></tr>
+        </table>
+    </div>
+
+    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+</body>
+</html>

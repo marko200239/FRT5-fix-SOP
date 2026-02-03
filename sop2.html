@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SOP-02 熱顯支架管束更換</title>
+    
+
+
+
+<style>
+    :root {
+        --bg-color: #121212;
+        --container-bg: #181818;
+        --card-bg: #222222;
+        --text-main: #ffffff;
+        --text-sub: #b0b0b0;
+        --accent: #ff4d4d;
+        --blue: #3498db;
+        --border: #333333;
+    }
+    body { 
+        font-family: "Microsoft JhengHei", sans-serif; 
+        background-color: var(--bg-color); 
+        color: var(--text-main); 
+        margin: 0; padding: 20px; 
+        line-height: 1.6;
+    }
+    .container, .sop-container, body > div.container, body > div:first-of-type { 
+        max-width: 850px; margin: auto; 
+        background: var(--container-bg); 
+        padding: 30px; border-radius: 12px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-top: 8px solid var(--accent);
+    }
+    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
+    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
+    .info-card { 
+        background: var(--card-bg); 
+        border: 1px solid var(--border); 
+        padding: 20px; border-radius: 8px; margin-bottom: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
+    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    th { background-color: #252525; color: var(--blue); }
+    td { color: var(--text-sub); }
+    .step { 
+        background: #1e1e1e; 
+        margin-bottom: 12px; padding: 15px;
+        border-radius: 6px; border: 1px solid var(--border); 
+        border-left: 5px solid var(--blue);
+        color: var(--text-sub);
+    }
+    .step strong { color: var(--text-main); }
+    .back-btn { 
+        display: inline-block; margin-top: 30px; color: var(--blue); 
+        text-decoration: none; font-weight: bold; 
+        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
+    }
+    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+</style>
+
+
+
+
+</head>
+<body>
+    <div class="header"><h1>SOP-02：熱顯支架管束更換</h1></div>
+
+    <div class="info-card">
+        <strong>故障描述：</strong> 管束斷掉<br>
+        <strong>原因分析：</strong> 外力撞擊<br><br>
+        <table>
+            <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
+            <tr><td>一般工具</td><td>8號套筒、扭力板手</td><td>50-250kg/cm</td></tr>
+            <tr><td>零組件</td><td>白鐵管束 5” (399070007)</td><td>- / 2個</td></tr>
+        </table>
+    </div>
+
+    <h3>🛠️ 維修流程</h3>
+    <div class="step">
+        <strong>步驟 1：拆卸舊件</strong><br>
+        使用 8 號套筒將舊的毀損管束取下。
+    </div>
+
+    
+
+    <div class="step">
+        <strong>步驟 2：安裝新件</strong><br>
+        將新管束裝上，先使用套筒固定，但先不要鎖死。
+        <p class="warning-text">⚠️ 注意：確認鎖固位置不會影響「瞄子」的伸縮功能。</p>
+    </div>
+
+    <div class="step">
+        <strong>步驟 3：正式鎖固</strong><br>
+        使用扭力板手將管束精確鎖固至 <span class="warning-text">50kg/cm</span> 即可完成更換。
+    </div>
+
+    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+</body>
+</html>

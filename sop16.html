@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SOP-16 影像故障排除-熱顯訊號不佳</title>
+    
+
+
+
+<style>
+    :root {
+        --bg-color: #121212;
+        --container-bg: #181818;
+        --card-bg: #222222;
+        --text-main: #ffffff;
+        --text-sub: #b0b0b0;
+        --accent: #ff4d4d;
+        --blue: #3498db;
+        --border: #333333;
+    }
+    body { 
+        font-family: "Microsoft JhengHei", sans-serif; 
+        background-color: var(--bg-color); 
+        color: var(--text-main); 
+        margin: 0; padding: 20px; 
+        line-height: 1.6;
+    }
+    .container, .sop-container, body > div.container, body > div:first-of-type { 
+        max-width: 850px; margin: auto; 
+        background: var(--container-bg); 
+        padding: 30px; border-radius: 12px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-top: 8px solid var(--accent);
+    }
+    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
+    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
+    .info-card { 
+        background: var(--card-bg); 
+        border: 1px solid var(--border); 
+        padding: 20px; border-radius: 8px; margin-bottom: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
+    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    th { background-color: #252525; color: var(--blue); }
+    td { color: var(--text-sub); }
+    .step { 
+        background: #1e1e1e; 
+        margin-bottom: 12px; padding: 15px;
+        border-radius: 6px; border: 1px solid var(--border); 
+        border-left: 5px solid var(--blue);
+        color: var(--text-sub);
+    }
+    .step strong { color: var(--text-main); }
+    .back-btn { 
+        display: inline-block; margin-top: 30px; color: var(--blue); 
+        text-decoration: none; font-weight: bold; 
+        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
+    }
+    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+</style>
+
+
+
+
+</head>
+<body>
+    <div class="header"><h1>SOP-16：影像故障排除（熱顯訊號不佳）</h1></div>
+
+    <div class="info-card">
+        <strong>故障描述：</strong> 熱顯網路訊號不佳，平板無法觀看熱顯影像<br>
+        <strong>原因分析：</strong> 網路環境限制、硬體連線異常、熱顯像儀故障
+    </div>
+
+    <h3>🔍 診斷流程</h3>
+    
+    <div class="step">
+        <strong>步驟 1：環境訊號檢查</strong><br>
+        觀察熱顯像儀背後是否有亮「藍、綠燈」。<br>
+        ※ 如果完全沒有亮燈，請先嘗試將機器人移動至網路訊號較佳的位置。
+    </div>
+
+    
+
+    <div class="step">
+        <strong>步驟 2：LED 燈號狀態判讀</strong><br>
+        若訊號環境正常但畫面仍未顯示，請根據熱顯後方指示燈判斷故障原因：
+    </div>
+
+    <table>
+        <tr>
+            <th>LED 指示燈狀態</th>
+            <th>故障說明與對策</th>
+        </tr>
+        <tr>
+            <td><span class="status-dot" style="background-color: #3498db;"></span>藍燈閃爍</td>
+            <td><b>工作正常。</b>（請檢查平板軟體設定）</td>
+        </tr>
+        <tr>
+            <td><span class="status-dot" style="background-color: #fd79a8;"></span>粉紅色燈穩定亮起</td>
+            <td><b>熱像儀正在啟動中。</b>（請稍候）</td>
+        </tr>
+        <tr>
+            <td><span class="status-dot" style="background-color: #e74c3c;"></span>紅燈穩定亮起</td>
+            <td><b>熱像儀硬體故障。</b>（請聯繫原廠維修）</td>
+        </tr>
+        <tr>
+            <td><span class="status-dot" style="background-color: #2ecc71;"></span>綠燈閃爍</td>
+            <td><b>已成功連接到網路。</b>（連線正常）</td>
+        </tr>
+        <tr>
+            <td><span class="status-dot" style="border: 1px solid #999;"></span>沒有燈</td>
+            <td><b>未連接至任何網路。</b>（請檢查線路接頭）</td>
+        </tr>
+    </table>
+
+    <div class="step">
+        <strong>步驟 3：後續處理</strong><br>
+        如果是「無燈號」且移動位置無效，請檢查熱顯背後的電源與通訊接頭是否鬆脫。
+    </div>
+
+    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+</body>
+</html>

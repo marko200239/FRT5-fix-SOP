@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SOP-09 砲塔大燈更換</title>
+    
+
+
+
+<style>
+    :root {
+        --bg-color: #121212;
+        --container-bg: #181818;
+        --card-bg: #222222;
+        --text-main: #ffffff;
+        --text-sub: #b0b0b0;
+        --accent: #ff4d4d;
+        --blue: #3498db;
+        --border: #333333;
+    }
+    body { 
+        font-family: "Microsoft JhengHei", sans-serif; 
+        background-color: var(--bg-color); 
+        color: var(--text-main); 
+        margin: 0; padding: 20px; 
+        line-height: 1.6;
+    }
+    .container, .sop-container, body > div.container, body > div:first-of-type { 
+        max-width: 850px; margin: auto; 
+        background: var(--container-bg); 
+        padding: 30px; border-radius: 12px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-top: 8px solid var(--accent);
+    }
+    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
+    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
+    .info-card { 
+        background: var(--card-bg); 
+        border: 1px solid var(--border); 
+        padding: 20px; border-radius: 8px; margin-bottom: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
+    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    th { background-color: #252525; color: var(--blue); }
+    td { color: var(--text-sub); }
+    .step { 
+        background: #1e1e1e; 
+        margin-bottom: 12px; padding: 15px;
+        border-radius: 6px; border: 1px solid var(--border); 
+        border-left: 5px solid var(--blue);
+        color: var(--text-sub);
+    }
+    .step strong { color: var(--text-main); }
+    .back-btn { 
+        display: inline-block; margin-top: 30px; color: var(--blue); 
+        text-decoration: none; font-weight: bold; 
+        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
+    }
+    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+</style>
+
+
+
+
+</head>
+<body>
+    <div class="header"><h1>SOP-09：砲塔大燈更換（橘燈）</h1></div>
+
+    <div class="info-card">
+        <strong>故障描述：</strong> 大燈不亮、燈具損壞<br>
+        <strong>原因分析：</strong> 燈具老化、電路燒毀或外力破壞<br><br>
+        <table>
+            <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
+            <tr><td>一般工具</td><td>13號開口板手、三用電表</td><td>壓接鉗、斜口鉗</td></tr>
+            <tr><td>零組件</td><td>汽車遠燈+位置燈 (392040002)</td><td>1 組</td></tr>
+            <tr><td>零組件</td><td>透明橘黃燈蓋 (392040003)</td><td>1 個</td></tr>
+            <tr><td>耗材</td><td>公/母壓接端子</td><td>各 2 個</td></tr>
+        </table>
+    </div>
+
+    <h3>🔍 診斷與量測</h3>
+    <div class="step">
+        <strong>步驟 1：過電測試</strong><br>
+        1. 打開機器人左邊維修蓋，找到標示「<b>照明組(-)</b>」的接頭。<br>
+        2. 使用遙控器開啟電燈。<br>
+        3. 用三用電表量測車體端接頭：
+        <ul>
+            <li>若電壓 <b>≧ 24V</b>：表示車體供電正常，是大燈組損壞。</li>
+            <li>若 <b>無電壓</b>：表示底盤控制異常，請聯繫原廠。</li>
+        </ul>
+    </div>
+
+    
+
+    <h3>🛠️ 維修流程</h3>
+    <div class="step">
+        <strong>步驟 2：拆卸舊燈具</strong><br>
+        1. 使用 <b>13號開口板手</b> 將損壞的圓形大燈座拆卸。<br>
+        2. 使用斜口鉗剪除舊線路（保留後續接線長度）。
+    </div>
+
+    <div class="step">
+        <strong>步驟 3：安裝與接線</strong><br>
+        1. 裝上新圓燈並鎖緊固定螺絲。<br>
+        2. 使用壓接鉗將新燈具線路壓上<b>公/母端子</b>。<br>
+        3. 將端子插入「照明組(-)」接頭，確認正負極連接無誤。
+    </div>
+
+    
+
+    <div class="step">
+        <strong>步驟 4：完工測試</strong><br>
+        再次使用遙控器開燈，確認大燈及橘色位置燈皆正常點亮。
+    </div>
+
+    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+</body>
+</html>

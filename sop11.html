@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SOP-11 限位開關座更換</title>
+    
+
+
+
+<style>
+    :root {
+        --bg-color: #121212;
+        --container-bg: #181818;
+        --card-bg: #222222;
+        --text-main: #ffffff;
+        --text-sub: #b0b0b0;
+        --accent: #ff4d4d;
+        --blue: #3498db;
+        --border: #333333;
+    }
+    body { 
+        font-family: "Microsoft JhengHei", sans-serif; 
+        background-color: var(--bg-color); 
+        color: var(--text-main); 
+        margin: 0; padding: 20px; 
+        line-height: 1.6;
+    }
+    .container, .sop-container, body > div.container, body > div:first-of-type { 
+        max-width: 850px; margin: auto; 
+        background: var(--container-bg); 
+        padding: 30px; border-radius: 12px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-top: 8px solid var(--accent);
+    }
+    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
+    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
+    .info-card { 
+        background: var(--card-bg); 
+        border: 1px solid var(--border); 
+        padding: 20px; border-radius: 8px; margin-bottom: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
+    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    th { background-color: #252525; color: var(--blue); }
+    td { color: var(--text-sub); }
+    .step { 
+        background: #1e1e1e; 
+        margin-bottom: 12px; padding: 15px;
+        border-radius: 6px; border: 1px solid var(--border); 
+        border-left: 5px solid var(--blue);
+        color: var(--text-sub);
+    }
+    .step strong { color: var(--text-main); }
+    .back-btn { 
+        display: inline-block; margin-top: 30px; color: var(--blue); 
+        text-decoration: none; font-weight: bold; 
+        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
+    }
+    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+</style>
+
+
+
+
+</head>
+<body>
+    <div class="header"><h1>SOP-11：限位開關座更換</h1></div>
+
+    <div class="info-card">
+        <strong>故障描述：</strong> 砲塔水平轉向過頭（無止盡旋轉或角度異常）<br>
+        <strong>原因分析：</strong> 限位開關座損壞<br><br>
+        <table>
+            <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
+            <tr><td>一般工具</td><td>六角板手組、斜口鉗、壓接鉗</td><td>-</td></tr>
+            <tr><td>零組件</td><td>限位器總成及砲塔接線盒 (399020057)</td><td>FRT-508/509/309 通用</td></tr>
+            <tr><td>螺絲備件</td><td>半圓頭內六角螺絲 (M5x20)</td><td>2 顆</td></tr>
+            <tr><td>耗材</td><td>壓接端子 (公/母)</td><td>適量</td></tr>
+        </table>
+    </div>
+
+    <h3>🛠️ 維修流程</h3>
+    
+    <div class="step">
+        <strong>步驟 1：砲塔抽離</strong><br>
+        1. 將砲塔上的<b>四個固定環</b>轉至 <span style="color:red">OPEN</span> 位置。<br>
+        2. 打開飾蓋，使用斜口鉗將限位開關集線盒內的線組剪掉。<br>
+        3. 將整個砲塔向上抽離底座。
+    </div>
+
+    
+
+    <div class="step">
+        <strong>步驟 2：拆除損壞件</strong><br>
+        使用六角板手將位於底座上的損壞限位開關座拆卸（螺絲 M5x20 共 2 顆）。
+    </div>
+
+    <div class="step">
+        <strong>步驟 3：安裝新品與穿線</strong><br>
+        1. 將新的限位開關座鎖回原位。<br>
+        2. 將砲塔端線組穿過新的限位開關座孔位。<br>
+        3. 將砲塔扣回底座，並將四個固定環轉至 <span style="color:green">LOCK</span> 鎖固。
+    </div>
+
+    
+
+    <div class="step">
+        <strong>步驟 4：線路復原與測試</strong><br>
+        1. 使用壓接鉗重新連接集線盒內的公母端子。<br>
+        2. 測試砲塔左右轉向，確認在到達極限位置時會自動停止。
+    </div>
+
+    <div class="caution">
+        ⚠️ 注意：壓接端子後請務必使用熱縮套管或絕緣膠帶確實保護，避免旋轉時摩擦導致短路。
+    </div>
+
+    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+</body>
+</html>

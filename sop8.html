@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SOP-08 砲塔控制盒更換</title>
+    
+
+
+
+<style>
+    :root {
+        --bg-color: #121212;
+        --container-bg: #181818;
+        --card-bg: #222222;
+        --text-main: #ffffff;
+        --text-sub: #b0b0b0;
+        --accent: #ff4d4d;
+        --blue: #3498db;
+        --border: #333333;
+    }
+    body { 
+        font-family: "Microsoft JhengHei", sans-serif; 
+        background-color: var(--bg-color); 
+        color: var(--text-main); 
+        margin: 0; padding: 20px; 
+        line-height: 1.6;
+    }
+    .container, .sop-container, body > div.container, body > div:first-of-type { 
+        max-width: 850px; margin: auto; 
+        background: var(--container-bg); 
+        padding: 30px; border-radius: 12px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-top: 8px solid var(--accent);
+    }
+    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
+    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
+    .info-card { 
+        background: var(--card-bg); 
+        border: 1px solid var(--border); 
+        padding: 20px; border-radius: 8px; margin-bottom: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
+    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    th { background-color: #252525; color: var(--blue); }
+    td { color: var(--text-sub); }
+    .step { 
+        background: #1e1e1e; 
+        margin-bottom: 12px; padding: 15px;
+        border-radius: 6px; border: 1px solid var(--border); 
+        border-left: 5px solid var(--blue);
+        color: var(--text-sub);
+    }
+    .step strong { color: var(--text-main); }
+    .back-btn { 
+        display: inline-block; margin-top: 30px; color: var(--blue); 
+        text-decoration: none; font-weight: bold; 
+        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
+    }
+    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+</style>
+
+
+
+
+</head>
+<body>
+    <div class="header"><h1>SOP-08：砲塔控制盒更換</h1></div>
+
+    <div class="info-card">
+        <strong>故障描述：</strong> 瞄子功能無作動、無法開啟照明燈<br>
+        <strong>原因分析：</strong> 砲塔控制盒損壞<br><br>
+        <table>
+            <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
+            <tr><td>一般工具</td><td>六角板手組、13號開口板手</td><td>-</td></tr>
+            <tr><td>零組件</td><td>砲塔控制器組裝 (190010004)</td><td>FRT309/509 通用 / 1 組</td></tr>
+            <tr><td>螺絲備件</td><td>半圓頭內六角螺絲、外六角螺絲</td><td>M5x10 (11顆)、M8x16 (4顆)</td></tr>
+        </table>
+    </div>
+
+    <h3>🛠️ 維修流程</h3>
+    
+    <div class="step">
+        <strong>步驟 1：外部拆卸與安全</strong><br>
+        1. <span class="danger">重要：請務必先將機器人電源關機。</span><br>
+        2. 使用開口板手拆卸左側及後方方燈 (M8x16 螺絲共 4 顆)。<br>
+        3. 使用六角板手拆卸左半邊鈑金 (M5x10 螺絲共 11 顆)，並轉鬆拆除左側天線。
+    </div>
+
+    
+
+    <div class="step">
+        <strong>步驟 2：控制盒拆解</strong><br>
+        1. 看到控制盒後，依序將所有連接線拔除。<br>
+        2. 使用六角板手拆下舊控制盒，並將底座(2個)移至新控制盒上。
+    </div>
+
+    
+
+    <div class="step">
+        <strong>步驟 3：安裝與復原</strong><br>
+        1. 將新控制盒裝回原位，並依序插回所有線路。<br>
+        2. 回裝左側鈑金、天線及方燈。
+    </div>
+
+    <div class="step">
+        <strong>步驟 4：功能測試</strong><br>
+        開機確認瞄子作動是否恢復正常，並測試照明燈是否可開啟。
+    </div>
+
+    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+</body>
+</html>

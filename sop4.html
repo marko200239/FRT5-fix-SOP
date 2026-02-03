@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SOP-04 履帶調整桿更換</title>
+    
+
+
+
+<style>
+    :root {
+        --bg-color: #121212;
+        --container-bg: #181818;
+        --card-bg: #222222;
+        --text-main: #ffffff;
+        --text-sub: #b0b0b0;
+        --accent: #ff4d4d;
+        --blue: #3498db;
+        --border: #333333;
+    }
+    body { 
+        font-family: "Microsoft JhengHei", sans-serif; 
+        background-color: var(--bg-color); 
+        color: var(--text-main); 
+        margin: 0; padding: 20px; 
+        line-height: 1.6;
+    }
+    .container, .sop-container, body > div.container, body > div:first-of-type { 
+        max-width: 850px; margin: auto; 
+        background: var(--container-bg); 
+        padding: 30px; border-radius: 12px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-top: 8px solid var(--accent);
+    }
+    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
+    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
+    .info-card { 
+        background: var(--card-bg); 
+        border: 1px solid var(--border); 
+        padding: 20px; border-radius: 8px; margin-bottom: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
+    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    th { background-color: #252525; color: var(--blue); }
+    td { color: var(--text-sub); }
+    .step { 
+        background: #1e1e1e; 
+        margin-bottom: 12px; padding: 15px;
+        border-radius: 6px; border: 1px solid var(--border); 
+        border-left: 5px solid var(--blue);
+        color: var(--text-sub);
+    }
+    .step strong { color: var(--text-main); }
+    .back-btn { 
+        display: inline-block; margin-top: 30px; color: var(--blue); 
+        text-decoration: none; font-weight: bold; 
+        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
+    }
+    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+</style>
+
+
+
+
+</head>
+<body>
+    <div class="header"><h1>SOP-04：履帶調整桿更換</h1></div>
+
+    <div class="info-card">
+        <strong>故障描述：</strong> 履帶調整桿斷裂<br>
+        <strong>原因分析：</strong> 外力破壞<br><br>
+        <table>
+            <tr><th>項目</th><th>品名 / 料號</th><th>數量 / 備註</th></tr>
+            <tr><td>特殊工具</td><td>油壓板車、5kg 鐵塊</td><td>各 1</td></tr>
+            <tr><td>一般工具</td><td>六角板手組、活動板手、13/30號套筒</td><td>電動板手建議</td></tr>
+            <tr><td>零組件</td><td>履帶調整桿組 (190050027)</td><td>含螺桿組 / 1組</td></tr>
+            <tr><td>耗材</td><td>黃油</td><td>適量</td></tr>
+        </table>
+    </div>
+
+    <h3>🛠️ 維修流程</h3>
+    <div class="step">
+        <strong>步驟 1：架高機器人</strong><br>
+        使用油壓板車將機器人撐起，確認履帶離地約 <span style="color:red">2~3 公分</span>。
+    </div>
+
+    
+
+    <div class="step">
+        <strong>步驟 2：拆卸側蓋板</strong><br>
+        使用 <span class="tool-tag">活動板手</span> 拆卸左右側蓋板螺絲（M8x16 螺絲、華司各 4 顆）。
+    </div>
+
+    <div class="step">
+        <strong>步驟 3：拆卸後蓋與飾蓋</strong><br>
+        1. 使用 <span class="tool-tag">六角板手</span> 拆卸後蓋板（共 12 顆螺絲）。<br>
+        2. 使用 <span class="tool-tag">一字起子</span> 撬開張力輪飾蓋。<br>
+        3. 使用 <span class="tool-tag">13號套筒</span> 拆卸左右張力輪螺絲。
+    </div>
+
+    
+
+    <div class="step">
+        <strong>步驟 4：更換調整桿</strong><br>
+        1. 使用 <span class="tool-tag">30號套筒</span> 拆卸大螺帽。<br>
+        2. 取出斷裂的調整桿，換上新品並塗抹 <span class="tool-tag">黃油</span>。<br>
+        3. 依序將張力輪與螺帽組裝回去。
+    </div>
+
+    <div class="step">
+        <strong>步驟 5：張力校正</strong><br>
+        將 5kg 鐵塊放置於履帶上方，測量履帶下垂量，確保張力適中後鎖固所有蓋板。
+    </div>
+
+    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+</body>
+</html>
