@@ -1,92 +1,124 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOP-01 灑水頭更換</title>
-    
-<style>
-    :root {
-        --bg-color: #121212;
-        --container-bg: #181818;
-        --card-bg: #222222;
-        --text-main: #ffffff;
-        --text-sub: #b0b0b0;
-        --accent: #ff4d4d;
-        --blue: #3498db;
-        --border: #333333;
-    }
-    body { 
-        font-family: "Microsoft JhengHei", sans-serif; 
-        background-color: var(--bg-color); 
-        color: var(--text-main); 
-        margin: 0; padding: 20px; 
-        line-height: 1.6;
-    }
-    .container, .sop-container, body > div.container, body > div:first-of-type { 
-        max-width: 850px; margin: auto; 
-        background: var(--container-bg); 
-        padding: 30px; border-radius: 12px; 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        border-top: 8px solid var(--accent);
-    }
-    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
-    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
-    .info-card { 
-        background: var(--card-bg); 
-        border: 1px solid var(--border); 
-        padding: 20px; border-radius: 8px; margin-bottom: 20px;
-    }
-    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
-    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
-    th { background-color: #252525; color: var(--blue); }
-    td { color: var(--text-sub); }
-    .step { 
-        background: #1e1e1e; 
-        margin-bottom: 12px; padding: 15px;
-        border-radius: 6px; border: 1px solid var(--border); 
-        border-left: 5px solid var(--blue);
-        color: var(--text-sub);
-    }
-    .step strong { color: var(--text-main); }
-    .back-btn { 
-        display: inline-block; margin-top: 30px; color: var(--blue); 
-        text-decoration: none; font-weight: bold; 
-        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
-    }
-    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
-</style>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --accent: #d32f2f; /* 紅色主題 */
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+        }
 
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            font-family: 'PingFang TC', sans-serif;
+            margin: 0; padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; }
+
+        h1 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
+
+        /* 故障描述卡片 */
+        .info-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th { background: #2a2a2a; color: var(--accent); }
+
+        /* 維修流程步驟 */
+        .step {
+            background: var(--card-bg);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            display: block; /* 確保垂直排列 */
+        }
+
+        .step strong { color: var(--accent); font-size: 1.1rem; }
+
+        img {
+            display: block;
+            margin: 15px auto 0 auto;
+            border: 1px solid #444;
+            transition: 0.3s;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--text-white);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+
+        .back-btn:hover { background: #333; border-color: var(--accent); }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>SOP-01：灑水頭更換</h1>
 
-        <div class="info-card">
-            <span style="color: var(--accent); font-weight: bold;">故障描述：</span> 灑水頭無法正常作動<br>
-            <span style="color: var(--accent); font-weight: bold;">原因分析：</span> 外力砸傷<br><br>
-            <table>
-                <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
-                <tr><td>一般工具</td><td>活動板手 </td><td>35mm以上 / 2支 </td></tr>
-                <tr><td>零組件</td><td>感知灑水頭 (19005009) </td><td>1/2” 向上型 / 1個 </td></tr>
-                <tr><td>耗材</td><td>止洩帶 </td><td>纏繞 10~15 圈 </td></tr>
-            </table>
-        </div>
+<div class="container">
+    <h1>SOP-01：灑水頭更換</h1>
 
-        <h3>🛠️ 維修流程</h3>
-        <div class="step">
-            <strong>步驟 1：</strong> 使用止洩帶纏繞新的灑水頭，纏繞圈數約 10~15 圈。
-        </div>
-        <div class="step">
-            <strong>步驟 2：</strong> 使用活動板手將底座固定，並拆卸損壞的灑水頭 。
-        </div>
-        <div class="step">
-            <strong>步驟 3：</strong> 將纏繞好止洩帶的新灑水頭鎖緊。
-        </div>
-        <div class="step">
-            <strong>步驟 4：</strong> 接上水帶測試功能，確認正常即完成維修。
-        </div>
-
-        <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+    <div class="info-card">
+        <span style="color: var(--accent); font-weight: bold;">故障描述：</span> 灑水頭無法正常作動<br>
+        <span style="color: var(--accent); font-weight: bold;">原因分析：</span> 外力砸傷<br><br>
+        <table>
+            <tr><th>項目</th><th>品名 / 料號</th><th>規格</th><th>數量</th></tr>
+            <tr><td>一般工具</td><td>活動板手</td><td>35mm以上</td><td>2 支</td></tr>
+            <tr><td>零組件</td><td>感知灑水頭 (19005009)</td><td>1/2" 向上型</td><td>1 個</td></tr>
+            <tr><td>耗材</td><td>止洩帶</td><td>纏繞 10~15 圈</td><td>-</td></tr>
+        </table>
     </div>
+
+    <h3>🛠️ 維修流程</h3>
+
+    <div class="step">
+        <strong>步驟 1：</strong> 使用止洩帶纏繞新的灑水頭，纏繞圈數約 10~15 圈。
+        <img src="images/sop01_02.jpg" alt="纏繞止洩帶" style="width: 100%; max-width: 500px; border-radius: 5px;">
+    </div>
+
+    <div class="step">
+        <strong>步驟 2：</strong> 使用活動板手將底座固定，並拆卸損壞的灑水頭。
+        <img src="images/sop01_01.jpg" alt="拆卸損壞灑水頭" style="width: 100%; max-width: 500px; border-radius: 5px;">
+    </div>
+
+    <div class="step">
+        <strong>步驟 3：</strong> 將纏繞好止洩帶的新灑水頭鎖緊。
+        <img src="images/sop01_03.jpg" alt="鎖緊新灑水頭" style="width: 100%; max-width: 500px; border-radius: 5px;">
+    </div>
+
+    <div class="step">
+        <strong>步驟 4：</strong> 接上水帶測試功能，確認正常即完成維修。
+        <img src="images/sop01_04.jpg" alt="測試功能" style="width: 100%; max-width: 500px; border-radius: 5px;">
+    </div>
+
+    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+</div>
+
 </body>
 </html>
