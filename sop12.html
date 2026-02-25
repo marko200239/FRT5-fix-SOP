@@ -3,120 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <title>SOP-12 近接開關更換</title>
-    
-
-
-
 <style>
     :root {
         --bg-color: #121212;
         --container-bg: #181818;
         --card-bg: #222222;
         --text-main: #ffffff;
-        --text-sub: #b0b0b0;
         --accent: #ff4d4d;
         --blue: #3498db;
-        --border: #333333;
+        --yellow: #ffcc00;
+        --border: #444444;
     }
-    body { 
-        font-family: "Microsoft JhengHei", sans-serif; 
-        background-color: var(--bg-color); 
-        color: var(--text-main); 
-        margin: 0; padding: 20px; 
-        line-height: 1.6;
-    }
-    .container, .sop-container, body > div.container, body > div:first-of-type { 
-        max-width: 850px; margin: auto; 
-        background: var(--container-bg); 
-        padding: 30px; border-radius: 12px; 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        border-top: 8px solid var(--accent);
-    }
-    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
-    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
-    .info-card { 
-        background: var(--card-bg); 
-        border: 1px solid var(--border); 
-        padding: 20px; border-radius: 8px; margin-bottom: 20px;
-    }
-    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
-    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    body { font-family: "Microsoft JhengHei", sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; line-height: 1.6; }
+    .container { max-width: 950px; margin: auto; background: var(--container-bg); padding: 30px; border-radius: 12px; border-top: 8px solid var(--accent); }
+    h1 { text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; margin-bottom: 30px; }
+    
+    .info-card { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-bottom: 25px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; background: #1a1a1a; }
+    th, td { border: 1px solid var(--border); padding: 10px; text-align: left; font-size: 0.9rem; }
     th { background-color: #252525; color: var(--blue); }
-    td { color: var(--text-sub); }
-    .step { 
-        background: #1e1e1e; 
-        margin-bottom: 12px; padding: 15px;
-        border-radius: 6px; border: 1px solid var(--border); 
-        border-left: 5px solid var(--blue);
-        color: var(--text-sub);
-    }
-    .step strong { color: var(--text-main); }
-    .back-btn { 
-        display: inline-block; margin-top: 30px; color: var(--blue); 
-        text-decoration: none; font-weight: bold; 
-        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
-    }
-    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+
+    .ppt-page { background: #1e1e1e; margin-bottom: 40px; padding: 25px; border-radius: 8px; border: 1px solid var(--border); position: relative; }
+    .page-num { position: absolute; top: 15px; right: 20px; color: var(--blue); font-weight: bold; font-size: 1.1rem; }
+    .page-title { font-size: 1.25rem; font-weight: bold; color: var(--text-main); margin-bottom: 20px; border-left: 5px solid var(--blue); padding-left: 15px; }
+    
+    .step-section { margin-bottom: 20px; padding: 15px; background: #252525; border-radius: 5px; border: 1px solid #333; }
+    .instruction-text { font-size: 1.05rem; color: #f0f0f0; margin-bottom: 10px; white-space: pre-wrap; line-height: 1.8; }
+    .meta-line { font-family: monospace; color: var(--yellow); font-size: 0.9rem; font-weight: bold; margin-top: 5px; }
+    .note-text { color: #ff4d4d; font-weight: bold; margin-top: 10px; border-top: 1px dashed #555; padding-top: 10px; }
+
+    .image-grid { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px; justify-content: flex-start; }
+    .image-box { flex: 1; min-width: 280px; background: #000; padding: 10px; border-radius: 6px; display: flex; flex-direction: column; align-items: center; border: 1px solid #333; }
+    .image-box img { width: 100%; height: auto; border-radius: 4px; object-fit: contain; }
+    .img-limit { max-width: 450px; }
+
+    .back-btn { display: inline-block; margin-top: 20px; color: var(--blue); text-decoration: none; border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px; }
 </style>
-
-
-
-
 </head>
 <body>
-    <div class="header"><h1>SOP-12：近接開關更換</h1></div>
+    <div class="container">
+        <h1>SOP-12：近接開關更換</h1>
 
-    <div class="info-card">
-        <strong>故障描述：</strong> 瞄子無法垂直作動<br>
-        <strong>原因分析：</strong> 近接開關進水損壞<br><br>
-        <table>
-            <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
-            <tr><td>一般工具</td><td>公/英制六角板手、三用電表</td><td>M5x0.5 攻牙器</td></tr>
-            <tr><td>加工工具</td><td>尖嘴鉗、斜口鉗、壓接鉗</td><td>-</td></tr>
-            <tr><td>零組件</td><td>近接開關 (392190046)</td><td>1 組</td></tr>
-            <tr><td>耗材</td><td>藍膠、熱熔膠、壓接端子</td><td>適量</td></tr>
-        </table>
+        <div class="info-card">
+            <strong>品名：</strong> 近接開關更換<br>
+            <strong>故障描述：</strong> 瞄子無法垂直作動<br>
+            <strong>原因分析：</strong> 近接開關進水
+            <table>
+                <tr><th>項次</th><th>類別</th><th>品名 / 料號 / 規格</th><th>數量</th></tr>
+                <tr><td>1</td><td>一般工具</td><td>1.尖嘴鉗 2.M5x0.5攻牙器 3.公制六角板手組 4.英制六角板手組 5.斜口鉗 6.三用電表 7.壓接鉗 8.活動/梅花板手</td><td>各 1</td></tr>
+                <tr><td>2</td><td>零組件</td><td>近接開關 (392190046)</td><td>1</td></tr>
+                <tr><td>3</td><td>耗材</td><td>1.藍膠 2.熱熔膠 3.壓接端子(公母)</td><td>適量</td></tr>
+            </table>
+        </div>
+
+        <div class="ppt-page">
+            <div class="page-num">1 / 4</div>
+            <div class="page-title">近接開關更換流程：</div>
+            
+            <div class="step-section">
+                <div class="instruction-text">1. 使用六角板手將垂直馬達集線盒打開。
+2. 使用六角板手先將砲塔前近接開關保護蓋打開，並檢查近接開關指示燈(橘燈)是否恆亮，瞄子在45°時如恆亮需量測近接開關電壓。</div>
+                
+                <div class="meta-line">工具：六角板手   ║   零件：［外六角螺絲M6x12］*3</div>
+                <div class="meta-line">工具：六角板手   ║   零件：［英制2/32］*4</div>
+            </div>
+
+            <div class="image-grid">
+                <div class="image-box img-limit"><img src="images/sop12_01.jpg"></div>
+                <div class="image-box img-limit"><img src="images/sop12_02.jpg"></div>
+            </div>
+        </div>
+
+        <div class="ppt-page">
+            <div class="page-num">2 / 4</div>
+            <div class="page-title">近接開關更換流程：</div>
+
+            <div class="step-section">
+                <div class="instruction-text">確定上下近接開關位置，將瞄子舉升到最高以及水平位置，使用三用電表量測上與下的近接開關的棕色線及綠色線電壓，正常電壓為24V以上。</div>
+                <div class="meta-line">工具：三用電表   ║   零件：X</div>
+            </div>
+
+            
+
+            <div class="image-grid">
+                <div class="image-box img-limit"><img src="images/sop12_03.jpg"></div>
+            </div>
+        </div>
+
+        <div class="ppt-page">
+            <div class="page-num">3 / 4</div>
+            <div class="page-title">近接開關更換流程：</div>
+
+            <div class="step-section">
+                <div class="instruction-text">1. 使用梅花板手或活動板手將損壞近接開關拆除，並換上新的近接開關。
+2. 調整好近接開關距離後，需在螺牙處塗上藍膠防止鬆脫，線路部分使用熱熔膠固定，防止水氣滲入。</div>
+                <div class="meta-line">工具：活動/梅花板手   ║   零件：近接開關 (392190046)</div>
+            </div>
+
+            
+
+            <div class="image-grid">
+                <div class="image-box img-limit"><img src="images/sop12_04.jpg"></div>
+            </div>
+        </div>
+
+        <div class="ppt-page">
+            <div class="page-num">4 / 4</div>
+            <div class="page-title">近接開關更換流程：</div>
+
+            <div class="step-section">
+                <div class="instruction-text">1. 使用尖嘴鉗將近接開關座內部損壞線路取出，並使用M5x0.5攻牙器將近接開關座螺牙重新順牙，確保新品安裝順暢。
+2. 使用壓接鉗將公母端子分別壓接至線路上，並將線組對插完成並收進集線盒內。
+3. 將集線盒蓋鎖回，開啟電源測試完成維修。</div>
+                
+                <div class="meta-line">工具：尖嘴鉗、M5x0.5攻牙器   ║   零件：X</div>
+                <div class="meta-line">工具：壓接鉗   ║   零件：壓接端子(公母)</div>
+
+                <div class="note-text">※ 注意事項：順牙時請務必緩慢進行，避免破壞原有鋁座螺牙；壓接端子需確保緊固，防止因震動導致接觸不良。</div>
+            </div>
+
+            
+
+            <div class="image-grid">
+                <div class="image-box img-limit"><img src="images/sop12_05.jpg"></div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
     </div>
-
-    <h3>🔍 診斷與量測</h3>
-    <div class="step">
-        <strong>步驟 1：檢查指示燈</strong><br>
-        打開近接開關保護蓋（英制 2/32" 螺絲），觀察指示燈：<br>
-        ※ 瞄子在 45° 時若<b>橘燈恆亮</b>，表示訊號異常，需進行電壓量測。
-    </div>
-
-    
-
-    <div class="measure-box">
-        <strong>電壓量測標準（三用電表）：</strong><br>
-        將瞄子舉升至極限位置，量測<b>棕色線</b>與<b>綠色線</b>：
-        <ul>
-            <li>電壓 <b>= 0V</b>：正常。</li>
-            <li>電壓 <b>> 0V</b>：近接開關損壞，必須更換。</li>
-        </ul>
-    </div>
-
-    <h3>🛠️ 維修流程</h3>
-    <div class="step">
-        <strong>步驟 2：拆卸與螺紋修復</strong><br>
-        1. 打開垂直馬達集線盒（M6x12 螺絲）。<br>
-        2. 使用尖嘴鉗取出舊開關。<br>
-        3. <b style="color:red;">關鍵步驟：</b>使用 <b>M5x0.5 攻牙器</b> 清潔並修復安裝孔螺紋，確保新開關能順利鎖入。
-    </div>
-
-    
-
-    <div class="step">
-        <strong>步驟 3：安裝新開關</strong><br>
-        1. 鎖入新近接開關，並點上<b>藍膠</b>固定。<br>
-        2. 重新壓接端子，並在接頭處點上<b>熱熔膠</b>加強防水。
-    </div>
-
-    <div class="step">
-        <strong>步驟 4：功能驗證</strong><br>
-        測試瞄子垂直升降，確認在到達頂點與底點時能精準停止。
-    </div>
-
-    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
 </body>
 </html>

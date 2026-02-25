@@ -3,111 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>SOP-14 IO控制盒更換</title>
-    
-
-
-
 <style>
     :root {
         --bg-color: #121212;
         --container-bg: #181818;
         --card-bg: #222222;
         --text-main: #ffffff;
-        --text-sub: #b0b0b0;
         --accent: #ff4d4d;
         --blue: #3498db;
-        --border: #333333;
+        --yellow: #ffcc00;
+        --border: #444444;
     }
-    body { 
-        font-family: "Microsoft JhengHei", sans-serif; 
-        background-color: var(--bg-color); 
-        color: var(--text-main); 
-        margin: 0; padding: 20px; 
-        line-height: 1.6;
-    }
-    .container, .sop-container, body > div.container, body > div:first-of-type { 
-        max-width: 850px; margin: auto; 
-        background: var(--container-bg); 
-        padding: 30px; border-radius: 12px; 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        border-top: 8px solid var(--accent);
-    }
-    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
-    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
-    .info-card { 
-        background: var(--card-bg); 
-        border: 1px solid var(--border); 
-        padding: 20px; border-radius: 8px; margin-bottom: 20px;
-    }
-    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
-    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    body { font-family: "Microsoft JhengHei", sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; line-height: 1.6; }
+    .container { max-width: 1000px; margin: auto; background: var(--container-bg); padding: 30px; border-radius: 12px; border-top: 8px solid var(--accent); }
+    h1 { text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; margin-bottom: 30px; }
+    
+    .info-card { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-bottom: 25px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; background: #1a1a1a; }
+    th, td { border: 1px solid var(--border); padding: 10px; text-align: left; font-size: 0.85rem; }
     th { background-color: #252525; color: var(--blue); }
-    td { color: var(--text-sub); }
-    .step { 
-        background: #1e1e1e; 
-        margin-bottom: 12px; padding: 15px;
-        border-radius: 6px; border: 1px solid var(--border); 
-        border-left: 5px solid var(--blue);
-        color: var(--text-sub);
-    }
-    .step strong { color: var(--text-main); }
-    .back-btn { 
-        display: inline-block; margin-top: 30px; color: var(--blue); 
-        text-decoration: none; font-weight: bold; 
-        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
-    }
-    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+
+    .ppt-page { background: #1e1e1e; margin-bottom: 40px; padding: 25px; border-radius: 8px; border: 1px solid var(--border); position: relative; }
+    .page-title { font-size: 1.25rem; font-weight: bold; color: var(--text-main); margin-bottom: 20px; border-left: 5px solid var(--blue); padding-left: 15px; }
+    
+    .step-section { margin-bottom: 20px; padding: 15px; background: #252525; border-radius: 5px; border: 1px solid #333; }
+    .instruction-text { font-size: 1.05rem; color: #f0f0f0; margin-bottom: 10px; white-space: pre-wrap; line-height: 1.8; }
+    .meta-line { font-family: monospace; color: var(--yellow); font-size: 0.9rem; font-weight: bold; margin-top: 5px; }
+
+    .image-grid { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px; justify-content: flex-start; }
+    .image-box { flex: 1; min-width: 250px; background: #fff; padding: 8px; border-radius: 6px; display: flex; flex-direction: column; align-items: center; border: 1px solid #333; }
+    .image-box img { width: 100%; height: auto; object-fit: contain; }
+    .img-label { color: #333; font-size: 0.85rem; margin-top: 5px; font-weight: bold; text-align: center; }
 </style>
-
-
-
-
 </head>
 <body>
-    <div class="header"><h1>SOP-14：IO控制盒更換</h1></div>
+    <div class="container">
+        <h1>SOP-14：IO控制盒更換</h1>
 
-    <div class="info-card">
-        <strong>故障描述：</strong> 影像無法觀看、手機/五用氣體偵測儀無法充電<br>
-        <strong>原因分析：</strong> IO控制盒損壞<br><br>
-        <table>
-            <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
-            <tr><td>一般工具</td><td>六角板手組、13號開口板手</td><td>-</td></tr>
-            <tr><td>零組件</td><td>IO控制器組裝 (190010005)</td><td>1 組</td></tr>
-            <tr><td>螺絲備件</td><td>半圓頭內六角 (M5x10)、外六角 (M8x16)</td><td>各若干</td></tr>
-        </table>
+        <div class="info-card">
+            <strong>故障描述：</strong> 影像無法觀看，手機、五用氣體偵測儀無法充電<br>
+            <strong>原因分析：</strong> IO控制盒損壞
+            <table>
+                <tr><th>項次</th><th>類別</th><th>品名</th><th>料號</th><th>數量</th></tr>
+                <tr><td>1</td><td>一般工具</td><td>六角板手 / 13號開口板手</td><td>-</td><td>各 1</td></tr>
+                <tr><td>2</td><td>零組件</td><td>IO控制器組裝</td><td>190010005</td><td>1</td></tr>
+            </table>
+        </div>
+
+        <div class="ppt-page">
+            <div class="page-title">步驟一：外部組件拆卸</div>
+            <div class="step-section">
+                <div class="instruction-text">1. 使用六角板手將右半邊鈑金拆卸，並將右側天線轉鬆拆除。
+2. 先將機器人電源關機，使用開口板手將機器人右側方燈及後方方燈拆卸。</div>
+                <div class="meta-line">工具：開口板手 ║ 零件：［外六角螺絲M8x16、彈簧華司M8、平華司M8］*4</div>
+                <div class="meta-line">工具：六角板手 ║ 零件：［半圓頭內六角螺絲M5x10］*11</div>
+            </div>
+            <div class="image-grid">
+                <div class="image-box"><img src="images/sop14_01.jpg"><div class="img-label">圖 1：方燈與螺絲位置 (先關機)</div></div>
+                <div class="image-box"><img src="images/sop14_02.jpg"><div class="img-label">圖 2：鈑金拆卸示意</div></div>
+            </div>
+        </div>
+
+        <div class="ppt-page">
+            <div class="page-title">步驟二：盒體拆卸與線路更換</div>
+            <div class="step-section">
+                <div class="instruction-text">1. 看到IO控制盒依序將線拔除。
+2. 使用六角板手將舊的IO控制盒及底座拆卸下來。
+3. 將新的IO控制盒及底座裝上，再依序將線照著控制盒外面貼紙接上。</div>
+                <div class="meta-line">工具：六角板手 ║ 零件：［半圓頭內六角螺絲M6x10 、彈簧華司M6、平華司M6 ］*4</div>
+            </div>
+            <div class="image-grid">
+                <div class="image-box"><img src="images/sop14_03.jpg"><div class="img-label">圖 3：控制盒拆卸爆破圖</div></div>
+                <div class="image-box"><img src="images/sop14_04.jpg"><div class="img-label">圖 4：控制盒配線與位置</div></div>
+            </div>
+        </div>
+
+        <div class="ppt-page">
+            <div class="page-title">步驟三：回裝與完工測試</div>
+            <div class="step-section">
+                <div class="instruction-text">1. 將鈑金及方燈裝回（參考步驟2 → 步驟1）。
+2. 測試五用氣體及手機是否正常充電。
+3. 確認熱顯像儀燈號（藍、黃），可見光燈號（紅），動作確認完即可完成維修。</div>
+            </div>
+            <div class="image-grid">
+                <div class="image-box"><img src="images/sop14_05.jpg"><div class="img-label">圖 5：組件回裝確認</div></div>
+                <div class="image-box"><img src="images/sop14_06.jpg"><div class="img-label">圖 6：功能充電測試</div></div>
+                <div class="image-box"><img src="images/sop14_07.jpg"><div class="img-label">圖 7：影像與燈號動作確認</div></div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
     </div>
-
-    <h3>🛠️ 維修流程</h3>
-    
-    <div class="step">
-        <strong>步驟 1：外部拆卸（右側）</strong><br>
-        1. <span class="danger">重要：務必先將機器人電源關機。</span><br>
-        2. 使用 13 號開口板手拆卸機器人<b>右側</b>方燈及後方方燈 (M8x16 螺絲共 4 顆)。<br>
-        3. 使用六角板手拆卸右半邊鈑金 (M5x10 螺絲共 11 顆)，並轉鬆拆除右側天線。
-    </div>
-
-    
-
-    <div class="step">
-        <strong>步驟 2：卸除舊控制器</strong><br>
-        1. 看到 IO 控制盒後，依序將上方所有連接線拔除。<br>
-        2. 使用六角板手拆卸舊控制盒及其底座 (M6x10 螺絲)。
-    </div>
-
-    
-
-    <div class="step">
-        <strong>步驟 3：安裝新品</strong><br>
-        1. 將新的 IO 控制器裝回，並重新插回所有對應線路。<br>
-        2. 確保接頭插緊，防止因震動脫落。
-    </div>
-
-    <div class="step">
-        <strong>步驟 4：功能測試</strong><br>
-        1. 裝回天線、鈑金與方燈。<br>
-        2. 開機確認影像通訊是否恢復，並測試充電插座是否供電正常。
-    </div>
-
-    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
 </body>
 </html>

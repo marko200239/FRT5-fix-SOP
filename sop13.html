@@ -3,113 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <title>SOP-13 底盤控制盒更換</title>
-    
-
-
-
 <style>
     :root {
         --bg-color: #121212;
         --container-bg: #181818;
         --card-bg: #222222;
         --text-main: #ffffff;
-        --text-sub: #b0b0b0;
         --accent: #ff4d4d;
         --blue: #3498db;
-        --border: #333333;
+        --yellow: #ffcc00;
+        --border: #444444;
     }
-    body { 
-        font-family: "Microsoft JhengHei", sans-serif; 
-        background-color: var(--bg-color); 
-        color: var(--text-main); 
-        margin: 0; padding: 20px; 
-        line-height: 1.6;
-    }
-    .container, .sop-container, body > div.container, body > div:first-of-type { 
-        max-width: 850px; margin: auto; 
-        background: var(--container-bg); 
-        padding: 30px; border-radius: 12px; 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        border-top: 8px solid var(--accent);
-    }
-    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
-    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
-    .info-card { 
-        background: var(--card-bg); 
-        border: 1px solid var(--border); 
-        padding: 20px; border-radius: 8px; margin-bottom: 20px;
-    }
-    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
-    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    body { font-family: "Microsoft JhengHei", sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; line-height: 1.6; }
+    .container { max-width: 1000px; margin: auto; background: var(--container-bg); padding: 30px; border-radius: 12px; border-top: 8px solid var(--accent); }
+    h1 { text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; margin-bottom: 30px; }
+    
+    .info-card { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-bottom: 25px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; background: #1a1a1a; }
+    th, td { border: 1px solid var(--border); padding: 10px; text-align: left; font-size: 0.85rem; }
     th { background-color: #252525; color: var(--blue); }
-    td { color: var(--text-sub); }
-    .step { 
-        background: #1e1e1e; 
-        margin-bottom: 12px; padding: 15px;
-        border-radius: 6px; border: 1px solid var(--border); 
-        border-left: 5px solid var(--blue);
-        color: var(--text-sub);
-    }
-    .step strong { color: var(--text-main); }
-    .back-btn { 
-        display: inline-block; margin-top: 30px; color: var(--blue); 
-        text-decoration: none; font-weight: bold; 
-        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
-    }
-    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+
+    .ppt-page { background: #1e1e1e; margin-bottom: 40px; padding: 25px; border-radius: 8px; border: 1px solid var(--border); position: relative; }
+    .page-num { position: absolute; top: 15px; right: 20px; color: var(--blue); font-weight: bold; font-size: 1.1rem; }
+    .page-title { font-size: 1.25rem; font-weight: bold; color: var(--text-main); margin-bottom: 20px; border-left: 5px solid var(--blue); padding-left: 15px; }
+    
+    .step-section { margin-bottom: 20px; padding: 15px; background: #252525; border-radius: 5px; border: 1px solid #333; }
+    .instruction-text { font-size: 1.05rem; color: #f0f0f0; margin-bottom: 10px; white-space: pre-wrap; line-height: 1.8; }
+    .warning-box { color: #ff4d4d; font-weight: bold; background: rgba(255, 77, 77, 0.1); padding: 15px; border-radius: 4px; border: 1px solid var(--accent); margin-top: 15px; }
+
+    .image-grid { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px; justify-content: flex-start; }
+    .image-box { flex: 1; min-width: 280px; background: #000; padding: 10px; border-radius: 6px; display: flex; flex-direction: column; align-items: center; border: 1px solid #333; }
+    .image-box img { width: 100%; height: auto; border-radius: 4px; object-fit: contain; }
+    .img-label { color: var(--yellow); font-size: 0.85rem; margin-top: 8px; font-weight: bold; text-align: center; }
 </style>
-
-
-
-
 </head>
 <body>
-    <div class="header"><h1>SOP-13：底盤控制盒更換</h1></div>
+    <div class="container">
+        <h1>SOP-13：底盤控制盒更換</h1>
 
-    <div class="info-card">
-        <strong>故障描述：</strong> 機器人開機後完全無動作<br>
-        <strong>原因分析：</strong> 底盤控制盒損壞<br><br>
-        <table>
-            <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
-            <tr><td>特殊工具</td><td>油壓台車、油壓叉車</td><td>各 1 台</td></tr>
-            <tr><td>一般工具</td><td>24號套筒、六角板手組、十字起子</td><td>-</td></tr>
-            <tr><td>零組件</td><td>底盤控制盒 (19001003)</td><td>1 組</td></tr>
-            <tr><td>螺絲備件</td><td>外六角螺絲 (M16x80)、內六角 (M5x10)</td><td>-</td></tr>
-        </table>
+        <div class="info-card">
+            <table>
+                <tr><th>項次</th><th>類別</th><th>品名 / 料號 / 規格</th><th>數量</th></tr>
+                <tr><td>1</td><td>工具</td><td>油壓台車、油壓叉車、24號套筒、十字起子、六角板手組</td><td>各 1</td></tr>
+                <tr><td>2</td><td>零組件</td><td>底盤控制盒 (19001003)</td><td>1</td></tr>
+            </table>
+        </div>
+
+        <div class="ppt-page">
+            <div class="page-num">1 / 5</div>
+            <div class="page-title">步驟 1：解除上座固定</div>
+            <div class="step-section">
+                <div class="instruction-text">1. 拆下上座固定螺絲*4…①，解開快速夾具*4 …②。
+2. 將砲塔控制器電源線、底盤狀態訊號線收至底盤凹槽處，並將油壓台車放置機器人後方。</div>
+                <div class="warning-box">(注意：底盤控制線須完全收至紅圈標示之凹槽處，否則上下分離時容易將控制線損壞。)</div>
+            </div>
+            <div class="image-grid">
+                <div class="image-box"><img src="images/sop13_02.jpg"><div class="img-label">圖 1：①固定螺絲與②快速夾具位置</div></div>
+                <div class="image-box"><img src="images/sop13_01.jpg"><div class="img-label">圖 2：機器人整體構造與凹槽示意</div></div>
+            </div>
+        </div>
+
+        <div class="ppt-page">
+            <div class="page-num">2 / 5</div>
+            <div class="page-title">步驟 2：分離砲塔上座</div>
+            <div class="step-section">
+                <div class="instruction-text">1. 使用六角板手拆除後蓋板螺絲。
+2. 使用油壓台車將砲塔上座移開並放置穩妥。</div>
+            </div>
+            <div class="image-grid">
+                <div class="image-box"><img src="images/sop13_04.jpg"><div class="img-label">圖 3：拆卸後蓋板螺絲</div></div>
+                <div class="image-box"><img src="images/sop13_03.jpg"><div class="img-label">圖 4：移開砲塔上座至台車</div></div>
+            </div>
+        </div>
+
+        <div class="ppt-page">
+            <div class="page-num">3 / 5</div>
+            <div class="page-title">步驟 3：拆除底板與線路</div>
+            <div class="step-section">
+                <div class="instruction-text">1. 拆除底板固定螺絲並取下底板。
+2. 拔除內部相關連接線組（如安德森接頭等）。</div>
+            </div>
+            <div class="image-grid">
+                <div class="image-box"><img src="images/sop13_05.jpg"><div class="img-label">圖 5：底板拆卸過程</div></div>
+                <div class="image-box"><img src="images/sop13_06.jpg"><div class="img-label">圖 6：內部線路拔除</div></div>
+            </div>
+        </div>
+
+        <div class="ppt-page">
+            <div class="page-num">4 / 5</div>
+            <div class="page-title">步驟 4：更換底盤控制盒</div>
+            <div class="step-section">
+                <div class="instruction-text">1. 拆下損壞的控制盒並換上新品。
+2. 依照標籤與貼紙指示，將所有線組接頭插回。</div>
+            </div>
+            <div class="image-grid">
+                <div class="image-box"><img src="images/sop13_07.jpg"><div class="img-label">圖 7：控制盒拆裝</div></div>
+                <div class="image-box"><img src="images/sop13_08.jpg"><div class="img-label">圖 8：接頭回插確認</div></div>
+            </div>
+        </div>
+
+        <div class="ppt-page">
+            <div class="page-num">5 / 5</div>
+            <div class="page-title">步驟 5：回裝、配對與測試</div>
+            <div class="step-section">
+                <div class="instruction-text">1. 將砲塔上座裝回底盤並鎖緊。
+2. 執行遙控器配對（按壓綠色按鈕）並進行動作測試。</div>
+                <div class="warning-box">(注意：配對測試時務必使用油壓叉車將機器人頂高，防止意外移動。)</div>
+            </div>
+            <div class="image-grid">
+                <div class="image-box"><img src="images/sop13_09.jpg"><div class="img-label">圖 9：上座回裝鎖固</div></div>
+                <div class="image-box"><img src="images/sop13_10.jpg"><div class="img-label">圖 10：功能測試與配對完成</div></div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
     </div>
-
-    <h3>🛠️ 維修流程</h3>
-    
-    <div class="step">
-        <strong>步驟 1：分離前準備（極重要）</strong><br>
-        1. 拆下砲塔上座固定螺絲（M16x80 共 4 顆）並解開 4 處快速夾具。<br>
-        2. <span class="danger">關鍵：將砲塔電源線、底盤訊號線收至底盤凹槽處。</span><br>
-        ※ 若未收妥，上下座分離時會直接扯斷所有控制線。
-    </div>
-
-    
-
-    <div class="step">
-        <strong>步驟 2：移除上座與後蓋</strong><br>
-        1. 使用油壓台車承接並將砲塔上座移開。<br>
-        2. 使用六角板手拆除底盤後蓋板（M5x10 螺絲）。
-    </div>
-
-    <div class="step">
-        <strong>步驟 3：更換電控盒</strong><br>
-        1. 依序拔除舊底盤控制盒上的所有接頭。<br>
-        2. 拆卸舊控制盒並換上新品。<br>
-        3. <span class="danger">注意：接回線路時請務必對照標籤或先前拍照紀錄之位置。</span>
-    </div>
-
-    
-
-    <div class="step">
-        <strong>步驟 4：復原與系統自檢</strong><br>
-        1. 回裝後蓋板與砲塔上座，鎖緊 M16 固定螺絲。<br>
-        2. 開機進行全機動作測試（行進、砲塔旋轉、通訊）。
-    </div>
-
-    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
 </body>
 </html>

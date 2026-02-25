@@ -3,108 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <title>SOP-10 面板開關線組更換</title>
-    
-
-
-
 <style>
     :root {
-        --bg-color: #121212;
-        --container-bg: #181818;
-        --card-bg: #222222;
-        --text-main: #ffffff;
-        --text-sub: #b0b0b0;
-        --accent: #ff4d4d;
-        --blue: #3498db;
-        --border: #333333;
+        --bg: #0f0f0f;
+        --card: #1a1a1a;
+        --accent: #e74c3c;
+        --text: #e0e0e0;
+        --tool-color: #f1c40f;
+        --part-color: #3498db;
     }
-    body { 
-        font-family: "Microsoft JhengHei", sans-serif; 
-        background-color: var(--bg-color); 
-        color: var(--text-main); 
-        margin: 0; padding: 20px; 
-        line-height: 1.6;
-    }
-    .container, .sop-container, body > div.container, body > div:first-of-type { 
-        max-width: 850px; margin: auto; 
-        background: var(--container-bg); 
-        padding: 30px; border-radius: 12px; 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        border-top: 8px solid var(--accent);
-    }
-    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
-    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
-    .info-card { 
-        background: var(--card-bg); 
-        border: 1px solid var(--border); 
-        padding: 20px; border-radius: 8px; margin-bottom: 20px;
-    }
-    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
-    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
-    th { background-color: #252525; color: var(--blue); }
-    td { color: var(--text-sub); }
-    .step { 
-        background: #1e1e1e; 
-        margin-bottom: 12px; padding: 15px;
-        border-radius: 6px; border: 1px solid var(--border); 
-        border-left: 5px solid var(--blue);
-        color: var(--text-sub);
-    }
-    .step strong { color: var(--text-main); }
-    .back-btn { 
-        display: inline-block; margin-top: 30px; color: var(--blue); 
-        text-decoration: none; font-weight: bold; 
-        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
-    }
-    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+    body { font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.6; }
+    .container { max-width: 950px; margin: auto; }
+    
+    /* 封面卡片 */
+    .header-card { background: var(--card); border-top: 4px solid var(--accent); padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #333; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
+    th, td { border: 1px solid #333; padding: 10px; text-align: left; }
+    th { background: #222; color: var(--part-color); }
+
+    /* 流程頁面 */
+    .step-page { background: var(--card); border: 1px solid #444; border-radius: 12px; padding: 25px; margin-bottom: 40px; position: relative; }
+    .page-indicator { position: absolute; top: 15px; right: 20px; font-weight: bold; color: #555; }
+    .step-title { font-size: 1.2rem; font-weight: bold; border-left: 4px solid var(--accent); padding-left: 12px; margin-bottom: 20px; color: #fff; }
+
+    /* 文字與工具對位 */
+    .instruction { background: #222; padding: 15px; border-radius: 6px; margin-bottom: 15px; border-left: 2px solid #555; }
+    .meta-line { background: #2a2a2a; padding: 8px 12px; border-radius: 4px; font-size: 0.9rem; margin-top: 5px; margin-bottom: 15px; display: flex; gap: 20px; }
+    .label-t { color: var(--tool-color); font-weight: bold; }
+    .label-p { color: var(--part-color); font-weight: bold; }
+
+    /* 圖片排版系統 */
+    .img-flex { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; }
+    .img-item { flex: 1; min-width: 280px; background: #000; padding: 10px; border-radius: 6px; display: flex; flex-direction: column; align-items: center; border: 1px solid #333; }
+    .img-item img { width: 100%; height: auto; border-radius: 4px; object-fit: contain; max-height: 250px; }
+    .img-desc { text-align: center; color: var(--tool-color); font-size: 0.9rem; margin-top: 10px; font-weight: bold; }
+
+    .back-btn { display: inline-block; margin-top: 20px; color: var(--part-color); text-decoration: none; border: 1px solid var(--part-color); padding: 10px 20px; border-radius: 5px; transition: 0.3s; }
+    .back-btn:hover { background: var(--part-color); color: #fff; }
 </style>
-
-
-
-
 </head>
 <body>
-    <div class="header"><h1>SOP-10：面板開關線組更換</h1></div>
 
-    <div class="info-card">
-        <strong>故障描述：</strong> 底盤無法正常開關機<br>
-        <strong>原因分析：</strong> 面板開關線組損壞<br><br>
+<div class="container">
+    <div class="header-card">
+        <h2>SOP-10：面板開關線組更換</h2>
+        <p><strong>故障描述：</strong> 底盤無法正常開關機 | <strong>原因分析：</strong> 面板開關線組損壞</p>
         <table>
-            <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
-            <tr><td>一般工具</td><td>六角板手組</td><td>-</td></tr>
+            <tr><th>類別</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
+            <tr><td>一般工具</td><td>六角板手組</td><td>1 組</td></tr>
             <tr><td>零組件</td><td>FRT509 面板開關線組 (308110039)</td><td>1 組</td></tr>
-            <tr><td>螺絲備件</td><td>內六角螺絲 (M5x10)</td><td>12 顆</td></tr>
         </table>
     </div>
 
-    <h3>🛠️ 維修流程</h3>
+    <div class="step-page">
+        <div class="page-indicator">1 / 2</div>
+        <div class="step-title">拆卸舊線組</div>
+        
+        <div class="instruction">
+            1. 先將機器人關機，使用六角板手將後蓋板螺絲拆卸。<br>
+            2. 將連接底盤電控盒的面板開關線卸除。
+        </div>
+        
+        <div class="meta-line">
+            <span><span class="label-t">🔧 工具：</span>六角板手</span>
+            <span><span class="label-p">📦 零件：</span>［內六角螺絲M5x10］*12</span>
+        </div>
+
+        <div class="img-flex">
+            <div class="img-item"><img src="images/sop10_01.jpg"><div class="img-desc">先將機器人關機，拆卸後蓋板螺絲</div></div>
+            <div class="img-item"><img src="images/sop10_02.jpg"><div class="img-desc">卸除面板開關線</div></div>
+        </div>
+    </div>
     
-    <div class="step">
-        <strong>步驟 1：拆卸準備</strong><br>
-        1. <span class="danger">重要：請先將機器人關機（若尚能操作）。</span><br>
-        2. 使用六角板手拆卸後蓋板螺絲（M5x10 共 12 顆）。
-    </div>
 
+    <div class="step-page">
+        <div class="page-indicator">2 / 2</div>
+        <div class="step-title">安裝新線組與測試</div>
+
+        <div class="instruction">
+            1. 將新的面板開關線依步驟 1 裝回。<br>
+            2. 使用六角板手將後蓋板鎖上，開啟電源進行測試，即可完成維修。
+        </div>
+
+        <div class="meta-line">
+            <span><span class="label-t">🔧 工具：</span>六角板手</span>
+            <span><span class="label-p">📦 零件：</span>［內六角螺絲M5x10］*12</span>
+        </div>
+
+        <div class="img-flex">
+            <div class="img-item"><img src="images/sop10_03.jpg"><div class="img-desc">將新線組依序裝回</div></div>
+            <div class="img-item"><img src="images/sop10_04.jpg"><div class="img-desc">將後蓋板鎖固，開機測試完成維修</div></div>
+        </div>
+    </div>
     
-
-    <div class="step">
-        <strong>步驟 2：卸除線組</strong><br>
-        找到連接於底盤電控盒上的「面板開關線」，將其連接頭小心卸除。
-    </div>
-
-    
-
-    <div class="step">
-        <strong>步驟 3：安裝新品</strong><br>
-        將新的面板開關線組依照原路徑裝回，並確保插頭完全卡入電控盒插槽。
-    </div>
-
-    <div class="step">
-        <strong>步驟 4：測試與復原</strong><br>
-        1. 先暫時開啟電源進行開關機測試，確認功能恢復正常。<br>
-        2. 使用六角板手將後蓋板重新鎖上並固定。
-    </div>
 
     <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+</div>
+
 </body>
 </html>
