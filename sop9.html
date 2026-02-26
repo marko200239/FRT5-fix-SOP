@@ -3,44 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>SOP-09 砲塔大燈更換</title>
+
 <style>
     :root {
-        --bg: #0f0f0f;
-        --card: #1a1a1a;
-        --accent: #e74c3c;
-        --text: #e0e0e0;
-        --tool-color: #f1c40f;
-        --part-color: #3498db;
+        --bg-color: #121212;
+        --container-bg: #181818;
+        --card-bg: #222222;
+        --text-main: #ffffff;
+        --text-sub: #b0b0b0;
+        --accent: #ff4d4d;
+        --blue: #3498db;
+        --border: #333333;
     }
-    body { font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; background: var(--bg); color: var(--text); padding: 20px; }
-    .container { max-width: 900px; margin: auto; }
-    
-    /* 頂部資訊卡 */
-    .header-card { background: var(--card); border-top: 4px solid var(--accent); padding: 20px; border-radius: 8px; margin-bottom: 30px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
-    th, td { border: 1px solid #333; padding: 10px; text-align: left; }
-    th { background: #222; color: var(--part-color); }
-
-    /* PPT 頁面模擬 */
-    .step-page { background: var(--card); border: 1px solid #333; border-radius: 12px; padding: 25px; margin-bottom: 40px; position: relative; }
-    .page-indicator { position: absolute; top: 15px; right: 20px; font-weight: bold; color: #444; }
-    .step-title { font-size: 1.2rem; font-weight: bold; border-left: 4px solid var(--accent); padding-left: 12px; margin-bottom: 20px; }
-
-    /* 文字與工具區 */
-    .instruction { margin-bottom: 15px; line-height: 1.8; }
-    .meta-line { background: #252525; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 0.9rem; }
-    .label-t { color: var(--tool-color); font-weight: bold; }
-    .label-p { color: var(--part-color); font-weight: bold; }
-
-    /* 圖片排版系統 */
-    .img-flex { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
-    .img-item { flex: 1; min-width: 250px; background: #000; padding: 8px; border-radius: 6px; }
-    .img-item img { width: 100%; height: auto; border-radius: 4px; object-fit: contain; }
-    .img-desc { text-align: center; color: var(--tool-color); font-size: 0.9rem; margin-top: 8px; font-weight: bold; }
-
-    /* 針對第五與第六張圖的特殊處理 */
-    .img-pair { flex: 1; max-width: 48%; } /* 限制寬度讓兩張圖並排且大小一致 */
+    body { 
+        font-family: "Microsoft JhengHei", sans-serif; 
+        background-color: var(--bg-color); 
+        color: var(--text-main); 
+        margin: 0; padding: 20px; 
+        line-height: 1.6;
+    }
+    .container, .sop-container, body > div.container, body > div:first-of-type { 
+        max-width: 850px; margin: auto; 
+        background: var(--container-bg); 
+        padding: 30px; border-radius: 12px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-top: 8px solid var(--accent);
+    }
+    h1 { color: var(--text-main); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
+    h2, h3 { color: var(--blue); border-left: 5px solid var(--blue); padding-left: 12px; margin-top: 30px; }
+    .info-card { 
+        background: var(--card-bg); 
+        border: 1px solid var(--border); 
+        padding: 20px; border-radius: 8px; margin-bottom: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a1a1a; }
+    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    th { background-color: #252525; color: var(--blue); }
+    td { color: var(--text-sub); }
+    .step { 
+        background: #1e1e1e; 
+        margin-bottom: 12px; padding: 15px;
+        border-radius: 6px; border: 1px solid var(--border); 
+        border-left: 5px solid var(--blue);
+        color: var(--text-sub);
+    }
+    .step strong { color: var(--text-main); }
+    .back-btn { 
+        display: inline-block; margin-top: 30px; color: var(--blue); 
+        text-decoration: none; font-weight: bold; 
+        border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
+    }
+    img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
 </style>
+
 </head>
 <body>
 
@@ -108,6 +123,7 @@
     
 
 </div>
-
+<a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+    </div>
 </body>
 </html>
