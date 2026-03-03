@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>機型教學目錄</title>
+    <style>
+        :root { 
+            --bg: #0a0a0a; 
+            --card: #161616; 
+            --red: #ff4d4d; 
+            --blue: #00d2ff;
+            --white: #ffffff; 
+            --gray: #444;
+        }
+        body { 
+            background: var(--bg); 
+            color: var(--white); 
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .menu-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 30px; 
+            width: 100%;
+            max-width: 1100px; 
+        }
+
+        .menu-item { 
+            position: relative;
+            background: var(--card); 
+            border: 1px solid var(--gray); 
+            padding: 60px 20px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            color: white; 
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* 左上角小標籤 */
+        .menu-item::after {
+            content: "TYPE";
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--red);
+            font-weight: bold;
+        }
+
+        .model-text {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            z-index: 2;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* 懸浮發光效果 */
+        .menu-item:hover { 
+            border-color: var(--red); 
+            background: #1f1f1f;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(255, 77, 77, 0.2);
+        }
+
+        /* PCT 系列專屬藍色 */
+        .blue-theme:hover {
+            border-color: var(--blue);
+            box-shadow: 0 10px 40px rgba(0, 210, 255, 0.2);
+        }
+        .blue-theme::after { color: var(--blue); }
+
+        /* 裝飾線條 */
+        .line {
+            width: 40px;
+            height: 3px;
+            background: var(--red);
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .blue-theme .line { background: var(--blue); }
+        .menu-item:hover .line { width: 80px; }
+
+        .back-btn { 
+            margin-top: 60px; 
+            color: #555; 
+            text-decoration: none; 
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .back-btn:hover { color: #fff; }
+    </style>
+</head>
+<body>
+
+    <div class="menu-grid">
+        <a href="video_page.html?model=FRT509" class="menu-item">
+            <span class="model-text">FRT-509</span>
+            <span class="subtitle">中型履帶消防機器人</span>
+            <div class="line"></div>
+        </a>
+
+        <a href="video_page.html?model=FRT309" class="menu-item">
+            <span class="model-text">FRT-309</span>
+            <span class="subtitle">小型履帶消防機器人</span>
+            <div class="line"></div>
+        </a>
+
+       <a href="video_pct5.html" class="menu-item blue-theme">
+           <span class="model-text">PCT-5</span>
+           <span class="subtitle">中型載運底盤</span>
+           <div class="line"></div>
+        </a>
+
+        <a href="video_page.html?model=PCT3" class="menu-item blue-theme">
+            <span class="model-text">PCT-3</span>
+            <span class="subtitle">小型載運底盤</span>
+            <div class="line"></div>
+        </a>
+    </div>
+
+    <a href="index.html" class="back-btn">⬅ 返回主目錄</a>
+
+</body>
+</html>
