@@ -16,11 +16,10 @@
             --border: #333333;
         }
         body { font-family: "Microsoft JhengHei", sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; }
-        .container { max-width: 900px; margin: auto; background: var(--container-bg); padding: 30px; border-radius: 12px; border-top: 8px solid var(--accent); }
+        .container { max-width: 900px; margin: auto; background: var(--container-bg); padding: 30px; border-radius: 12px; border-top: 8px solid var(--accent); position: relative; }
         h1 { text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 15px; margin-bottom: 30px; }
         #searchInput { width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #444; background: #252525; color: white; margin-bottom: 30px; box-sizing: border-box; }
         
-        /* 修正後的 Grid 佈局，防止內容擠在一起 */
         .sop-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
@@ -44,6 +43,31 @@
         .category-tag { font-size: 0.8rem; padding: 4px 10px; background: #333; border-radius: 4px; align-self: flex-start; }
         .blue-theme { border-left: 5px solid var(--blue); }
         .blue-theme .sop-number { color: var(--blue); }
+
+        /* 新增：底部導覽區塊樣式 */
+        .footer-nav {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+        }
+        .back-home-btn {
+            text-decoration: none;
+            color: var(--text-sub);
+            border: 1px solid var(--border);
+            padding: 12px 35px;
+            border-radius: 8px;
+            transition: 0.3s;
+            display: inline-block;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        .back-home-btn:hover {
+            border-color: var(--accent);
+            color: #ffffff;
+            background: #1f1f1f;
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -100,6 +124,7 @@
         </a>
         <a href="sop6.html" class="sop-card blue-theme">
             <span class="sop-number">SOP-06</span>
+            <span class="sop-number">鉛酸電池更換</span>
             <span class="sop-title">鉛酸電池更換</span>
             <span class="sop-fault">故障：蓄電不足、無法開機</span>
             <span class="category-tag">電力系統</span>
@@ -165,6 +190,11 @@
             <span class="category-tag">影像系統</span>
         </a>
     </div>
+
+    <div class="footer-nav">
+        <a href="index.html" class="back-home-btn">🏠 返回系統主入口</a>
+    </div>
+
 </div>
 
 <script>
@@ -178,7 +208,4 @@
     }
 </script>
 </body>
-     <div class="footer-nav">
-        <a href="video_menu.html" class="back-btn">⬅ 返回機型目錄</a>
-    </div>
 </html>

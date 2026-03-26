@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>PCT-3 教學影片庫</title>
+    <style>
+        :root { --bg: #0a0a0a; --card: #161616; --blue: #00d2ff; --text: #ffffff; --sub-text: #888; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif; margin: 0; padding: 40px 20px; }
+        .container { max-width: 900px; margin: auto; }
+        .header { border-left: 5px solid var(--blue); padding-left: 20px; margin-bottom: 40px; }
+        .header h1 { font-size: 2.2rem; margin: 0; letter-spacing: 2px; }
+        .video-card { background: var(--card); border: 1px solid #333; border-radius: 15px; padding: 25px; margin-bottom: 30px; transition: 0.3s; }
+        .video-card:hover { border-color: var(--blue); box-shadow: 0 0 20px rgba(0, 210, 255, 0.1); }
+        .video-title { font-size: 1.4rem; font-weight: bold; margin-bottom: 15px; color: var(--blue); }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; background: #000; border-radius: 10px; overflow: hidden; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-info { margin-top: 15px; font-size: 0.95rem; color: var(--sub-text); line-height: 1.6; }
+        .footer-nav { text-align: center; margin-top: 50px; display: flex; flex-direction: column; gap: 15px; align-items: center; }
+        .back-btn { display: inline-block; color: var(--sub-text); text-decoration: none; padding: 12px 30px; border: 1px solid #444; border-radius: 6px; transition: 0.3s; min-width: 180px; }
+        .back-btn:hover { color: #fff; border-color: #fff; background: #222; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>PCT-3 教學影音庫</h1>
+        <p>小型運載底盤 - 操作與維修教學</p>
+    </div>
+
+    <div class="video-card">
+        <div class="video-title">🎬 PCT-3 介紹</div>
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/Oofl6DHM-oc?rel=0" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">了解 PCT-3 基本規格。</div>
+    </div>
+
+    <div class="video-card">
+        <div class="video-title">🎬 PCT-3 遙控介紹</div>
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/TveJKGyRLBs?rel=0" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">示範如何操作桿定義及各模式切換說明。</div>
+    </div>
+
+    <div class="video-card">
+        <div class="video-title">🎬 PCT-3 保養教學</div>
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/atsoX9I4X_E?rel=0" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">定期檢查履帶張力。</div>
+    </div>
+
+    <div class="video-card">
+        <div class="video-title">🎬 PCT-3 充電教學</div>
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/z3YMOncB6I0?rel=0" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">正確連接充電器。</div>
+    </div>
+
+    <div class="footer-nav">
+        <a href="video_menu.html" class="back-btn">⬅ 返回機型目錄</a>
+        <a href="index.html" class="back-btn" style="border-color: var(--blue); color: var(--blue);">🏠 返回系統主入口</a>
+    </div>
+</div>
+</body>
+</html>
