@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRT 故障排除診斷系統</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --accent: #ff4d4d;
+            --text-main: #ffffff;
+            --text-sub: #b0b0b0;
+            --border: #333333;
+            --success: #2ecc71;
+        }
+        body { font-family: "Microsoft JhengHei", sans-serif; background: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 600px; margin-top: 20px; }
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
+        
+        .step-card { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border); display: none; animation: fadeIn 0.4s; }
+        .step-card.active { display: block; }
+        
+        h2 { font-size: 1.2rem; margin-top: 0; color: var(--accent); }
+        p { line-height: 1.6; color: var(--text-sub); }
+
+        .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .btn { padding: 15px; border-radius: 8px; border: 1px solid var(--border); background: #252525; color: white; cursor: pointer; text-align: center; text-decoration: none; transition: 0.3s; font-size: 1rem; }
+        .btn:hover { background: var(--accent); border-color: var(--accent); }
+        .btn-yes { border-left: 5px solid var(--success); }
+        .btn-no { border-left: 5px solid var(--accent); }
+        
+        .result-box { border-left: 5px solid var(--success); background: rgba(46, 204, 113, 0.1); padding: 15px; border-radius: 4px; margin-top: 15px; }
+        .sop-link { color: #3498db; text-decoration: underline; font-weight: bold; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>🔍 故障排除診斷系統</h1>
+        <p>請根據機器人實際狀況點選下方選項</p>
+    </div>
+
+    <div id="start" class="step-card active">
+        <h2>請選擇故障類別：</h2>
+        <div class="btn-group">
+            <button class="btn" onclick="go('water')">水柱/水霧無法切換</button>
+            <button class="btn" onclick="go('v_move')">砲塔無法垂直作動</button>
+            <button class="btn" onclick="go('h_move')">砲塔無法水平作動</button>
+            <button class="btn" onclick="go('control')">無法操控機器人</button>
+            <button class="btn" onclick="location.href='index.html'">🏠 返回主入口</button>
+        </div>
+    </div>
+
+    <div id="water" class="step-card">
+        <p>確認遙控器開啟方式是否正確？</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="go('water_2')">是 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('請依照正確操作方式開啟遙控器水柱切換功能。')">否 (NO)</button>
+        </div>
+    </div>
+    <div id="water_2" class="step-card">
+        <p>確認馬達動力傳動組是否正常？</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="go('water_3')">是 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：請參考 <a href=\'sop7.html\' class=\'sop-link\'>SOP-07</a> 更換馬達動力傳動組。')">否 (NO)</button>
+        </div>
+    </div>
+    <div id="water_3" class="step-card">
+        <p>確認水柱/水霧馬達接線是否正常？</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('故障已排除，請確認動作是否正常。')">是 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：查修馬達出口線路。')">否 (NO)</button>
+        </div>
+    </div>
+
+    <div id="v_move" class="step-card">
+        <p>手動調整至上/下死點，並確認「近接開關」燈號是否亮起？</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：線路正常，請檢查機械卡死狀況。')">是 (YES)</button>
+            <button class="btn btn-no" onclick="go('v_move_2')">否 (NO)</button>
+        </div>
+    </div>
+    <div id="v_move_2" class="step-card">
+        <p>查修線路後，燈號是否恢復正常？</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('故障已排除。')">是 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：請參考 <a href=\'sop12.html\' class=\'sop-link\'>SOP-12</a> 更換近接開關。')">否 (NO)</button>
+        </div>
+    </div>
+
+    <div id="h_move" class="step-card">
+        <p>手動調整砲塔瞄子至中心位置，確認「限位開關」是否正常？</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：訊號正常。')">是 (YES)</button>
+            <button class="btn btn-no" onclick="go('h_move_2')">否 (NO)</button>
+        </div>
+    </div>
+    <div id="h_move_2" class="step-card">
+        <p>查修線路後是否恢復正常？</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('故障已排除。')">是 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：請參考 <a href=\'sop11.html\' class=\'sop-link\'>SOP-11</a> 更換限位開關。')">否 (NO)</button>
+        </div>
+    </div>
+
+    <div id="control" class="step-card">
+        <p>確認機器人與遙控器電源是否均已開啟？</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="go('control_2')">是 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('請開啟電源後重新測試。')">否 (NO)</button>
+        </div>
+    </div>
+    <div id="control_2" class="step-card">
+        <p>重新校正遙控器後，是否可正常操控？</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('故障已排除。')">是 (YES)</button>
+            <button class="btn btn-no" onclick="go('control_3')">否 (NO)</button>
+        </div>
+    </div>
+    <div id="control_3" class="step-card">
+        <p>狀態顯示表（電壓表）是否有顯示電量？</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="go('control_4')">是 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：更換狀態顯示器線組。')">否 (NO)</button>
+        </div>
+    </div>
+    <div id="control_4" class="step-card">
+        <p>更換馬達驅動器後是否正常？</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('故障已排除。')">是 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：更換馬達及出口線路測試。')">否 (NO)</button>
+        </div>
+    </div>
+
+    <div id="result" class="step-card">
+        <h2>診斷結果：</h2>
+        <div class="result-box">
+            <p id="result-text"></p>
+        </div>
+        <div class="btn-group">
+            <button class="btn" onclick="location.reload()">🔄 重新診斷</button>
+            <button class="btn" onclick="go('start')">⬅ 返回類別選單</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function go(id) {
+        document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+
+    function showEnd(text) {
+        document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
+        document.getElementById('result').classList.add('active');
+        document.getElementById('result-text').innerHTML = text;
+    }
+</script>
+
+</body>
+</html>
