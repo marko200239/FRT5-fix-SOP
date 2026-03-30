@@ -12,7 +12,7 @@
             --text-main: #ffffff;
         }
 
-        /* 預設隱藏內容，驗證成功後才顯示 */
+        /* 預設隱藏內容 */
         #main-content {
             display: none;
         }
@@ -44,6 +44,7 @@
             display: inline-block;
         }
 
+        /* 統一的按鈕樣式 */
         .portal-item {
             display: block;
             background: var(--card-bg);
@@ -57,6 +58,7 @@
             border-radius: 8px;
             transition: all 0.3s ease;
             position: relative;
+            box-sizing: border-box; /* 確保 padding 不會撐破佈局 */
         }
 
         .portal-item:hover {
@@ -66,12 +68,15 @@
             color: var(--accent-red);
         }
 
+        /* 已移除 .trouble-btn 的 border-left 樣式 */
+
         .subtitle {
             font-size: 0.9rem;
             color: #888;
             margin-top: 8px;
             display: block;
             font-weight: normal;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -80,24 +85,27 @@
 <script>
     (function() {
         const secretKey = "509509"; // 您的授權密碼
-        // 檢查本次瀏覽是否已經驗證過
-        if (sessionStorage.getItem('portal_authorized') !== 'true') {
-            let pw = prompt("【FRT 機器人內部系統】\n請輸入授權代碼以進入入口網：");
-            if (pw === secretKey) {
-                sessionStorage.setItem('portal_authorized', 'true');
-                // 驗證成功，顯示內容
-                window.onload = function() {
-                    document.getElementById('main-content').style.display = 'block';
-                };
-            } else {
-                alert("授權失敗，權限不足。");
-                window.location.href = "about:blank"; // 跳轉至空白頁
-            }
-        } else {
-            // 如果已經驗證過，直接顯示
-            window.onload = function() {
+        
+        const checkAuth = () => {
+            if (sessionStorage.getItem('portal_authorized') === 'true') {
                 document.getElementById('main-content').style.display = 'block';
-            };
+            } else {
+                let pw = prompt("【FRT 機器人內部系統】\n請輸入授權代碼以進入入口網：");
+                if (pw === secretKey) {
+                    sessionStorage.setItem('portal_authorized', 'true');
+                    document.getElementById('main-content').style.display = 'block';
+                } else {
+                    alert("授權失敗，權限不足。");
+                    window.location.href = "about:blank"; // 跳轉至空白頁
+                }
+            }
+        };
+
+        // 確保 DOM 載入後執行
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", checkAuth);
+        } else {
+            checkAuth();
         }
     })();
 </script>
@@ -105,9 +113,9 @@
 <div id="main-content" class="portal-container">
     <h1>FRT 機器人資訊門戶</h1>
 
-    <a href="trouble.html" class="btn">🔍 故障診斷排除</a>
-        維修樹狀圖
-        <span class="subtitle">故障排除邏輯與架構查詢</span>
+    <a href="trouble.html" class="portal-item">
+        🔍 故障診斷排除
+        <span class="subtitle">依據維修樹狀圖診斷故障原因</span>
     </a>
 
     <a href="sop_list.html" class="portal-item">
