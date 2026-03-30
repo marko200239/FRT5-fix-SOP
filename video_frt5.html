@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRT-5 系列 教學影片庫</title>
+    <style>
+        :root { 
+            --bg: #0a0a0a; 
+            --card: #161616; 
+            --accent: #ff4d4d;
+            --text: #ffffff; 
+            --sub-text: #b0b0b0;
+            --border: #333333;
+        }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif; margin: 0; padding: 40px 20px; }
+        .container { max-width: 900px; margin: auto; }
+        
+        .header { border-left: 5px solid var(--accent); padding-left: 20px; margin-bottom: 40px; }
+        .header h1 { font-size: 2.2rem; margin: 0; letter-spacing: 2px; }
+        .header p { color: var(--sub-text); margin-top: 5px; }
+
+        .video-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+
+        .video-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+        .video-card:hover { 
+            border-color: var(--accent); 
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.1); 
+        }
+
+        .video-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: var(--sub-text);
+            line-height: 1.6;
+        }
+
+        .footer-nav {
+            text-align: center;
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+        }
+        .back-btn {
+            display: inline-block;
+            color: var(--sub-text);
+            text-decoration: none;
+            padding: 12px 40px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: 0.3s;
+            min-width: 200px;
+            font-size: 1rem;
+        }
+        .back-btn:hover { 
+            color: #fff; 
+            border-color: var(--accent); 
+            background: #1f1f1f; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>FRT-5 系列 教學影音庫</h1>
+        <p>中型履帶消防機器人 - 完整操作與維護指南</p>
+    </div>
+
+    <div class="video-grid">
+        <div class="video-card">
+            <div class="video-title">🎬 FRT-5 系列 產品介紹</div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube-nocookie.com/embed/SgBNIyTLsHQ?rel=0" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">了解5系列機器人結構。</div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-title">🎬 機器人底盤結構介紹</div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube-nocookie.com/embed/iOJKnFv6y0U?rel=0" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">深入了解 FRT-5 系列的履帶底盤。</div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-title">🎬 手持遙控器操作說明</div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube-nocookie.com/embed/QRp3NnNrFlM?rel=0" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">手持式遙控器功能。</div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-title">🎬 搖控箱功能說明</div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube-nocookie.com/embed/VM6AFxBpW_s?rel=0" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">詳細解說大型操控箱的介面配置。</div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-title">🎬 充電流程</div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube-nocookie.com/embed/PdnWqWcTnbs?rel=0" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">FRT-5 系列正確的充電步驟。</div>
+        </div>
+    </div>
+
+    <div class="footer-nav">
+        <a href="video_menu.html" class="back-btn">⬅ 返回機型目錄</a>
+        <a href="index.html" class="back-btn" style="border-color: var(--accent); color: var(--accent);">🏠 返回系統主入口</a>
+    </div>
+</div>
+
+</body>
+</html>
