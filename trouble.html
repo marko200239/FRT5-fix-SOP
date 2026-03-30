@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRT 故障排除診斷系統 - 完整版</title>
+    <title>FRT 故障排除診斷系統</title>
     <style>
         :root {
             --bg-color: #0f0f0f;
             --card-bg: #1a1a1a;
-            --accent: #ff4d4d;
+            --accent: #d32f2f;
             --text-main: #ffffff;
-            --text-sub: #b0b0b0;
+            --text-sub: #888888;
             --border: #333333;
             --success: #2ecc71;
             --blue: #3498db;
@@ -18,22 +18,16 @@
         body { font-family: "Microsoft JhengHei", sans-serif; background: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; }
         .container { width: 100%; max-width: 600px; margin-top: 20px; }
         .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
-        
         .step-card { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border); display: none; animation: fadeIn 0.4s; }
         .step-card.active { display: block; }
-        
-        h2 { font-size: 1.3rem; margin-top: 0; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+        h2 { font-size: 1.3rem; margin-top: 0; color: var(--accent); }
         p { line-height: 1.8; color: var(--text-main); font-size: 1.1rem; }
-
         .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
         .btn { padding: 16px; border-radius: 8px; border: 1px solid var(--border); background: #252525; color: white; cursor: pointer; text-align: center; text-decoration: none; transition: 0.3s; font-size: 1.05rem; }
         .btn:hover { background: #333; border-color: var(--accent); }
         .btn-yes { border-left: 8px solid var(--success); }
         .btn-no { border-left: 8px solid var(--accent); }
-        
         .result-box { border-left: 8px solid var(--blue); background: rgba(52, 152, 219, 0.1); padding: 20px; border-radius: 4px; margin-top: 15px; }
-        .sop-link { color: var(--accent); text-decoration: underline; font-weight: bold; }
-
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -42,7 +36,7 @@
 <div class="container">
     <div class="header">
         <h1>🔍 維修故障診斷系統</h1>
-        <p>依據維修樹狀圖 (PPT) 自動引導</p>
+        <p>依據 PPT 維修樹狀圖自動引導</p>
     </div>
 
     <div id="start" class="step-card active">
@@ -52,141 +46,234 @@
             <button class="btn" onclick="go('v_move')">↕️ 砲塔無法垂直作動</button>
             <button class="btn" onclick="go('h_move')">↔️ 砲塔無法水平作動</button>
             <button class="btn" onclick="go('control')">🎮 無法操控機器人</button>
-            <button class="btn" onclick="go('gas')">⚠️ 五用氣體偵測異常</button>
-            <button class="btn" onclick="go('video')">📹 影像/投影系統故障</button>
-            <button class="btn" onclick="go('light')">💡 大燈照明故障</button>
+            <button class="btn" onclick="go('video')">📹 影像無法呈現</button>
+            <button class="btn" onclick="go('gas_data')">📊 五用氣體數據回傳</button>
+            <button class="btn" onclick="go('gas_detector')">⚠️ 五用氣體偵測儀異常</button>
+            <button class="btn" onclick="go('light')">💡 車燈不會亮</button>
             <button class="btn" onclick="location.href='index.html'" style="margin-top:20px; color:var(--text-sub);">🏠 返回入口首頁</button>
         </div>
     </div>
 
     <div id="water" class="step-card">
-        <p>確認遙控器開啟方式是否正確？</p>
+        <p>確認遙控器開啟方式</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="go('water_2')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('請依照正確操作方式開啟。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="go('water_2')">YES</button>
+            <button class="btn btn-no" onclick="showEnd('無法切換水柱/水霧狀態。')">NO</button>
         </div>
     </div>
     <div id="water_2" class="step-card">
-        <p>確認「馬達動力傳動組」是否正常？</p>
+        <p>確認馬達動力傳動組</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="go('water_3')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('建議：參考 <a href=\'sop7.html\' class=\'sop-link\'>SOP-07</a> 更換馬達動力傳動組。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="go('water_3')">YES</button>
+            <button class="btn btn-no" onclick="showEnd('建議：更換馬達動力傳動組。')">NO</button>
         </div>
     </div>
     <div id="water_3" class="step-card">
-        <p>確認馬達出口線路接線是否正常？</p>
+        <p>確認水柱/水霧馬達接線</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('故障已排除。')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('建議：查修馬達出口線路。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('完成水柱/水霧切換。')">YES</button>
+            <button class="btn btn-no" onclick="showEnd('診斷：水柱/水霧馬達線路異常。')">NO</button>
         </div>
     </div>
 
     <div id="v_move" class="step-card">
-        <p>手動調整至上/下死點，確認「近接開關」燈號是否亮起？</p>
+        <p>手動調整至上/下死點，並確認近接開關燈號</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('診斷：訊號正常，檢查機械是否卡死。')">是 (YES)</button>
-            <button class="btn btn-no" onclick="go('v_move_2')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('完成砲塔垂直作動。')">YES</button>
+            <button class="btn btn-no" onclick="go('v_move_2')">NO</button>
         </div>
     </div>
     <div id="v_move_2" class="step-card">
-        <p>查修線路後，燈號是否恢復正常？</p>
+        <p>查修線路</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('故障已排除。')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('建議：參考 <a href=\'sop12.html\' class=\'sop-link\'>SOP-12</a> 更換近接開關。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('完成砲塔垂直作動。')">YES</button>
+            <button class="btn btn-no" onclick="go('v_move_3')">NO</button>
+        </div>
+    </div>
+    <div id="v_move_3" class="step-card">
+        <p>更換近接開關</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('完成砲塔垂直作動。')">YES</button>
+            <button class="btn btn-no" onclick="showEnd('診斷：更換近接開關無效，需進階檢查垂直作動機構。')">NO</button>
         </div>
     </div>
 
     <div id="h_move" class="step-card">
-        <p>手動調整至中心位子，確認「限位開關」是否正常？</p>
+        <p>手動調整砲塔瞄子至中心位子</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('診斷：訊號正常。')">是 (YES)</button>
-            <button class="btn btn-no" onclick="go('h_move_2')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('完成砲塔水平作動。')">YES</button>
+            <button class="btn btn-no" onclick="go('h_move_2')">NO</button>
         </div>
     </div>
     <div id="h_move_2" class="step-card">
-        <p>查修線路後是否恢復正常？</p>
+        <p>查修線路</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('故障已排除。')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('建議：參考 <a href=\'sop11.html\' class=\'sop-link\'>SOP-11</a> 更換限位開關。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('完成砲塔水平作動。')">YES</button>
+            <button class="btn btn-no" onclick="go('h_move_3')">NO</button>
+        </div>
+    </div>
+    <div id="h_move_3" class="step-card">
+        <p>更換限位開關</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('完成砲塔水平作動。')">YES</button>
+            <button class="btn btn-no" onclick="showEnd('診斷：更換限位開關無效，需進階檢查水平作動機構。')">NO</button>
         </div>
     </div>
 
     <div id="control" class="step-card">
-        <p>確認機器人與遙控器電源是否均開啟？</p>
+        <p>確認機器人/遙控器電源是否開啟</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="go('control_2')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('請開啟電源測試。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="go('control_2')">YES</button>
+            <button class="btn btn-no" onclick="showEnd('請先開啟機器人/遙控器電源。')">NO</button>
         </div>
     </div>
     <div id="control_2" class="step-card">
-        <p>重新校正遙控器後是否正常？</p>
+        <p>重新校正遙控器</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('故障已排除。')">是 (YES)</button>
-            <button class="btn btn-no" onclick="go('control_3')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('正常操控機器人。')">YES</button>
+            <button class="btn btn-no" onclick="go('control_3')">NO</button>
         </div>
     </div>
     <div id="control_3" class="step-card">
-        <p>狀態顯示表（電壓表）是否有顯示？</p>
+        <p>狀態顯示表電壓顯示電量</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="go('control_4')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('建議：更換狀態顯示器線組。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="go('control_4')">YES</button>
+            <button class="btn btn-no" onclick="showEnd('診斷：電量顯示異常，檢查電源線路。')">NO</button>
         </div>
     </div>
     <div id="control_4" class="step-card">
-        <p>更換馬達驅動器後是否正常？</p>
+        <p>更換FRT狀態顯示器線組</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('故障已排除。')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('建議：更換馬達及出口線測試。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('正常操控機器人。')">YES</button>
+            <button class="btn btn-no" onclick="go('control_5')">NO</button>
         </div>
     </div>
-
-    <div id="gas" class="step-card">
-        <p>確認五用氣體偵測器是否已開機？</p>
+    <div id="control_5" class="step-card">
+        <p>更換馬達驅動器</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="go('gas_2')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('請將氣體偵測器開機。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('正常操控機器人。')">YES</button>
+            <button class="btn btn-no" onclick="go('control_6')">NO</button>
         </div>
     </div>
-    <div id="gas_2" class="step-card">
-        <p>確認主機後方 RS485 接頭是否鬆脫？</p>
+    <div id="control_6" class="step-card">
+        <p>更換馬達及出口線測試</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('請鎖緊接頭並重試。')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('建議：查修內部傳輸線路。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('正常操控機器人。')">YES</button>
+            <button class="btn btn-no" onclick="go('control_7')">NO</button>
+        </div>
+    </div>
+    <div id="control_7" class="step-card">
+        <p>更換底盤控制盒</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('正常操控機器人。')">YES</button>
+            <button class="btn btn-no" onclick="showEnd('最後手段：執行 治具測試。')">NO</button>
         </div>
     </div>
 
     <div id="video" class="step-card">
-        <p>確認主機端影像訊號線是否插好？</p>
+        <p>鏡頭燈號確認 / 平板頻道確認 / 移動式行動裝置確認影像</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="go('video_2')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('請重新連接影像線。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('完成影像投影。')">YES</button>
+            <button class="btn btn-no" onclick="go('video_2')">NO</button>
         </div>
     </div>
     <div id="video_2" class="step-card">
-        <p>確認顯示器/投影設備電源是否正常？</p>
+        <p>查修線路</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('故障可能在內部影像轉換盒，建議查修。')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('請檢查電源與保險絲。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('完成影像投影。')">YES</button>
+            <button class="btn btn-no" onclick="go('video_3')">NO</button>
+        </div>
+    </div>
+    <div id="video_3" class="step-card">
+        <p>更換IO控制盒</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('完成影像投影。')">YES</button>
+            <button class="btn btn-no" onclick="go('video_4')">NO</button>
+        </div>
+    </div>
+    <div id="video_4" class="step-card">
+        <p>產品工程師IP確認</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('完成影像投影。')">YES</button>
+            <button class="btn btn-no" onclick="go('video_5')">NO</button>
+        </div>
+    </div>
+    <div id="video_5" class="step-card">
+        <p>更換影像主機</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('完成影像投影。')">YES</button>
+            <button class="btn btn-no" onclick="showEnd('影像無法呈現，請檢查鏡頭硬體損壞狀況。')">NO</button>
+        </div>
+    </div>
+
+    <div id="gas_data" class="step-card">
+        <p>五用氣體數據回傳確認</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('數據回傳確認完成。')">YES</button>
+            <button class="btn btn-no" onclick="showEnd('數據未回傳，請確認氣體偵測儀異常路徑。')">NO</button>
+        </div>
+    </div>
+
+    <div id="gas_detector" class="step-card">
+        <p>檢查濾管/濾嘴/濾綿</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('正常偵測氣體。')">YES</button>
+            <button class="btn btn-no" onclick="go('gas_2')">NO</button>
+        </div>
+    </div>
+    <div id="gas_2" class="step-card">
+        <p>檢查五用氣體偵測儀電量</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('正常傳輸參數。')">YES</button>
+            <button class="btn btn-no" onclick="go('gas_3')">NO</button>
+        </div>
+    </div>
+    <div id="gas_3" class="step-card">
+        <p>檢查手機WIFI連線狀況</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('正常偵測氣體。')">YES</button>
+            <button class="btn btn-no" onclick="go('gas_4')">NO</button>
+        </div>
+    </div>
+    <div id="gas_4" class="step-card">
+        <p>檢查遙控箱平板連線狀況</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('正常傳輸參數。')">YES</button>
+            <button class="btn btn-no" onclick="go('gas_5')">NO</button>
+        </div>
+    </div>
+    <div id="gas_5" class="step-card">
+        <p>更換IO控制盒</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('五用氣體偵測儀正常充電。')">YES</button>
+            <button class="btn btn-no" onclick="showEnd('氣體偵測異常，需更換氣體偵測儀。')">NO</button>
         </div>
     </div>
 
     <div id="light" class="step-card">
-        <p>確認遙控器大燈開關是否開啟？</p>
+        <p>確認遙控器開啟方式</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="go('light_2')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('請嘗試開啟開關。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('完成車燈開啟。')">YES</button>
+            <button class="btn btn-no" onclick="go('light_2')">NO</button>
         </div>
     </div>
     <div id="light_2" class="step-card">
-        <p>確認砲塔大燈外觀是否毀損？</p>
+        <p>查修線路(A-圓燈)/(B-方燈)</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('建議：參考 <a href=\'sop9.html\' class=\'sop-link\'>SOP-09</a> 更換砲塔大燈。')">是 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('建議：查修照明線路。')">否 (NO)</button>
+            <button class="btn btn-yes" onclick="showEnd('完成車燈開啟。')">YES</button>
+            <button class="btn btn-no" onclick="go('light_3')">NO</button>
+        </div>
+    </div>
+    <div id="light_3" class="step-card">
+        <p>更換圓燈/方燈</p>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="showEnd('完成車燈開啟。')">YES</button>
+            <button class="btn btn-no" onclick="showEnd('車燈組件異常，請更換零件。')">NO</button>
         </div>
     </div>
 
     <div id="result" class="step-card">
-        <h2>診斷建議：</h2>
+        <h2>診斷分析：</h2>
         <div class="result-box">
             <p id="result-text"></p>
         </div>
