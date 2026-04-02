@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>SOP-08 砲塔控制盒更換</title>
-    
-
-
 
 <style>
     :root {
@@ -59,54 +56,51 @@
     img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
 </style>
 
-
-
-
 </head>
 <body>
-    <div class="header"><h1>SOP-08：砲塔控制盒更換</h1></div>
+    <div class="container">
+        <h1>SOP-08：砲塔控制盒更換</h1>
 
-    <div class="info-card">
-        <strong>故障描述：</strong> 瞄子功能無作動、無法開啟照明燈<br>
-        <strong>原因分析：</strong> 砲塔控制盒損壞<br><br>
-        <table>
-            <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
-            <tr><td>一般工具</td><td>六角板手組、13號開口板手</td><td>-</td></tr>
-            <tr><td>零組件</td><td>砲塔控制器組裝 (190010004)</td><td>FRT309/509 通用 / 1 組</td></tr>
-            <tr><td>螺絲備件</td><td>半圓頭內六角螺絲、外六角螺絲</td><td>M5x10 (11顆)、M8x16 (4顆)</td></tr>
-        </table>
+        <div class="info-card">
+            <strong>故障描述：</strong> 瞄子功能無作動及無法開啟照明燈<br>
+            <strong>原因分析：</strong> 砲塔控制盒損壞<br><br>
+            <table>
+                <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
+                <tr><td>一般工具</td><td>六角板手組、13號開口板手</td><td>-</td></tr>
+                <tr><td>零組件</td><td>砲塔控制器組裝 (190010004)</td><td>FRT309/509 / 1</td></tr>
+            </table>
+        </div>
+
+        <div class="step-card">
+            <strong>1. 關機與拆卸外部零件</strong>
+            先將機器人電源關機。使用開口板手拆卸機器人左側與後方的方燈。隨後使用六角板手將左半邊鈑金拆卸，並將左側天線轉鬆拆除。
+            <span class="tool-info">🔧 工具：13號開口板手、六角板手組</span>
+            <div class="image-group">
+                <div class="image-box"><img src="images/sop08_01.jpg"><p>圖 1：確認關機並拆卸方燈</p></div>
+                <div class="image-box"><img src="images/sop08_02.jpg"><p>圖 2：拆卸鈑金與天線</p></div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <strong>2. 拔除線路與拆卸舊盒</strong>
+            打開鈑金後可看到砲塔控制盒，依序將所有連接線路拔除。使用六角板手將舊的砲塔控制盒拆卸下來，並將原有的兩個底座回裝至新的控制盒上。
+            <span class="tool-info">🔧 工具：六角板手組</span>
+            <div class="image-group">
+                <div class="image-box"><img src="images/sop08_03.jpg"><p>圖 3：依序拔除線路</p></div>
+                <div class="image-box"><img src="images/sop08_04.jpg"><p>圖 4：更換控制盒並移裝底座</p></div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <strong>3. 安裝新控制盒與復原</strong>
+            將新的砲塔控制盒裝回原位，按照拆卸順序插回所有線路，最後鎖回鈑金與方燈。
+            <span class="tool-info">🔧 工具：六角板手組、開口板手</span>
+            <div class="image-group">
+                <div class="image-box"><img src="images/sop08_05.jpg"><p>圖 5：線路復原與最終鎖固</p></div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
     </div>
-
-    <h3>🛠️ 維修流程</h3>
-    
-    <div class="step">
-        <strong>步驟 1：外部拆卸與安全</strong><br>
-        1. <span class="danger">重要：請務必先將機器人電源關機。</span><br>
-        2. 使用開口板手拆卸左側及後方方燈 (M8x16 螺絲共 4 顆)。<br>
-        3. 使用六角板手拆卸左半邊鈑金 (M5x10 螺絲共 11 顆)，並轉鬆拆除左側天線。
-    </div>
-
-    
-
-    <div class="step">
-        <strong>步驟 2：控制盒拆解</strong><br>
-        1. 看到控制盒後，依序將所有連接線拔除。<br>
-        2. 使用六角板手拆下舊控制盒，並將底座(2個)移至新控制盒上。
-    </div>
-
-    
-
-    <div class="step">
-        <strong>步驟 3：安裝與復原</strong><br>
-        1. 將新控制盒裝回原位，並依序插回所有線路。<br>
-        2. 回裝左側鈑金、天線及方燈。
-    </div>
-
-    <div class="step">
-        <strong>步驟 4：功能測試</strong><br>
-        開機確認瞄子作動是否恢復正常，並測試照明燈是否可開啟。
-    </div>
-
-    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
 </body>
 </html>
