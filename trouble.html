@@ -14,20 +14,31 @@
             --border: #333333;
             --success: #2ecc71;
             --blue: #3498db;
+            --prev-bg: #2a2a2a;
         }
         body { font-family: "Microsoft JhengHei", sans-serif; background: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; }
         .container { width: 100%; max-width: 600px; margin-top: 20px; }
         .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
+        
         .step-card { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border); display: none; animation: fadeIn 0.4s; }
         .step-card.active { display: block; }
-        h2 { font-size: 1.3rem; margin-top: 0; color: var(--accent); }
-        p { line-height: 1.8; color: var(--text-main); font-size: 1.1rem; }
-        .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        
+        /* 上一步驟顯示樣式 */
+        .prev-step-box { background: var(--prev-bg); padding: 10px 15px; border-radius: 6px; font-size: 0.9rem; color: var(--text-sub); border-left: 4px solid var(--border); margin-bottom: 20px; }
+        .prev-step-label { font-weight: bold; color: var(--blue); margin-right: 5px; }
+
+        h2 { font-size: 1.2rem; margin-top: 0; color: var(--accent); }
+        p.current-task { line-height: 1.8; color: var(--text-main); font-size: 1.2rem; font-weight: bold; margin-bottom: 25px; }
+
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
         .btn { padding: 16px; border-radius: 8px; border: 1px solid var(--border); background: #252525; color: white; cursor: pointer; text-align: center; text-decoration: none; transition: 0.3s; font-size: 1.05rem; }
         .btn:hover { background: #333; border-color: var(--accent); }
         .btn-yes { border-left: 8px solid var(--success); }
         .btn-no { border-left: 8px solid var(--accent); }
+        
         .result-box { border-left: 8px solid var(--blue); background: rgba(52, 152, 219, 0.1); padding: 20px; border-radius: 4px; margin-top: 15px; }
+        .sop-link { color: var(--accent); text-decoration: underline; font-weight: bold; }
+
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -36,7 +47,7 @@
 <div class="container">
     <div class="header">
         <h1>🔍 維修故障診斷系統</h1>
-        <p>依據 PPT 維修樹狀圖自動引導</p>
+        <p></p>
     </div>
 
     <div id="start" class="step-card active">
@@ -47,228 +58,183 @@
             <button class="btn" onclick="go('h_move')">↔️ 砲塔無法水平作動</button>
             <button class="btn" onclick="go('control')">🎮 無法操控機器人</button>
             <button class="btn" onclick="go('video')">📹 影像無法呈現</button>
-            <button class="btn" onclick="go('gas_data')">📊 五用氣體數據回傳</button>
-            <button class="btn" onclick="go('gas_detector')">⚠️ 五用氣體偵測儀異常</button>
-            <button class="btn" onclick="go('light')">💡 車燈不會亮</button>
-            <button class="btn" onclick="location.href='index.html'" style="margin-top:20px; color:var(--text-sub);">🏠 返回入口首頁</button>
+            <button class="btn" onclick="go('gas')">⚠️ 五用氣體偵測儀異常</button>
+            <button class="btn" onclick="go('light')">💡 車燈 (圓/方燈) 不會亮</button>
+            <button class="btn" onclick="location.href='index.html'" style="margin-top:20px; color:var(--text-sub);">🏠 返回首頁</button>
         </div>
     </div>
 
     <div id="water" class="step-card">
-        <p>確認遙控器開啟方式</p>
+        <p class="current-task">確認遙控器電源有無開啟</p>
         <div class="btn-group">
             <button class="btn btn-yes" onclick="go('water_2')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('無法切換水柱/水霧狀態。')">NO</button>
+            <button class="btn btn-no" onclick="showEnd('診斷結果：請先將遙控器開機')">NO</button>
         </div>
     </div>
     <div id="water_2" class="step-card">
-        <p>確認馬達動力傳動組</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>確認遙控器電源開啟</div>
+        <p class="current-task">手動確認馬達動力傳動組</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="go('water_3')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('建議：更換馬達動力傳動組。')">NO</button>
+            <button class="btn btn-yes" onclick="go('water_3')">正常 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：確認壞掉，請更換零件。 (參考 <a href=\'sop07.html\' class=\'sop-link\'>SOP07</a>)')">故障 (NO)</button>
         </div>
     </div>
     <div id="water_3" class="step-card">
-        <p>確認水柱/水霧馬達接線</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>確認馬達動力傳動組</div>
+        <p class="current-task">確認水柱/水霧馬達接線</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成水柱/水霧切換。')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('診斷：水柱/水霧馬達線路異常。')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：完成水柱/水霧切換')">正常 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('診斷：線路異常，請重新接線')">異常 (NO)</button>
         </div>
     </div>
 
     <div id="v_move" class="step-card">
-        <p>手動調整至上/下死點，並確認近接開關燈號</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>主選單</div>
+        <p class="current-task">手動調整至上/下死點，並確認近接開關燈號</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成砲塔垂直作動。')">YES</button>
-            <button class="btn btn-no" onclick="go('v_move_2')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：完成砲塔垂直作動')">燈號亮起 (YES)</button>
+            <button class="btn btn-no" onclick="go('v_move_2')">燈號未亮 (NO)</button>
         </div>
     </div>
     <div id="v_move_2" class="step-card">
-        <p>查修線路</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>手動調整死點確認燈號</div>
+        <p class="current-task">查修線路</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成砲塔垂直作動。')">YES</button>
-            <button class="btn btn-no" onclick="go('v_move_3')">NO</button>
-        </div>
-    </div>
-    <div id="v_move_3" class="step-card">
-        <p>更換近接開關</p>
-        <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成砲塔垂直作動。')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('診斷：更換近接開關無效，需進階檢查垂直作動機構。')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：完成砲塔垂直作動')">恢復正常 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：更換近接開關。 (參考 <a href=\'sop12.html\' class=\'sop-link\'>SOP12</a>)')">仍不正常 (NO)</button>
         </div>
     </div>
 
     <div id="h_move" class="step-card">
-        <p>手動調整砲塔瞄子至中心位子</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>主選單</div>
+        <p class="current-task">手動調整砲塔瞄子至中心位子，確認限位開關狀態</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成砲塔水平作動。')">YES</button>
-            <button class="btn btn-no" onclick="go('h_move_2')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：完成砲塔水平作動')">正常 (YES)</button>
+            <button class="btn btn-no" onclick="go('h_move_2')">異常 (NO)</button>
         </div>
     </div>
     <div id="h_move_2" class="step-card">
-        <p>查修線路</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>調整中心位子確認限位開關</div>
+        <p class="current-task">查修線路</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成砲塔水平作動。')">YES</button>
-            <button class="btn btn-no" onclick="go('h_move_3')">NO</button>
-        </div>
-    </div>
-    <div id="h_move_3" class="step-card">
-        <p>更換限位開關</p>
-        <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成砲塔水平作動。')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('診斷：更換限位開關無效，需進階檢查水平作動機構。')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：完成砲塔水平作動')">恢復正常 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：更換限位開關。 (參考 <a href=\'sop11.html\' class=\'sop-link\'>SOP11</a>)')">仍不正常 (NO)</button>
         </div>
     </div>
 
     <div id="control" class="step-card">
-        <p>確認機器人/遙控器電源是否開啟</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>主選單</div>
+        <p class="current-task">確認機器人/遙控器電源是否開啟</p>
         <div class="btn-group">
             <button class="btn btn-yes" onclick="go('control_2')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('請先開啟機器人/遙控器電源。')">NO</button>
+            <button class="btn btn-no" onclick="showEnd('診斷建議：請先開啟電源')">NO</button>
         </div>
     </div>
     <div id="control_2" class="step-card">
-        <p>重新校正遙控器</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>確認電源開啟</div>
+        <p class="current-task">重新校正遙控器</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('正常操控機器人。')">YES</button>
-            <button class="btn btn-no" onclick="go('control_3')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：正常操控機器人')">恢復正常 (YES)</button>
+            <button class="btn btn-no" onclick="go('control_3')">仍無法操控 (NO)</button>
         </div>
     </div>
     <div id="control_3" class="step-card">
-        <p>狀態顯示表電壓顯示電量</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>重新校正遙控器</div>
+        <p class="current-task">狀態顯示表電壓顯示電量</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="go('control_4')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('診斷：電量顯示異常，檢查電源線路。')">NO</button>
+            <button class="btn btn-yes" onclick="go('control_4')">有顯示 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：更換 FRT 狀態顯示器線組。 (參考 <a href=\'sop10.html\' class=\'sop-link\'>SOP10</a>)')">無顯示 (NO)</button>
         </div>
     </div>
     <div id="control_4" class="step-card">
-        <p>更換FRT狀態顯示器線組</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>檢查顯示表電壓</div>
+        <p class="current-task">更換馬達驅動器</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('正常操控機器人。')">YES</button>
-            <button class="btn btn-no" onclick="go('control_5')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：正常操控機器人')">恢復正常 (YES)</button>
+            <button class="btn btn-no" onclick="go('control_5')">仍不正常 (NO)</button>
         </div>
     </div>
     <div id="control_5" class="step-card">
-        <p>更換馬達驅動器</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>更換馬達驅動器</div>
+        <p class="current-task">更換馬達及出口線測試</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('正常操控機器人。')">YES</button>
-            <button class="btn btn-no" onclick="go('control_6')">NO</button>
-        </div>
-    </div>
-    <div id="control_6" class="step-card">
-        <p>更換馬達及出口線測試</p>
-        <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('正常操控機器人。')">YES</button>
-            <button class="btn btn-no" onclick="go('control_7')">NO</button>
-        </div>
-    </div>
-    <div id="control_7" class="step-card">
-        <p>更換底盤控制盒</p>
-        <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('正常操控機器人。')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('最後手段：執行 治具測試。')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：正常操控機器人')">恢復正常 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：更換底盤控制盒 (參考 <a href=\'sop13.html\' class=\'sop-link\'>SOP13</a>)，若仍無效請執行 <b>治具測試</b>')">仍不正常 (NO)</button>
         </div>
     </div>
 
     <div id="video" class="step-card">
-        <p>鏡頭燈號確認 / 平板頻道確認 / 移動式行動裝置確認影像</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>主選單</div>
+        <p class="current-task">鏡頭燈號確認 / 平板頻道確認 / 行動裝置影像確認</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成影像投影。')">YES</button>
-            <button class="btn btn-no" onclick="go('video_2')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：完成影像投影')">正常 (YES)</button>
+            <button class="btn btn-no" onclick="go('video_2')">異常 (NO)</button>
         </div>
     </div>
     <div id="video_2" class="step-card">
-        <p>查修線路</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>燈號/頻道/裝置預檢</div>
+        <p class="current-task">查修線路</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成影像投影。')">YES</button>
-            <button class="btn btn-no" onclick="go('video_3')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：完成影像投影')">恢復正常 (YES)</button>
+            <button class="btn btn-no" onclick="go('video_3')">仍無影像 (NO)</button>
         </div>
     </div>
     <div id="video_3" class="step-card">
-        <p>更換IO控制盒</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>影像線路查修</div>
+        <p class="current-task">更換 IO 控制盒</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成影像投影。')">YES</button>
-            <button class="btn btn-no" onclick="go('video_4')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：完成影像投影')">恢復正常 (YES)</button>
+            <button class="btn btn-no" onclick="go('video_4')">仍無影像 (NO)</button>
         </div>
     </div>
     <div id="video_4" class="step-card">
-        <p>產品工程師IP確認</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>更換 IO 控制盒</div>
+        <p class="current-task">產品工程師 IP 確認</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成影像投影。')">YES</button>
-            <button class="btn btn-no" onclick="go('video_5')">NO</button>
-        </div>
-    </div>
-    <div id="video_5" class="step-card">
-        <p>更換影像主機</p>
-        <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成影像投影。')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('影像無法呈現，請檢查鏡頭硬體損壞狀況。')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：完成影像投影')">確認正常 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：更換 <b>博遠主機</b>')">確認異常 (NO)</button>
         </div>
     </div>
 
-    <div id="gas_data" class="step-card">
-        <p>五用氣體數據回傳確認</p>
+    <div id="gas" class="step-card">
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>主選單</div>
+        <p class="current-task">檢查濾管/濾嘴/濾綿</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('數據回傳確認完成。')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('數據未回傳，請確認氣體偵測儀異常路徑。')">NO</button>
-        </div>
-    </div>
-
-    <div id="gas_detector" class="step-card">
-        <p>檢查濾管/濾嘴/濾綿</p>
-        <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('正常偵測氣體。')">YES</button>
-            <button class="btn btn-no" onclick="go('gas_2')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：正常偵測氣體')">恢復正常 (YES)</button>
+            <button class="btn btn-no" onclick="go('gas_2')">仍不正常 (NO)</button>
         </div>
     </div>
     <div id="gas_2" class="step-card">
-        <p>檢查五用氣體偵測儀電量</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>檢查濾管/濾綿</div>
+        <p class="current-task">檢查五用氣體偵測儀電量</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('正常傳輸參數。')">YES</button>
-            <button class="btn btn-no" onclick="go('gas_3')">NO</button>
+            <button class="btn btn-yes" onclick="go('gas_3')">電量充沛 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：請先將儀器充飽電')">電量不足 (NO)</button>
         </div>
     </div>
     <div id="gas_3" class="step-card">
-        <p>檢查手機WIFI連線狀況</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>檢查儀器電量</div>
+        <p class="current-task">檢查手機 WIFI 與遙控箱平板連線狀況</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('正常偵測氣體。')">YES</button>
-            <button class="btn btn-no" onclick="go('gas_4')">NO</button>
-        </div>
-    </div>
-    <div id="gas_4" class="step-card">
-        <p>檢查遙控箱平板連線狀況</p>
-        <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('正常傳輸參數。')">YES</button>
-            <button class="btn btn-no" onclick="go('gas_5')">NO</button>
-        </div>
-    </div>
-    <div id="gas_5" class="step-card">
-        <p>更換IO控制盒</p>
-        <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('五用氣體偵測儀正常充電。')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('氣體偵測異常，需更換氣體偵測儀。')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：正常傳輸參數')">連線正常 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：更換 IO 控制盒 (參考 <a href=\'sop14.html\' class=\'sop-link\'>SOP14</a>)。若正常充電即完成')">連線異常 (NO)</button>
         </div>
     </div>
 
     <div id="light" class="step-card">
-        <p>確認遙控器開啟方式</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>主選單</div>
+        <p class="current-task">確認遙控器開啟方式 (搖頭開關向左開啟)</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成車燈開啟。')">YES</button>
-            <button class="btn btn-no" onclick="go('light_2')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：完成車燈開啟')">開啟成功 (YES)</button>
+            <button class="btn btn-no" onclick="go('light_2')">仍不會亮 (NO)</button>
         </div>
     </div>
     <div id="light_2" class="step-card">
-        <p>查修線路(A-圓燈)/(B-方燈)</p>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>確認遙控器開關操作</div>
+        <p class="current-task">查修線路 (A-圓燈/B-方燈)</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成車燈開啟。')">YES</button>
-            <button class="btn btn-no" onclick="go('light_3')">NO</button>
-        </div>
-    </div>
-    <div id="light_3" class="step-card">
-        <p>更換圓燈/方燈</p>
-        <div class="btn-group">
-            <button class="btn btn-yes" onclick="showEnd('完成車燈開啟。')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('車燈組件異常，請更換零件。')">NO</button>
+            <button class="btn btn-yes" onclick="showEnd('診斷結果：完成車燈開啟')">恢復正常 (YES)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：更換圓燈或方燈。 (參考 <a href=\'sop09.html\' class=\'sop-link\'>SOP09</a>)')">仍不正常 (NO)</button>
         </div>
     </div>
 
@@ -279,7 +245,7 @@
         </div>
         <div class="btn-group">
             <button class="btn" onclick="location.reload()">🔄 重新診斷</button>
-            <button class="btn" onclick="go('start')">🏠 返回主選單</button>
+            <button class="btn" onclick="go('start')">🏠 返回選單</button>
         </div>
     </div>
 </div>
