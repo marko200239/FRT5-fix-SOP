@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>SOP-07 馬達動力傳動組更換</title>
-    
-
-
 
 <style>
     :root {
@@ -59,55 +56,58 @@
     img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
 </style>
 
-
-
-
 </head>
 <body>
-    <div class="header"><h1>SOP-07：馬達動力傳動組更換</h1></div>
+    <div class="container">
+        <h1>SOP-07：馬達動力傳動組更換</h1>
 
-    <div class="info-card">
-        <strong>故障描述：</strong> 無法切換水柱 / 水霧<br>
-        <strong>原因分析：</strong> 螺桿損壞<br><br>
-        <table>
-            <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
-            <tr><td>一般工具</td><td>六角板手組、一字起子</td><td>-</td></tr>
-            <tr><td>零組件</td><td>馬達動力傳動組 (393070003/002)</td><td>817E 或 855E / 1 組</td></tr>
-            <tr><td>螺絲備件</td><td>圓頭內六角螺絲</td><td>M6x16 (2顆)、M8x16 (1顆)</td></tr>
-        </table>
+        <div class="info-card">
+            <strong>故障描述：</strong> 無法切換水柱/水霧<br>
+            <strong>原因分析：</strong> 螺桿損壞<br><br>
+            <table>
+                <tr><th>項目</th><th>品名 / 料號</th><th>數量</th></tr>
+                <tr><td>一般工具</td><td>六角板手組、一字起子</td><td>-</td></tr>
+                <tr><td>零組件</td><td>馬達動力傳動組 (393070003/393070002)</td><td>1 組</td></tr>
+            </table>
+        </div>
+
+        <div class="step-card">
+            <strong>1. 故障判斷</strong>
+            操作遙控器切換水柱/水霧時，若只有馬達聲且無動作，可用手嘗試拉動瞄子（如圖1箭頭方向）。若能輕易拉動，代表螺桿已斷裂，需進行更換。
+            <div class="image-group">
+                <div class="image-box"><img src="images/sop07_01.jpg"><p>圖 1：手動測試瞄子是否斷裂</p></div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <strong>2. 拆卸瞄子固定螺絲</strong>
+            使用六角板手將瞄子上的固定螺絲 ①（M6x16）及固定座螺絲 ②（M8x16）拆卸下來。
+            <span class="tool-info">🔧 工具：六角板手組</span>
+            <div class="image-group">
+                <div class="image-box"><img src="images/sop07_02.jpg"><p>圖 2：拆卸固定螺絲 ① 與 ②</p></div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <strong>3. 拆卸馬達螺桿</strong>
+            使用六角板手將馬達上的四根螺桿拆卸下來。
+            <span class="tool-info">🔧 工具：六角板手組</span>
+            <div class="image-group">
+                <div class="image-box"><img src="images/sop07_03.jpg"><p>圖 3：拆卸馬達上的四根螺桿</p></div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <strong>4. 線路拆卸與更換</strong>
+            使用一字起子拆卸馬達動力傳動組的電控線路，並換上新的馬達動力傳動組。
+            <span class="tool-info">🔧 工具：一字起子</span>
+            <div class="image-group">
+                <div class="image-box"><img src="images/sop07_04.jpg"><p>圖 4：拆卸電控線路</p></div>
+                <div class="image-box"><img src="images/sop07_05.jpg"><p>圖 5：更換新品並復原</p></div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
     </div>
-
-    <h3>🔍 故障初步判定</h3>
-    <div class="check-box">
-        <strong>檢測動作：</strong> 遙控切換時若只有馬達聲，但噴頭無動作。<br>
-        <strong>手動確認：</strong> 用手嘗試拉動瞄子，若<strong>可以輕易拉動</strong>，則確認為螺桿斷裂，需執行更換。
-    </div>
-
-    
-
-    <h3>🛠️ 維修流程</h3>
-    <div class="step">
-        <strong>步驟 1：拆卸固定螺絲</strong><br>
-        使用六角板手將瞄子上的固定螺絲 (M6x16, 2顆) 及固定座螺絲 (M8x16, 1顆) 拆卸下來。
-    </div>
-
-    <div class="step">
-        <strong>步驟 2：拆卸馬達螺桿</strong><br>
-        使用六角板手將馬達上方的四根螺桿拆卸，並將舊的動力傳動組取下。
-    </div>
-
-    
-
-    <div class="step">
-        <strong>步驟 3：安裝新品</strong><br>
-        將新的馬達動力傳動組裝回，依序鎖回馬達螺桿與瞄子固定螺絲。
-    </div>
-
-    <div class="step">
-        <strong>步驟 4：功能測試</strong><br>
-        開機並透過遙控器切換水柱/水霧模式，確認噴頭伸縮自如且無異音。
-    </div>
-
-    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
 </body>
 </html>
