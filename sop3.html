@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>SOP-03 影像故障排除</title>
-    
-
-
 
 <style>
     :root {
@@ -59,44 +56,49 @@
     img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
 </style>
 
-
-
-
 </head>
 <body>
-    <div class="header"><h1>SOP-03：影像故障排除</h1></div>
+    <div class="container">
+        <div class="header"><h1>SOP-03：影像故障排除</h1></div>
 
-    <div class="info-card">
-        <strong>故障描述：</strong> 平板無法觀看影像<br>
-        <strong>原因分析：</strong> 頻道未勾選、網路訊號不佳、或硬體斷線
+        <div class="info-card">
+            <strong>故障描述：</strong> 平板影像無法觀看影像<br>
+            <strong>原因分析：</strong> 頻道未勾選，網路訊號不好<br><br>
+            <table>
+                <tr><th>項目</th><th>內容</th></tr>
+                <tr><td>一般工具</td><td>無</td></tr>
+                <tr><td>零組件</td><td>遙控箱、機器人本體</td></tr>
+            </table>
+        </div>
+
+        <h3>一、頻道勾選與網路訊號檢查</h3>
+        <div class="step">
+            <strong>1. 頻道檢查：</strong><br>
+            觀察 App 有無 ch1~ch3 畫面。若無，請點擊右上角三個點進入頻道勾選。
+            <img src="images/sop03_01.jpg">
+            <img src="images/sop03_02.jpg">
+        </div>
+        <div class="step">
+            <strong>2. 訊號觀察：</strong><br>
+            觀察可見光畫面右上方數值，若數值過低請移動機器人。
+            <img src="images/sop03_03.jpg">
+        </div>
+
+        <h3>二、燈號狀態判斷</h3>
+        <div class="step">
+            <strong>指示燈檢查：</strong><br>
+            觀察鏡頭有無亮紅燈，或熱顯鏡頭後方指示燈狀態。
+            <table>
+                <tr><th>LED 指示燈狀態</th><th>說明</th></tr>
+                <tr><td>藍燈閃爍</td><td>工作正常</td></tr>
+                <tr><td>粉紅色燈穩定亮起</td><td>正在啟動</td></tr>
+                <tr><td>紅燈穩定亮起</td><td>熱像儀故障</td></tr>
+                <tr><td>綠燈閃爍</td><td>已連接到網路</td></tr>
+                <tr><td>無燈號</td><td>未連接至網路</td></tr>
+            </table>
+        </div>
+
+        <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
     </div>
-
-    <div class="scenario">
-        <h3>情境 A：頻道未勾選</h3>
-        <p>1. 觀察遙控箱平板畫面 App 是否有 CH1、CH2、CH3 畫面。</p>
-        <p>2. 若無畫面，點選畫面右上角「...」進入頻道。</p>
-        <p>3. 勾選所在分隊及頻道後退出，即可看到畫面。</p>
-    </div>
-
-    <div class="scenario">
-        <h3>情境 B：網路訊號不好</h3>
-        <p>1. 觀察可見光畫面中的網路訊號數值（數值越高訊號越好）。</p>
-        <p>2. 若數值過低，請將機器人移動至訊號良好處即可回復影像。</p>
-        <p>3. 可使用手機或筆電進行交叉確認。</p>
-    </div>
-
-    <div class="scenario">
-        <h3>情境 C：網路斷線 / 硬體檢查</h3>
-        <p>1. 觀察可見光鏡頭：若<strong>亮紅燈</strong>，請移至有訊號位置；若<strong>沒亮燈</strong>，參照電控盒更換步驟。</p>
-        <p>2. 熱顯像儀檢查：觀察後方 LED 燈號狀態：</p>
-        <table>
-            <tr><th>LED 狀態</th><th>說明</th></tr>
-            <tr><td class="led-status">藍燈閃爍</td><td>系統啟動中</td></tr>
-            <tr><td class="led-status">藍燈恆亮</td><td>系統運作正常</td></tr>
-            <tr><td class="led-status">紅燈 / 不亮</td><td>硬體故障，需檢查供電或連線</td></tr>
-        </table>
-    </div>
-
-    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
 </body>
 </html>
