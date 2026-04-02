@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>SOP-06 鉛酸電池更換</title>
-    
-
-
 
 <style>
     :root {
@@ -59,57 +56,73 @@
     img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
 </style>
 
-
-
-
 </head>
 <body>
-    <div class="header"><h1>SOP-06：鉛酸電池更換</h1></div>
+    <div class="container">
+        <h1>SOP-06：鉛酸電池更換</h1>
 
-    <div class="info-card">
-        <strong>故障描述：</strong> 蓄電量不足<br>
-        <strong>原因分析：</strong> 電池老化<br><br>
-        <table>
-            <tr><th>項目</th><th>品名 / 料號</th><th>規格 / 數量</th></tr>
-            <tr><td>特殊工具</td><td>油壓台車</td><td>1 台</td></tr>
-            <tr><td>一般工具</td><td>24號套筒、十字起子、六角板手組</td><td>-</td></tr>
-            <tr><td>零組件</td><td>鉛酸電池 (392060002)</td><td>KPH100-12AN / 4 顆</td></tr>
-            <tr><td>耗材</td><td>藍膠、熱熔膠</td><td>適量</td></tr>
-        </table>
+        <div class="info-card">
+            <strong>故障描述：</strong> 蓄電量不足 / <strong>原因分析：</strong> 電池老化<br>
+            <table>
+                <tr><th>項目</th><th>品名 / 料號</th><th>數量</th></tr>
+                <tr><td>特殊工具</td><td>油壓台車</td><td>1</td></tr>
+                <tr><td>一般工具</td><td>24號套筒、十字起子、六角板手組</td><td>-</td></tr>
+                <tr><td>零組件</td><td>鉛酸電池 KPH100-12AN (392060002)</td><td>4 個</td></tr>
+                <tr><td>耗材</td><td>藍膠、熱熔膠</td><td>適量</td></tr>
+            </table>
+        </div>
+
+        <div class="step-card">
+            <strong>1. 前置準備與線路保護</strong>
+            拆下上座固定螺絲(4顆)並解開快速夾具(4處)。將砲塔控制器電源線、底盤狀態訊號線收至底盤凹槽處，並將油壓台車放置於機器人後方。
+            <div class="warning-box">⚠️ 注意：底盤控制線須完全收至凹槽處，否則上下分離時容易將控制線損壞。</div>
+            <div class="image-group">
+                <div class="image-box"><img src="images/sop06_01.jpg"><p>圖 1：線路收納位置</p></div>
+                <div class="image-box"><img src="images/sop06_03.jpg"><p>圖 2：台車放置位置</p></div>
+                <div class="image-box"><img src="images/sop06_02.jpg"><p>圖 3：固定螺絲與夾具位置</p></div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <strong>2. 上下座分離</strong>
+            使用十字起子拆下上座平台固定底板螺絲(12顆)，並拆下底板。隨後將砲塔上座移至油壓台車上。
+            <span class="tool-info">🔧 工具：十字起子、油壓台車</span>
+            <div class="image-group">
+                <div class="image-box"><img src="images/sop06_04.jpg"><p>圖 4：上座移至台車示意</p></div>
+                <div class="image-box"><img src="images/sop06_05.jpg"><p>圖 5：底板螺絲位置</p></div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <strong>3. 拆卸電池固定支架與舊電池</strong>
+            使用六角板手拆卸電池固定壓條，並利用 24 號套筒拆下電池正負極螺栓。
+            <span class="tool-info">🔧 工具：六角板手組、24號套筒</span>
+            <div class="image-group">
+                <div class="image-box"><img src="images/sop06_06.jpg"><p>圖 6：電池壓條拆卸</p></div>
+                <div class="image-box"><img src="images/sop06_07.jpg"><p>圖 7：電池端子拆卸</p></div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <strong>4. 安裝新電池與接線</strong>
+            換上新電池，接線時螺栓須塗抹藍膠防止鬆動。
+            <div class="warning-box">⚠️ 注意：接線順序須正確，並確保端子緊固。</div>
+            <div class="image-group">
+                <div class="image-box"><img src="images/sop06_08.jpg"><p>圖 8：新電池放置</p></div>
+                <div class="image-box"><img src="images/sop06_09.jpg"><p>圖 9：螺栓塗抹藍膠</p></div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <strong>5. 復原與功能測試</strong>
+            將上座移回原位，鎖固底板螺絲、上座固定螺絲並扣緊夾具。最後使用熱熔膠加強線路固定。
+            <span class="tool-info">🔧 耗材：熱熔膠</span>
+            <div class="image-group">
+                <div class="image-box"><img src="images/sop06_10.jpg"><p>圖 10：復原鎖固確認</p></div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
     </div>
-
-    <h3>🛠️ 維修流程</h3>
-    
-    <div class="step">
-        <strong>步驟 1：分離前準備</strong><br>
-        1. 拆下上座固定螺絲(4顆)並解開快速夾具(4處)。<br>
-        2. 將砲塔控制器電源線、底盤訊號線收至底盤凹槽處。<br>
-        <div class="warning">⚠️ 注意：控制線須完全收至凹槽，否則分離時極易扯斷損壞！</div>
-    </div>
-
-    
-
-    <div class="step">
-        <strong>步驟 2：移除上座</strong><br>
-        1. 使用十字起子拆除底板螺絲(M4x10共12顆)。<br>
-        2. 將砲塔上座平移至油壓台車上存放。
-    </div>
-
-    <div class="step">
-        <strong>步驟 3：更換電池</strong><br>
-        1. 使用 24 號套筒拆除舊電池接頭螺絲。<br>
-        2. 換上 4 顆新電池，並於螺絲處點上<b>藍膠</b>防止鬆脫。<br>
-        3. 重新接回電池連線，並以<b>熱熔膠</b>加強固定接頭。
-    </div>
-
-    
-
-    <div class="step">
-        <strong>步驟 4：復原</strong><br>
-        1. 將砲塔上座移回底盤並鎖固底板與夾具。<br>
-        2. 確認線路接回並開機測試續航力。
-    </div>
-
-    <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
 </body>
 </html>
