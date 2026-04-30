@@ -44,7 +44,6 @@
         .blue-theme { border-left: 5px solid var(--blue); }
         .blue-theme .sop-number { color: var(--blue); }
 
-        /* 新增：底部導覽區塊樣式 */
         .footer-nav {
             text-align: center;
             margin-top: 50px;
@@ -92,6 +91,7 @@
     <input type="text" id="searchInput" onkeyup="searchSOP()" placeholder="🔍 搜尋零件或故障代碼...">
 
     <div class="sop-grid">
+        <!-- 原有 1-16 項保持不變 -->
         <a href="sop1.html" class="sop-card">
             <span class="sop-number">SOP-01</span>
             <span class="sop-title">灑水頭更換</span>
@@ -124,7 +124,6 @@
         </a>
         <a href="sop6.html" class="sop-card blue-theme">
             <span class="sop-number">SOP-06</span>
-            <span class="sop-number">鉛酸電池更換</span>
             <span class="sop-title">鉛酸電池更換</span>
             <span class="sop-fault">故障：蓄電不足、無法開機</span>
             <span class="category-tag">電力系統</span>
@@ -188,6 +187,44 @@
             <span class="sop-title">熱顯故障判斷</span>
             <span class="sop-fault">故障：畫面凍結、溫標異常</span>
             <span class="category-tag">影像系統</span>
+        </a>
+
+        <!-- 新增 SOP-17 至 SOP-22 -->
+        <a href="sop17.html" class="sop-card blue-theme">
+            <span class="sop-number">SOP-17</span>
+            <span class="sop-title">垂直馬達不動作檢測</span>
+            <span class="sop-fault">故障：瞄子無法上下移動、電阻異常</span>
+            <span class="category-tag">電控檢測</span>
+        </a>
+        <a href="sop18.html" class="sop-card">
+            <span class="sop-number">SOP-18</span>
+            <span class="sop-title">砲塔自動擺頭檢測</span>
+            <span class="sop-fault">故障：行走時砲塔自行轉動、齒輪間隙</span>
+            <span class="category-tag">機械與訊號</span>
+        </a>
+        <a href="sop19.html" class="sop-card">
+            <span class="sop-number">SOP-19</span>
+            <span class="sop-title">瞄子歪斜與鬆動處理</span>
+            <span class="sop-fault">故障：瞄子定位偏移、連接環鬆動</span>
+            <span class="category-tag">機械結構</span>
+        </a>
+        <a href="sop20.html" class="sop-card blue-theme">
+            <span class="sop-number">SOP-20</span>
+            <span class="sop-title">近接開關帶電判斷</span>
+            <span class="sop-fault">故障：限位失效、24V 訊號量測</span>
+            <span class="category-tag">電控檢測</span>
+        </a>
+        <a href="sop21.html" class="sop-card blue-theme">
+            <span class="sop-number">SOP-21</span>
+            <span class="sop-title">水柱水霧電路檢測</span>
+            <span class="sop-fault">故障：模式無法切換、遙控舵量異常</span>
+            <span class="category-tag">電控系統</span>
+        </a>
+        <a href="sop22.html" class="sop-card blue-theme">
+            <span class="sop-number">SOP-22</span>
+            <span class="sop-title">簡易模式馬達判斷</span>
+            <span class="sop-fault">故障：馬達三線接地測試、損壞判定</span>
+            <span class="category-tag">電控檢測</span>
         </a>
     </div>
 
