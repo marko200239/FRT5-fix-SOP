@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通用基本故障排除教學</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --card: #161616;
+            --green: #2ecc71;
+            --white: #ffffff;
+            --gray: #444;
+            --text-sub: #888;
+        }
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 40px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+        .header p {
+            color: var(--text-sub);
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+        .header::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--green);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+        }
+        /* 左側播放清單 */
+        .playlist {
+            background: var(--card);
+            border: 1px solid var(--gray);
+            border-radius: 12px;
+            padding: 20px;
+            height: fit-content;
+        }
+        .playlist-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--green);
+            padding-left: 10px;
+        }
+        .video-item {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 12px;
+            border: 1px solid transparent;
+            background: rgba(255,255,255,0.02);
+            transition: all 0.3s;
+        }
+        .video-item:hover {
+            background: rgba(46, 204, 113, 0.05);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .video-item.active {
+            background: rgba(46, 204, 113, 0.1);
+            border-color: var(--green);
+        }
+        .video-title {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .video-desc {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+        /* 右側播放器區塊 */
+        .player-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            height: 0;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gray);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .video-wrapper iframe, .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .current-info {
+            background: var(--card);
+            border: 1px solid var(--gray);
+            border-radius: 12px;
+            padding: 25px;
+        }
+        .current-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 0 15px 0;
+            color: var(--white);
+        }
+        .sop-list {
+            margin: 0;
+            padding-left: 20px;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .sop-list li {
+            margin-bottom: 8px;
+        }
+        .sop-list strong {
+            color: var(--green);
+        }
+        .back-btn {
+            margin-top: 50px;
+            color: #555;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            align-self: center;
+        }
+        .back-btn:hover {
+            color: var(--green);
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>基本故障排除教學</h1>
+            <p>通用基本故障檢查、量測與維護基礎影音指引</p>
+        </div>
+
+        <div class="main-content">
+            <div class="playlist">
+                <div class="playlist-title">教學章節清單</div>
+                
+                <div class="video-item active" onclick="changeVideo('https://www.youtube.com/embed/e0rRoLaSees?autoplay=1', '章節 1：遙控器校正標準操作指引', 1)">
+                    <span class="video-title">1. 遙控器校正指引</span>
+                    <span class="video-desc">演示遙控器搖桿中位標準校正流程</span>
+                </div>
+
+            </div>
+
+            <div class="player-section">
+                <div class="video-wrapper">
+                    <iframe id="videoPlayer" src="https://www.youtube.com/embed/e0rRoLaSees" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                
+                <div class="current-info">
+                    <h2 id="infoTitle" class="current-title">章節 1：遙控器校正標準操作指引</h2>
+                    <div id="infoContent">
+                        <ul class="sop-list">
+                            <li><strong>步驟 1：</strong>校正前，請務必先將<strong>機器人關機</strong>。</li>
+                            <li><strong>步驟 2：</strong>將遙控器左下角的<strong>黑色搖頭開關向右推</strong>。</li>
+                            <li><strong>步驟 3：</strong>同時按住遙控器最左側外邊的<strong>中間按鈕</strong>（F2 鍵），並<strong>按下電源鍵開機</strong>。</li>
+                            <li><strong>步驟 4：</strong>此時可以看到中央電量表開始<strong>綠燈閃爍</strong>，代表已進入校正模式。</li>
+                            <li><strong>步驟 5：</strong>將左側的<strong>行走搖桿</strong>向外推到底，順時針<strong>旋轉 3 圈</strong>，接著再逆時針<strong>旋轉 3 圈</strong>。</li>
+                            <li><strong>步驟 6：</strong>完成旋轉後<strong>放開搖桿</strong>，讓其自然彈回中心位置。</li>
+                            <li><strong>步驟 7：</strong>再次將左下角的<strong>黑色搖頭開關向右推</strong>，並同時按下遙控器最左側最下方的<strong>確認按鈕</strong>。</li>
+                            <li><strong>步驟 8：</strong>中央電量表綠燈恢復常亮，即完成標準校正程序。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="video_menu.html" class="back-btn">⬅ 返回機型教學目錄</a>
+
+    <script>
+        // 預先定義好各章節的文字內容
+        const sopContents = {
+            1: `<ul class="sop-list">
+                    <li><strong>步驟 1：</strong>校正前，請務必先將<strong>機器人關機</strong>。</li>
+                    <li><strong>步驟 2：</strong>將遙控器左下角的<strong>黑色搖頭開關向右推</strong>。</li>
+                    <li><strong>步驟 3：</strong>同時按住遙控器最左側外邊的<strong>中間按鈕</strong>，並<strong>按下電源鍵開機</strong>。</li>
+                    <li><strong>步驟 4：</strong>此時可以看到中央電量表開始<strong>綠燈閃爍</strong>，代表已進入校正模式。</li>
+                    <li><strong>步驟 5：</strong>將左側的<strong>行走搖桿</strong>向外推到底，順時針<strong>旋轉 3 圈</strong>，接著再逆時針<strong>旋轉 3 圈</strong>。</li>
+                    <li><strong>步驟 6：</strong>完成旋轉後<strong>放開搖桿</strong>，讓其自然彈回中心位置。</li>
+                    <li><strong>步驟 7：</strong>再次將左下角的<strong>黑色搖頭開關向右推</strong>，並同時按下遙控器最左側最下方的<strong>確認按鈕</strong>。</li>
+                    <li><strong>步驟 8：</strong>中央電量表綠燈恢復常亮，即完成標準校正程序。</li>
+                </ul>`,
+                  function changeVideo(videoSrc, title, chapterId) {
+            // 切換點選項目的 active 樣式
+            document.querySelectorAll('.video-item').forEach((item, index) => {
+                if(index === chapterId - 1) item.classList.add('active');
+                else item.classList.remove('active');
+            });
+
+            // 更新播放器來源
+            document.getElementById('videoPlayer').src = videoSrc;
+
+            // 更新標題與內容
+            document.getElementById('infoTitle').innerText = title;
+            document.getElementById('infoContent').innerHTML = sopContents[chapterId];
+        }
+    </script>
+</body>
+</html>
