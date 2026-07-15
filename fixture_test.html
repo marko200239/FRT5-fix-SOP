@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRT 動力測試治具操作指引</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #161616;
+            --accent-red: #ff4d4d;
+            --accent-blue: #00d2ff;
+            --accent-green: #2ecc71;
+            --text-main: #ffffff;
+            --text-sub: #888888;
+            --border: #333333;
+        }
+        body { font-family: 'Segoe UI', "Microsoft JhengHei", sans-serif; background: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 750px; margin-top: 20px; display: flex; flex-direction: column; }
+        .header { border-left: 5px solid var(--accent-blue); padding-left: 20px; margin-bottom: 30px; }
+        .header h1 { font-size: 2rem; margin: 0; letter-spacing: 1px; }
+        .header p { color: var(--text-sub); margin-top: 5px; font-size: 0.95rem; }
+        
+        .mode-selector { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 30px; }
+        .mode-btn { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 10px; color: white; text-align: left; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; }
+        .mode-btn:hover { border-color: var(--accent-blue); box-shadow: 0 5px 20px rgba(0, 210, 255, 0.15); transform: translateY(-2px); }
+        .mode-btn h3 { margin: 0 0 5px 0; font-size: 1.2rem; color: #fff; }
+        .mode-btn p { margin: 0; font-size: 0.85rem; color: var(--text-sub); }
+        .mode-btn::after { content: "START →"; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 0.85rem; font-weight: bold; color: var(--accent-blue); opacity: 0.7; }
+
+        .test-flow-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 30px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .test-flow-card.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .flow-title { font-size: 1.3rem; font-weight: bold; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 15px; color: var(--accent-blue); display: flex; justify-content: space-between; align-items: center; }
+        .step-indicator { font-size: 0.85rem; background: rgba(0, 210, 255, 0.1); color: var(--accent-blue); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(0, 210, 255, 0.3); }
+        
+        .step-content { font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; }
+        .step-content strong { color: var(--accent-blue); }
+        
+        .danger-box { background: rgba(255, 77, 77, 0.05); border: 1px solid var(--accent-red); border-left: 5px solid var(--accent-red); padding: 15px 20px; border-radius: 6px; margin: 20px 0; font-size: 1rem; color: #ff9999; }
+        .danger-box strong { color: var(--accent-red) !important; font-size: 1.1rem; }
+        
+        .check-box { background: rgba(46, 204, 113, 0.05); border: 1px solid var(--accent-green); border-left: 5px solid var(--accent-green); padding: 15px 20px; border-radius: 6px; margin: 20px 0; }
+        .check-box span { display: block; font-weight: bold; color: var(--accent-green); margin-bottom: 5px; }
+
+        .image-container { width: 100%; max-width: 100%; margin-bottom: 25px; text-align: center; background: #222; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 150px; }
+        .image-container img { width: 100%; height: auto; max-height: 400px; object-fit: contain; display: block; }
+
+        .btn-group { display: flex; gap: 15px; justify-content: flex-end; margin-top: 20px; }
+        .btn { padding: 12px 24px; font-size: 0.95rem; font-weight: bold; border-radius: 6px; border: none; cursor: pointer; transition: 0.2s; }
+        .btn-next { background: var(--accent-blue); color: #000; }
+        .btn-next:hover { background: #00b4dc; box-shadow: 0 0 10px rgba(0,210,255,0.4); }
+        .btn-prev { background: #2a2a2a; color: var(--text-sub); border: 1px solid #444; }
+        .btn-prev:hover { background: #333; color: #fff; }
+        .btn-home { background: transparent; color: var(--text-sub); border: 1px solid var(--border); width: 100%; margin-top: 30px; padding: 12px; cursor: pointer; transition: 0.3s; }
+        .btn-home:hover { color: #fff; border-color: #666; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="main-header" class="header">
+        <h1>FRT 動力測試治具操作指引</h1>
+        <p>請選擇您要進行的治具測試項目，依標準流程逐步進行查驗。</p>
+    </div>
+
+    <div id="menu" class="mode-selector">
+        <button class="mode-btn" onclick="startTest('driver')">
+            <h3>一、測試馬達驅動器功能</h3>
+            <p>目的：模擬產生驅動器控制訊號，驗證參數寫入與功能是否正常。</p>
+        </button>
+        <button class="mode-btn" onclick="startTest('motor')">
+            <h3>二、測試馬達及電磁煞車功能</h3>
+            <p>目的：使用外部供電與假負載線，排查馬達與煞車線圈動作狀態。</p>
+        </button>
+        <button class="mode-btn" onclick="startTest('controller')">
+            <h3>三、測試底盤控制器動力訊號</h3>
+            <p>目的：串接車體與治具，確認底盤控制板輸出的動力指令訊號。</p>
+        </button>
+    </div>
+
+    <div id="flow-card" class="test-flow-card">
+        <div class="flow-title">
+            <span id="flow-name">測試項目</span>
+            <span id="step-idx" class="step-indicator">STEP 1</span>
+        </div>
+
+        <div class="image-container" id="image-box"></div>
+
+        <div id="step-txt" class="step-content"></div>
+
+        <div class="btn-group">
+            <button id="prev-btn" class="btn btn-prev" onclick="prevStep()">上一步</button>
+            <button id="next-btn" class="btn btn-next" onclick="nextStep()">下一步</button>
+        </div>
+    </div>
+
+    <button id="home-btn" class="btn btn-home" style="display:none;" onclick="resetToMenu()">🏠 返回治具項目選單</button>
+</div>
+
+<script>
+    const testData = {
+        driver: {
+            name: "測試馬達驅動器功能",
+            steps: [
+                {
+                    text: "<strong>步驟 1：開啟遙控器並完成對頻</strong><br>打開遙控器之後按下測試治具電源鍵。第一次連接遙控器需進行配對，直至治具上<strong>配對狀態指示燈顯示為紅燈常亮</strong>。<br><br>⚠️ <strong>切勿讓藍燈亮起</strong>（配對過程若手指彈跳可能誤入異常模式），若藍燈亮起只需<strong>再快按兩次配對鍵</strong>即可讓藍燈熄滅。",
+                    img: "images/fixture_step1.jpg"
+                },
+                {
+                    text: "<strong>步驟 2：切換治具控制權並關電</strong><br>將測試治具上的<strong>搖頭開關分別切至左側</strong>，表示油門及高低速的控制權已切換至治具端。<br><br>⚙️ 全部設定完畢後，<strong>先將治具電源關閉</strong>，避免後續接線動作接錯導致短路風險（此時遙控器先不用關機）。",
+                    img: "images/fixture_step2.jpg"
+                },
+                {
+                    text: "<strong>步驟 3：連接鱷魚夾與假負載（🚨絕對警告）</strong><br>將測試治具的鱷魚夾分別連接至待測馬達驅動器之 B+、B-、M+、M-。<br><br><div class='danger-box'><strong>🔥 切勿接錯，接錯必燒控制器：</strong><br>1. 線材<strong>帶保險絲的</strong>必須接馬達驅動器之 <strong>B+、B-</strong>（紅色接 B+，黑色接 B-）。<br>2. <strong>切勿將帶保險絲的線接至 M+、M-</strong>。<br>3. 另一條沒接保險絲的連接 M+、M-（顏色不分）。</div>在 M+、M- 上再連接<strong>馬達假負載線</strong>，之後將 14Pin 訊號線連上馬達控制器，並連接 2Pin 電磁煞車訊號線。",
+                    img: "images/fixture_step3.jpg"
+                },
+                {
+                    text: "<strong>步驟 4：觀測電表數據與判定</strong><br>開啟治具電源。操作遙控器左側搖桿<strong>往上推到底</strong>，分別觀察治具上的兩顆電表。<br><br><div class='check-box'><span>🔍 正常數據判定標準：</span>• <strong>左側電壓表：</strong>應顯示接近 <strong>24V 或 -24V</strong> 的電壓。<br>• <strong>右側電流表：</strong>應顯示接近 <strong>10A</strong> 的電流數值。<br>• 滿足上述兩者，即代表待測馬達驅動器參數寫入與輸出功能皆正常.</div>",
+                    img: "images/fixture_step4.jpg"
+                }
+            ]
+        },
+        motor: {
+            name: "測試馬達及電磁煞車功能",
+            steps: [
+                {
+                    text: "<strong>步驟 1：外觀巡檢與初始設定</strong><br>將治具上的搖頭開關分別<strong>切至右側</strong>（控制權切至外部/車體端），並確保治具與車體電源在接線前處於關閉狀態。",
+                    img: "images/fixture_step2.jpg"
+                },
+                {
+                    text: "<strong>步驟 2：馬達假負載與驅動器接線</strong><br>將治具的動力線束與待測馬達及電磁煞車對接。將<strong>馬達假負載線</strong>正確串聯在 M+ 與 M- 輸出端，以建立安全的量測迴路。",
+                    img: "images/fixture_step3.jpg"
+                },
+                {
+                    text: "<strong>步驟 3：施加訊號與電磁煞車觀測</strong><br>開啟系統電源，發送行走指令。仔細聆聽並觀察馬達端：<br><br><div class='check-box'><span>🔍 煞車與動力判定標準：</span>1. <strong>電磁煞車：</strong>是否發出清晰的「喀嗒」解鎖聲。<br>2. <strong>馬達輸出：</strong>觀察治具電表，確認是否有穩定的電流與電壓灌入馬達，履帶傳動或轉子有無順暢運轉。</div>",
+                    img: "images/fixture_step4.jpg"
+                }
+            ]
+        },
+        controller: {
+            name: "測試底盤控制器動力訊號",
+            steps: [
+                {
+                    text: "<strong>步驟 1：串接 14Pin 控制訊號線</strong><br>將底盤控制器的動力控制訊號端，透過治具專用的 <strong>14Pin 訊號測試線</strong>與治具進行對接。此動作可以截取底盤發出的原生命令訊號。",
+                    img: "images/fixture_step3.jpg"
+                },
+                {
+                    text: "<strong>步驟 2：讀取通訊或類比控制電壓</strong><br>開啟全車電源，由遙控端或自動駕駛端發出行走/轉向指令，直接讀取治具端所顯示的訊號回饋。<br><br><div class='check-box'><span>🔍 控制控制器訊號判定：</span>確認治具量測到的指令電壓（或訊號燈號）是否隨著搖桿推移而產生相應的線性變化。若無訊號，則底盤控制器控制前端輸出損壞。</div>",
+                    img: "images/fixture_step4.jpg"
+                }
+            ]
+        }
+    };
+
+    let currentMode = "";
+    let currentStepIdx = 0;
+
+    function startTest(mode) {
+        currentMode = mode;
+        currentStepIdx = 0;
+        document.getElementById('menu').style.display = 'none';
+        document.getElementById('main-header').style.display = 'none';
+        document.getElementById('flow-card').classList.add('active');
+        document.getElementById('home-btn').style.display = 'block';
+        updateStepUI();
+    }
+
+    function updateStepUI() {
+        const data = testData[currentMode];
+        const step = data.steps[currentStepIdx];
+        
+        document.getElementById('flow-name').innerText = data.name;
+        document.getElementById('step-idx').innerText = `STEP ${currentStepIdx + 1} / ${data.steps.length}`;
+        document.getElementById('step-txt').innerHTML = step.text;
+        
+        document.getElementById('image-box').innerHTML = `<img src="${step.img}" alt="SOP操作示意圖" onerror="this.onerror=null; this.parentNode.innerHTML='<span style=\'color:#666; font-size:0.9rem;\'>【📸 尚未上傳圖片或圖檔名稱錯誤：${step.img}】</span>';">`;
+
+        document.getElementById('prev-btn').style.visibility = (currentStepIdx === 0) ? 'hidden' : 'visible';
+        
+        const nextBtn = document.getElementById('next-btn');
+        if (currentStepIdx === data.steps.length - 1) {
+            nextBtn.innerText = "完成測試";
+            nextBtn.style.background = 'var(--accent-green)';
+        } else {
+            nextBtn.innerText = "下一步";
+            nextBtn.style.background = 'var(--accent-blue)';
+        }
+    }
+
+    function nextStep() {
+        const data = testData[currentMode];
+        if (currentStepIdx < data.steps.length - 1) {
+            currentStepIdx++;
+            updateStepUI();
+        } else {
+            alert("該項目測試指引已全部完成！辛苦了。");
+            resetToMenu();
+        }
+    }
+
+    function prevStep() {
+        if (currentStepIdx > 0) {
+            currentStepIdx--;
+            updateStepUI();
+        }
+    }
+
+    function resetToMenu() {
+        document.getElementById('menu').style.display = 'grid';
+        document.getElementById('main-header').style.display = 'block';
+        document.getElementById('flow-card').classList.remove('active');
+        document.getElementById('home-btn').style.display = 'none';
+    }
+</script>
+</body>
+</html>
