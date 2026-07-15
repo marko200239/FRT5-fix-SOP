@@ -11,6 +11,7 @@
             --accent-red: #ff4d4d;
             --accent-blue: #00d2ff;
             --accent-green: #2ecc71;
+            --accent-yellow: #ffcc00; /* 🆕 新增黃色變數 */
             --text-main: #ffffff;
             --text-sub: #888888;
             --border: #333333;
@@ -53,8 +54,33 @@
         .btn-next:hover { background: #00b4dc; box-shadow: 0 0 10px rgba(0,210,255,0.4); }
         .btn-prev { background: #2a2a2a; color: var(--text-sub); border: 1px solid #444; }
         .btn-prev:hover { background: #333; color: #fff; }
+        
         .btn-home { background: transparent; color: var(--text-sub); border: 1px solid var(--border); width: 100%; margin-top: 30px; padding: 12px; cursor: pointer; transition: 0.3s; }
         .btn-home:hover { color: #fff; border-color: #666; }
+
+        /* 🆕 修改：顯眼的黃框返回主門戶按鈕樣式 */
+        .back-portal-btn { 
+            display: block; 
+            text-align: center; 
+            margin-top: 50px; 
+            padding: 15px;
+            border: 1px dashed var(--accent-yellow); /* 質感的黃色虛線框 */
+            border-radius: 8px;
+            background: rgba(255, 204, 0, 0.03); /* 極輕微的黃色背景 */
+            color: var(--accent-yellow); 
+            text-decoration: none; 
+            font-size: 1rem; 
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease; 
+        }
+        .back-portal-btn:hover { 
+            border-style: solid; /* 滑鼠懸停時轉為實線 */
+            background: rgba(255, 204, 0, 0.1); 
+            box-shadow: 0 5px 20px rgba(255, 204, 0, 0.15); /* 黃色光暈效果 */
+            transform: translateY(-2px);
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -97,6 +123,9 @@
     </div>
 
     <button id="home-btn" class="btn btn-home" style="display:none;" onclick="resetToMenu()">🏠 返回治具項目選單</button>
+
+    <!-- 🌟 更新：顯眼的黃色外框返回按鈕 -->
+    <a id="portal-btn" href="index.html" class="back-portal-btn">⬅ 返回主門戶（機型教學目錄）</a>
 </div>
 
 <script>
@@ -147,7 +176,7 @@
                     img: "images/fixture_step3.jpg"
                 },
                 {
-                    text: "<strong>步驟 2：讀取通訊或類比控制電壓</strong><br>開啟全車電源，由遙控端或自動駕駛端發出行走/轉向指令，直接讀取治具端所顯示的訊號回饋。<br><br><div class='check-box'><span>🔍 控制控制器訊號判定：</span>確認治具量測到的指令電壓（或訊號燈號）是否隨著搖桿推移而產生相應的線性變化。若無訊號，則底盤控制器控制前端輸出損壞。</div>",
+                    text: "<strong>步驟 2：讀取通訊或類比控制電壓</strong><br>開啟全車電源，由遙控端或自動駕駛端發出行走/轉向指令，直接讀取治具端所顯示的訊號回饋。<br><br><div class='check-box'><span>🔍 控制控制器訊號判定：</span>確認治具量測到的指令電壓（或訊號燈號）是否隨著搖桿推移而產生相應的線性變化。若無訊號，則底盤控制器控制前端輸出損壞.</div>",
                     img: "images/fixture_step4.jpg"
                 }
             ]
@@ -164,6 +193,7 @@
         document.getElementById('main-header').style.display = 'none';
         document.getElementById('flow-card').classList.add('active');
         document.getElementById('home-btn').style.display = 'block';
+        document.getElementById('portal-btn').style.display = 'none'; // 進入測試時隱藏「返回主門戶」按鈕
         updateStepUI();
     }
 
@@ -212,6 +242,7 @@
         document.getElementById('main-header').style.display = 'block';
         document.getElementById('flow-card').classList.remove('active');
         document.getElementById('home-btn').style.display = 'none';
+        document.getElementById('portal-btn').style.display = 'block'; // 回到選單時重新顯示「返回主門戶」按鈕
     }
 </script>
 </body>
