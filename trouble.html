@@ -22,6 +22,8 @@
         .step-card { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border); display: none; animation: fadeIn 0.4s; }
         .step-card.active { display: block; }
         .prev-step-box { background: var(--prev-bg); padding: 10px 15px; border-radius: 6px; font-size: 0.9rem; color: var(--text-sub); border-left: 4px solid var(--border); margin-bottom: 20px; }
+        .prev-step-box[role="button"] { cursor: pointer; }
+        .prev-step-box[role="button"]:hover { color: var(--text-main); border-left-color: var(--blue); }
         .prev-step-label { font-weight: bold; color: var(--blue); margin-right: 5px; }
         h2 { font-size: 1.2rem; margin-top: 0; color: var(--accent); }
         p.current-task { line-height: 1.8; color: var(--text-main); font-size: 1.2rem; font-weight: bold; margin-bottom: 25px; }
@@ -33,6 +35,7 @@
         .sop-btn { background: var(--accent); font-weight: bold; margin-top: 15px; border: none; }
         .sop-btn:hover { background: #b71c1c; }
         .result-box { border-left: 8px solid var(--blue); background: rgba(52, 152, 219, 0.1); padding: 20px; border-radius: 4px; margin-top: 15px; }
+        .btn:focus-visible, .prev-step-box[role="button"]:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -61,8 +64,8 @@
         <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>主選單</div>
         <p class="current-task">確認遙控器電源有無開啟</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="go('water_2')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('診斷結果：無法切換水柱/水霧狀態')">NO</button>
+            <button class="btn btn-yes" onclick="go('water_2')">是，遙控器電源已開啟</button>
+            <button class="btn btn-no" onclick="showEnd('診斷建議：請先開啟遙控器電源，再重新測試水柱／水霧切換功能。')">否，遙控器電源尚未開啟</button>
         </div>
     </div>
     <div id="water_2" class="step-card">
@@ -101,14 +104,14 @@
 
     <div id="h_move" class="step-card">
         <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>主選單</div>
-        <p class="current-task">手動調整砲塔瞄子至中心位子，確認限位開關狀態</p>
+        <p class="current-task">手動調整砲塔瞄子至中心位置，確認限位開關狀態</p>
         <div class="btn-group">
             <button class="btn btn-yes" onclick="showEnd('診斷結果：完成砲塔水平作動')">正常 (YES)</button>
             <button class="btn btn-no" onclick="go('h_move_2')">異常 (NO)</button>
         </div>
     </div>
     <div id="h_move_2" class="step-card">
-        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>調整中心位子確認限位開關</div>
+        <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>調整中心位置確認限位開關</div>
         <p class="current-task">查修線路</p>
         <div class="btn-group">
             <button class="btn btn-yes" onclick="showEnd('診斷結果：完成砲塔水平作動')">恢復正常 (YES)</button>
@@ -120,8 +123,8 @@
         <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>主選單</div>
         <p class="current-task">確認機器人/遙控器電源是否開啟</p>
         <div class="btn-group">
-            <button class="btn btn-yes" onclick="go('control_2')">YES</button>
-            <button class="btn btn-no" onclick="showEnd('診斷建議：請先開啟電源')">NO</button>
+            <button class="btn btn-yes" onclick="go('control_2')">是，機器人與遙控器電源已開啟</button>
+            <button class="btn btn-no" onclick="showEnd('診斷建議：請先開啟機器人與遙控器電源，再重新測試。')">否，電源尚未完全開啟</button>
         </div>
     </div>
     <div id="control_2" class="step-card">
@@ -134,15 +137,15 @@
     </div>
     <div id="control_3" class="step-card">
         <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>重新校正遙控器</div>
-        <p class="current-task">狀態顯示表電壓顯示電量</p>
+        <p class="current-task">確認狀態顯示表是否顯示電壓／電量</p>
         <div class="btn-group">
             <button class="btn btn-yes" onclick="go('control_4')">有顯示 (YES)</button>
-            <button class="btn btn-no" onclick="showEnd('建議：更換 FRT 狀態顯示器線組。', 'sop10.html')">無顯示 (NO)</button>
+            <button class="btn btn-no" onclick="showEnd('建議：先檢查狀態顯示器線組與面板開關線組；若確認面板開關線組損壞，請依 SOP-10 更換。', 'sop10.html')">無顯示 (NO)</button>
         </div>
     </div>
     <div id="control_4" class="step-card">
         <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>檢查顯示表電壓</div>
-        <p class="current-task">更換馬達驅動器</p>
+        <p class="current-task">使用測試治具檢查馬達驅動器；確認損壞並完成更換後，是否恢復正常？</p>
         <div class="btn-group">
             <button class="btn btn-yes" onclick="showEnd('診斷結果：正常操控機器人')">恢復正常 (YES)</button>
             <button class="btn btn-no" onclick="go('control_5')">仍不正常 (NO)</button>
@@ -150,7 +153,7 @@
     </div>
     <div id="control_5" class="step-card">
         <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>更換馬達驅動器</div>
-        <p class="current-task">更換馬達及出口線測試</p>
+        <p class="current-task">測試馬達及輸出線路；完成修復後，是否恢復正常？</p>
         <div class="btn-group">
             <button class="btn btn-yes" onclick="showEnd('診斷結果：正常操控機器人')">恢復正常 (YES)</button>
             <button class="btn btn-no" onclick="showEnd('建議：更換底盤控制盒，若仍無效請執行治具測試。', 'sop13.html')">仍不正常 (NO)</button>
@@ -175,7 +178,7 @@
     </div>
     <div id="video_3" class="step-card">
         <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>線路查修</div>
-        <p class="current-task">更換 IO 控制盒</p>
+        <p class="current-task">確認 IO 控制盒故障並完成更換後，影像是否恢復？</p>
         <div class="btn-group">
             <button class="btn btn-yes" onclick="showEnd('診斷結果：完成影像投影')">恢復正常 (YES)</button>
             <button class="btn btn-no" onclick="go('video_4')">仍無影像 (NO)</button>
@@ -192,7 +195,7 @@
 
     <div id="gas" class="step-card">
         <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>主選單</div>
-        <p class="current-task">檢查濾管/濾嘴/濾綿</p>
+        <p class="current-task">檢查濾管／濾嘴／濾棉</p>
         <div class="btn-group">
             <button class="btn btn-yes" onclick="showEnd('診斷結果：正常偵測氣體')">恢復正常 (YES)</button>
             <button class="btn btn-no" onclick="go('gas_2')">仍不正常 (NO)</button>
@@ -208,7 +211,7 @@
     </div>
     <div id="gas_3" class="step-card">
         <div class="prev-step-box"><span class="prev-step-label">上一步驟：</span>電量檢查</div>
-        <p class="current-task">檢查手機 WIFI 與遙控箱平板連線狀況</p>
+        <p class="current-task">檢查手機 Wi-Fi 與遙控箱平板連線狀況</p>
         <div class="btn-group">
             <button class="btn btn-yes" onclick="showEnd('診斷結果：正常傳輸參數')">連線正常 (YES)</button>
             <button class="btn btn-no" onclick="showEnd('建議：更換 IO 控制盒。', 'sop14.html')">連線異常 (NO)</button>
@@ -249,13 +252,38 @@
 </div>
 
 <script>
-    function go(id) {
+    const stepHistory = [];
+
+    function getCurrentStepId() {
+        const current = document.querySelector('.step-card.active');
+        return current ? current.id : null;
+    }
+
+    function go(id, isBack = false) {
+        const currentId = getCurrentStepId();
+        if (!isBack && currentId && currentId !== id) {
+            stepHistory.push(currentId);
+        }
         document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
+        const target = document.getElementById(id);
+        if (!target) {
+            console.error(`找不到診斷步驟：${id}`);
+            return;
+        }
+        target.classList.add('active');
         window.scrollTo(0, 0);
     }
 
+    function backStep() {
+        const previousId = stepHistory.pop() || 'start';
+        go(previousId, true);
+    }
+
     function showEnd(text, sopUrl = null) {
+        const currentId = getCurrentStepId();
+        if (currentId && currentId !== 'result') {
+            stepHistory.push(currentId);
+        }
         document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
         document.getElementById('result').classList.add('active');
         document.getElementById('result-text').innerText = text;
@@ -273,6 +301,19 @@
             sopAction.style.display = 'none';
         }
     }
+
+    document.querySelectorAll('.prev-step-box').forEach(box => {
+        box.setAttribute('role', 'button');
+        box.setAttribute('tabindex', '0');
+        box.setAttribute('aria-label', `返回${box.innerText.replace('上一步驟：', '').trim()}`);
+        box.addEventListener('click', backStep);
+        box.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                backStep();
+            }
+        });
+    });
 </script>
 </body>
 </html>
