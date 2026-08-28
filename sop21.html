@@ -2,21 +2,45 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOP 21 - 水柱水霧電路檢測</title>
     <style>
-        body { font-family: "Microsoft JhengHei"; background: #0f0f0f; color: white; padding: 30px; line-height: 1.8; }
+        body { font-family: "Microsoft JhengHei", sans-serif; background: #0f0f0f; color: white; padding: 30px; line-height: 1.8; margin: 0; }
         .container { max-width: 800px; margin: auto; background: #1a1a1a; padding: 25px; border-radius: 12px; border-top: 6px solid #d32f2f; }
         h1 { color: #d32f2f; border-bottom: 2px solid #333; padding-bottom: 10px; }
         .step { background: #252525; margin-bottom: 15px; padding: 15px; border-radius: 8px; border-left: 4px solid #9b59b6; }
+        .warning { background: rgba(231, 76, 60, 0.08); border: 1px solid #e74c3c; border-left: 6px solid #e74c3c; color: #ffb3b3; padding: 15px; border-radius: 8px; margin: 20px 0; font-weight: bold; }
+        .normal { background: rgba(46, 204, 113, 0.08); border-left: 6px solid #2ecc71; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .abnormal { background: rgba(231, 76, 60, 0.08); border-left: 6px solid #e74c3c; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .nav-group { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+        .nav-btn { background: #333; color: white; border: 1px solid #555; padding: 10px 18px; border-radius: 6px; text-decoration: none; }
+        .nav-btn:hover { border-color: #9b59b6; }
+        .nav-btn:focus-visible { outline: 3px solid #9b59b6; outline-offset: 3px; }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .container { padding: 18px; }
+            h1 { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>SOP 21：水柱水霧無法切換（電路篇）</h1>
-        <div class="step">1. 檢查遙控器舵量。若無作動，檢查內部排線是否脫落或更換遙控器。</div>
-        <div class="step">2. 觀察砲塔控制盒繼電器有無作動。無作動則更換控制盒。</div>
-        <div class="step">3. <b>馬達測試：</b>將馬達端 黃/白/黑線 接至車體黑線，紅線不動。若開機不動作則馬達損壞。</div>
-        <button onclick="history.back()" style="background:#444; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">返回</button>
+        <div class="warning">⚠️ 接線前必須先關閉機器人電源並確認完全斷電。接線完成前不得重新開機；若測試時出現異音、異味、冒煙或機構卡住，應立即關閉電源。</div>
+
+        <div class="step"><b>1. 檢查遙控器舵量：</b>確認遙控器舵量是否正常。若無作動，先檢查內部排線是否鬆脫；確認遙控器故障後再更換。</div>
+        <div class="step"><b>2. 檢查砲塔控制盒：</b>發出水柱／水霧切換指令，觀察砲塔控制盒繼電器是否作動。若無作動，先檢查控制訊號及線路；確認控制盒故障後再更換。</div>
+        <div class="step"><b>3. 關機並完成馬達測試接線：</b>關閉機器人電源並確認完全斷電。將馬達端的黃線、白線及黑線同時連接至車體端黑線，紅線維持原接法不變。確認接點牢固、導體無外露，且線路不會接觸活動機構。</div>
+        <div class="step"><b>4. 重新開機觀察：</b>確認人員遠離馬達及水柱／水霧機構活動範圍後，重新開啟電源，觀察馬達與傳動機構是否正常作動。測試完成後關閉電源，再將所有線路恢復原接法。</div>
+
+        <div class="normal"><b>正常判定：</b>馬達立即作動，能平順帶動水柱／水霧機構完成切換，且沒有卡頓、異音或間歇停止。代表馬達正常，應繼續檢查控制盒、繼電器或原車線路。</div>
+        <div class="abnormal"><b>異常判定：</b>馬達完全不動、只有聲音但機構不移動，或出現卡頓、異音、異味、冒煙等情形，應立即關閉電源。確認接線及馬達端供電正常後仍無法作動，才判定馬達異常並更換。</div>
+
+        <div class="nav-group">
+            <a href="sop_list.html" class="nav-btn">⬅ 返回 SOP 目錄</a>
+            <a href="trouble.html" class="nav-btn">🔍 返回故障診斷</a>
+            <a href="index.html" class="nav-btn">🏠 返回系統首頁</a>
+        </div>
     </div>
 </body>
 </html>

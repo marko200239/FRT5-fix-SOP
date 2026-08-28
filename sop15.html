@@ -2,6 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOP-15 3吋觀景窗更換</title>
 
 <style>
@@ -48,12 +49,39 @@
         color: var(--text-sub);
     }
     .step strong { color: var(--text-main); }
+    .warning {
+        background: rgba(255, 77, 77, 0.08);
+        border: 1px solid var(--accent);
+        border-left: 6px solid var(--accent);
+        padding: 15px 18px;
+        border-radius: 8px;
+        margin: 20px 0;
+        color: #ffb3b3;
+        font-weight: bold;
+    }
+    .ppt-page { background: #1e1e1e; border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin: 24px 0; }
+    .page-title { color: var(--blue); font-size: 1.25rem; font-weight: bold; margin-bottom: 15px; }
+    .instruction-text { white-space: pre-line; color: var(--text-main); line-height: 1.8; }
+    .meta-line { color: var(--text-sub); margin-top: 8px; font-size: 0.95rem; }
+    .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 15px; }
+    .image-box { background: #181818; border: 1px solid var(--border); border-radius: 8px; padding: 10px; }
+    .img-label { color: var(--text-sub); font-size: 0.9rem; text-align: center; }
+    .img-label.image-error { color: #ffb3b3; font-weight: bold; padding: 20px 8px; }
+    .completion-check { background: rgba(46, 204, 113, 0.08); border-left: 6px solid #2ecc71; padding: 15px 18px; border-radius: 8px; margin-top: 24px; }
+    .nav-group { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
     .back-btn { 
-        display: inline-block; margin-top: 30px; color: var(--blue); 
+        display: inline-block; color: var(--blue); 
         text-decoration: none; font-weight: bold; 
         border: 1px solid var(--blue); padding: 10px 20px; border-radius: 5px;
     }
+    .back-btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
     img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border); }
+    @media (max-width: 600px) {
+        body { padding: 10px; }
+        .container, .sop-container, body > div.container, body > div:first-of-type { padding: 18px; }
+        h1 { font-size: 1.55rem; }
+        th, td { padding: 8px; font-size: 0.9rem; }
+    }
 </style>
 
 </head>
@@ -62,44 +90,62 @@
         <h1>SOP-15：3 吋觀景窗更換</h1>
 
         <div class="info-card">
-            <strong>故障描述：</strong> IR WINDO 玻璃破損<br>
+            <strong>故障描述：</strong> IR WINDOW 玻璃破損<br>
             <strong>原因分析：</strong> 外力撞擊
             <table>
                 <tr><th>項次</th><th>類別</th><th>品名 / 料號</th><th>數量</th></tr>
-                <tr><td>1</td><td>一般工具</td><td>13號套筒 / 六角板手組</td><td>各 1</td></tr>
+                <tr><td>1</td><td>一般工具</td><td>13號套筒／六角扳手組</td><td>各 1</td></tr>
                 <tr><td>2</td><td>零組件</td><td>3”IR觀景窗 IP67 (392010003)</td><td>1</td></tr>
             </table>
         </div>
 
+        <div class="warning">⚠️ 作業前必須先關閉機器人電源，確認設備完全斷電並放置穩固後，才能開始拆卸。</div>
+
         <div class="ppt-page">
             <div class="page-title">1. 拆除舊觀景窗</div>
             <div class="step-section">
-                <div class="instruction-text">1. 使用六角板手將舊 IR WINDO 側邊螺絲拆卸。
-2. 先將機器人電源關機，使用 13 號套筒將 IR WINDO 底座螺帽拆下來。</div>
+                <div class="instruction-text">1. 確認機器人已關機並完全斷電。
+2. 使用六角扳手將舊 IR WINDOW 側邊螺絲拆卸。
+3. 使用 13 號套筒將 IR WINDOW 底座螺帽拆下。</div>
                 <div class="meta-line">工具：13號套筒 ║ 零件：［M6螺帽］*4</div>
-                <div class="meta-line">工具：六角板手 ║ 零件：［半圓頭內六角螺絲M5x10 ］*4</div>
+                <div class="meta-line">工具：六角扳手 ║ 零件：［半圓頭內六角螺絲 M5x10］*4</div>
             </div>
             <div class="image-grid">
-                <div class="image-box"><img src="images/sop15_01.jpg"><div class="img-label">圖 1：側邊螺絲拆卸位置</div></div>
-                <div class="image-box"><img src="images/sop15_02.jpg"><div class="img-label">圖 2：底座螺帽拆除示意</div></div>
+                <div class="image-box"><img src="images/sop15_01.jpg" alt="IR WINDOW 側邊螺絲拆卸位置" onerror="handleImageError(this)"><div class="img-label">圖 1：側邊螺絲拆卸位置</div></div>
+                <div class="image-box"><img src="images/sop15_02.jpg" alt="IR WINDOW 底座螺帽拆除示意" onerror="handleImageError(this)"><div class="img-label">圖 2：底座螺帽拆除示意</div></div>
             </div>
         </div>
 
         <div class="ppt-page">
             <div class="page-title">2. 安裝新觀景窗</div>
             <div class="step-section">
-                <div class="instruction-text">1. 使用六角板手將新 IR WINDO 鎖上。
-2. 使用 13 號套筒將 IR WINDO 底座螺帽鎖上。</div>
-                <div class="meta-line">工具：六角板手 ║ 零件：［半圓頭內六角螺絲M5x10 ］*4</div>
+                <div class="instruction-text">1. 將新 IR WINDOW 放置於正確位置，確認方向與密合面無異物。
+2. 使用六角扳手鎖固側邊螺絲。
+3. 使用 13 號套筒鎖固 IR WINDOW 底座螺帽。</div>
+                <div class="meta-line">工具：六角扳手 ║ 零件：［半圓頭內六角螺絲 M5x10］*4</div>
                 <div class="meta-line">工具：13號套筒 ║ 零件：［M6螺帽］*4</div>
             </div>
             <div class="image-grid">
-                <div class="image-box"><img src="images/sop15_03.jpg"><div class="img-label">圖 3：新觀景窗置入與鎖固</div></div>
-                <div class="image-box"><img src="images/sop15_04.jpg"><div class="img-label">圖 4：底座螺帽回裝完成</div></div>
+                <div class="image-box"><img src="images/sop15_03.jpg" alt="新 IR WINDOW 置入與鎖固" onerror="handleImageError(this)"><div class="img-label">圖 3：新觀景窗置入與鎖固</div></div>
+                <div class="image-box"><img src="images/sop15_04.jpg" alt="IR WINDOW 底座螺帽回裝完成" onerror="handleImageError(this)"><div class="img-label">圖 4：底座螺帽回裝完成</div></div>
             </div>
         </div>
 
-        <a href="index.html" class="back-btn">⬅️ 回到目錄首頁</a>
+        <div class="completion-check"><strong>完成確認：</strong>確認觀景窗方向正確、密合面無夾入異物、所有螺絲及螺帽均已鎖固，開機後確認影像顯示正常。</div>
+
+        <div class="nav-group">
+            <a href="sop_list.html" class="back-btn">⬅️ 返回 SOP 目錄</a>
+            <a href="trouble.html" class="back-btn">🔍 返回故障診斷</a>
+            <a href="index.html" class="back-btn">🏠 返回系統首頁</a>
+        </div>
     </div>
+    <script>
+        function handleImageError(img) {
+            img.style.display = 'none';
+            const label = img.nextElementSibling;
+            label.classList.add('image-error');
+            label.textContent = `⚠️ 圖片尚未上傳：${img.getAttribute('src')}`;
+        }
+    </script>
 </body>
 </html>
