@@ -58,7 +58,7 @@
         .btn-home { background: transparent; color: var(--text-sub); border: 1px solid var(--border); width: 100%; margin-top: 30px; padding: 12px; cursor: pointer; transition: 0.3s; }
         .btn-home:hover { color: #fff; border-color: #666; }
 
-        /* 🆕 修改：顯眼的黃框返回主門戶按鈕樣式 */
+        /* 🆕 修改：顯眼的黃框返回機型教學目錄按鈕樣式 */
         .back-portal-btn { 
             display: block; 
             text-align: center; 
@@ -127,7 +127,7 @@
     <button id="home-btn" class="btn btn-home" style="display:none;" onclick="resetToMenu()">🏠 返回治具項目選單</button>
 
     <!-- 🌟 更新：顯眼的黃色外框返回按鈕 -->
-    <a id="portal-btn" href="index.html" class="back-portal-btn">⬅ 返回主門戶（機型教學目錄）</a>
+    <a id="portal-btn" href="video_menu.html" class="back-portal-btn">⬅ 返回機型教學目錄</a>
 </div>
 
 <script>
@@ -195,7 +195,7 @@
         document.getElementById('main-header').style.display = 'none';
         document.getElementById('flow-card').classList.add('active');
         document.getElementById('home-btn').style.display = 'block';
-        document.getElementById('portal-btn').style.display = 'none'; // 進入測試時隱藏「返回主門戶」按鈕
+        document.getElementById('portal-btn').style.display = 'none'; // 進入測試時隱藏「返回機型教學目錄」按鈕
         updateStepUI();
     }
 
@@ -244,7 +244,7 @@
         document.getElementById('main-header').style.display = 'block';
         document.getElementById('flow-card').classList.remove('active');
         document.getElementById('home-btn').style.display = 'none';
-        document.getElementById('portal-btn').style.display = 'block'; // 回到選單時重新顯示「返回主門戶」按鈕
+        document.getElementById('portal-btn').style.display = 'block'; // 回到選單時重新顯示「返回機型教學目錄」按鈕
     }
 </script>
 </body>
