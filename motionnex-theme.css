@@ -126,7 +126,6 @@ body > .portal-container,
 body > .main-container,
 body > .sop-container {
     width: min(1120px, calc(100% - 32px)) !important;
-    max-width: 1120px !important;
     margin: 34px auto !important;
     padding: clamp(20px, 3vw, 38px) !important;
     background: rgba(255, 255, 255, 0.96) !important;
