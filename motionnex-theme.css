@@ -366,6 +366,82 @@ body > .back-btn {
     margin-right: auto !important;
 }
 
+/* SOP 閱讀性：舊版頁面原為深色卡片，套用淺色品牌主題後需同步提高內文對比。 */
+.header-card,
+.step-page,
+.step-section,
+.instruction,
+.test-steps {
+    background: #fff !important;
+    color: var(--mn-purple) !important;
+    border-color: var(--mn-border) !important;
+    box-shadow: 0 8px 22px rgba(7, 29, 43, 0.06);
+}
+
+.instruction,
+.instruction-text,
+.step,
+.test-steps,
+.warning,
+.normal,
+.abnormal {
+    font-size: 1.06rem !important;
+    font-weight: 500;
+    line-height: 1.85 !important;
+    letter-spacing: 0.015em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+.instruction-text,
+.test-steps,
+.test-steps li,
+.step,
+.header-card p {
+    color: #24104f !important;
+}
+
+.step strong,
+.instruction strong,
+.test-steps strong,
+.header-card strong {
+    color: #14052f !important;
+    font-weight: 800;
+}
+
+.meta-line {
+    background: #f3f0fa !important;
+    color: #4b3d68 !important;
+    border: 1px solid rgba(28, 9, 80, 0.12) !important;
+    font-family: inherit !important;
+    font-size: 0.98rem !important;
+    line-height: 1.7 !important;
+}
+
+.img-desc,
+.image-label,
+.img-label {
+    color: #4b3d68 !important;
+    font-size: 0.98rem !important;
+    line-height: 1.6 !important;
+}
+
+.page-indicator,
+.page-num {
+    color: #555b6a !important;
+    font-size: 1rem !important;
+}
+
+@media (min-width: 821px) {
+    .header-card,
+    .info-card,
+    .step-page,
+    .ppt-page,
+    .test-steps {
+        font-size: 17px;
+    }
+}
+
 @media (max-width: 820px) {
     .mn-brandbar__inner {
         padding: 10px 14px 12px;
